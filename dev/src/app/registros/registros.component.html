@@ -5,8 +5,9 @@
 </header>
 
 <main>
-    <!-- style="animation-delay: 0.{{  registro.id }}s;" -->
+    <!-- [ngStyle]="{animationDelay: '0.' + registro.id + 's'}" -->
 <section #idRegistro 
+        
          id="{{ registro.id }}"
          class="c-registro" 
          *ngFor="let registro of registros" 
@@ -26,23 +27,23 @@
 
         <div class="btn-registro__container" *ngIf="registro.selected || registro.status == 'check' || registro.status == 'vish'">
             <button class="btn-registro__check" 
-                    (click)="registro.status = 'check'"
+                    (click)="registro.status = 'check'; setHistorico(idRegistro.id)"
                     *ngIf="registro.status != 'vish'">
 
                     Check!
 
             </button>
             <button class="btn-registro__vish" 
-                    (click)="registro.status = 'vish'"
+                    (click)="registro.status = 'vish'; setHistorico(idRegistro.id)"
                     *ngIf="registro.status != 'check'">
 
                     Vish...
 
             </button>
-            <span *ngIf="registro.status != 'created'">Próximo: {{ registro.data | date: 'dd-MM-yyyy' }}</span>
+            <span *ngIf="registro.status != 'waiting'">Próximo: {{ registro.data | date: 'dd-MM-yyyy' }}</span>
         </div>
     </div>
-    <button class="btn-registro__historico" [routerLink]="['registro', idRegistro.id]" routerLinkActive="router-link-active" >ver histórico</button>
+    <button class="btn-registro__historico" [routerLink]="['registro', idRegistro.id]">ver histórico</button>
     
 </section>
 </main>

@@ -14,16 +14,18 @@
     <br>
 
     <h4>Cor</h4>
-    <!-- [ngClass]="{selected: btnCorSelected == btnCor.value}" -->
+    
     <div class="criar-registro__cores">
 
-        <div class="cores__row">
-            
-        <button  #btnCor value="{{ cor }}" 
-        (click)="novoRegistro.cor = btnCor.value" 
+        <div class="cores__row">    
+        <button  #btnCor 
+        value="{{ cor }}" 
+        [ngClass]="{selected: selectedColor == btnCor.value}"
+        (click)="novoRegistro.cor = btnCor.value; selectedColor =  btnCor.value" 
         *ngFor="let cor of registrosSet.colors"
         ><span class="{{ cor }}"></span>{{ cor }}</button>
         </div>
+
     </div>
     <br>
 
@@ -33,8 +35,9 @@
 
         <div class="criar-registro__row">
             <button #btnIcone
+            [ngClass]="{selected: selectedIcon == btnIcone.value}"
             value="{{ icon }}"
-            (click)="novoRegistro.icone = btnIcone.value"
+            (click)="novoRegistro.icone = btnIcone.value; selectedIcon =  btnIcone.value"
             class="btn-criar-registro__icone" 
             *ngFor="let icon of registrosSet.icons" >
                 <img src="../../../assets/icones/icon__{{ icon }}.svg" alt="">

@@ -8,11 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registros.component.scss']
 })
 export class RegistrosComponent implements OnInit {
+
+  newDate: any = new Date;
+  newDay = this.newDate.getDate();
+  newYear = this.newDate.getFullYear();
+  newMonth = this.newDate.getMonth() + 1;
+  newHours = this.newDate.getHours();
+  newMinutes = this.newDate.getMinutes();
   
 
   criarRegistro: boolean = false;
 
   registros: any;
+  historicoGeral: any;
 
   btnSelected: boolean = false;
 
@@ -22,14 +30,30 @@ export class RegistrosComponent implements OnInit {
   ngOnInit(): void {
 
     this.registros = this.registrosService.registros;
-    // this.openCriarRegistro = this.registrosService.criarRegistro;
-
+    this.historicoGeral = this.registrosService.historicoGeral;
   }
 
-  closeCriarRegistro(){
-    this.criarRegistro = true
-    console.log("mudou");
+  setHistorico(num: any){
+
+  
+
     
-    
+    let novoHistoricoRegistro = {
+      data: this.newDay + "/" + this.newMonth + "/" + this.newYear,
+      horario: this.newHours + 'h' + this.newMinutes,
+      status:  this.registros[num].status
+  }
+
+  let novoHistoricoGeral = {
+    titulo: this.registros[num].titulo,
+    data: this.newDay + "/" + this.newMonth + "/" + this.newYear,
+    horario: this.newHours + 'h' + this.newMinutes,
+    status:  this.registros[num].status
+}
+
+  this.registros[num].historico.push(novoHistoricoRegistro);
+  this.historicoGeral.push(novoHistoricoGeral);
+
+
   }
 }

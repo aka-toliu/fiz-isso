@@ -9,6 +9,9 @@ import { RegistrosService } from 'src/app/registros.service';
 })
 export class CriarRegistroComponent implements OnInit {
 
+  selectedIcon: any = 'check';
+  selectedColor: any = 'yellow';
+
   registros: any;
 
   newDate: any = new Date;
@@ -32,9 +35,10 @@ export class CriarRegistroComponent implements OnInit {
       cor: "yellow",
       data: this.newDate,
       frequencia: "diaria",
-      status: "created",
+      status: "waiting",
       selected: false,
-      complete: false
+      complete: false,
+      historico: []
     
   }
 

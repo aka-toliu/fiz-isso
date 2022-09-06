@@ -1,11 +1,14 @@
-<p>historico do registro:</p>
 <div #idRegistro id="{{ id }}">
-    <h2>{{ id }} - {{ registros[idRegistro.id].titulo }}</h2>
+    <h2>{{ registros[idRegistro.id].titulo }}</h2>
+    <p>historico do registro:</p>
     <br>
-    <div *ngFor="let historico of registros[idRegistro.id].historico">
-        <p>{{ historico.status }}</p>
-        <p>{{ historico.data }}</p>
-        <p>{{ historico.horario }}</p>
+    <div class="historico-registro__item" *ngFor="let historico of registros[idRegistro.id].historico">
+        <div 
+        [ngClass]="{checked: historico.status == 'check',
+                    vished: historico.status == 'vish'}"
+        class="historico-registro__status">{{ historico.status }}</div>
+        <p class="historico-registro__data">{{ historico.data }}</p>
+        <p class="historico-registro__horario">{{ historico.horario }}</p>
         <br>
     </div>
     <p *ngIf="registros[idRegistro.id].historico == ''">

@@ -14,24 +14,24 @@ export class RegistrosService {
         cor: "yellow",
         data: new Date(2003, 9, 10),
         frequencia: "diaria",
-        status: "created",
+        status: "waiting",
         selected: false,
         complete: false,
         historico: [
           {
-            data: "10-10-2022",
+            data: "10/10/2022",
             horario: "9h00",
-            status: "checked",
+            status: "check",
           },
           {
-            data: "11-10-2022",
+            data: "11/10/2022",
             horario: "9h02",
-            status: "checked",
+            status: "vish",
           },
           {
-            data: "12-10-2022",
+            data: "12/10/2022",
             horario: "9h01",
-            status: "checked",
+            status: "check",
           }
         ]
 
@@ -43,7 +43,7 @@ export class RegistrosService {
         cor: "blue",
         data: new Date(2003, 9, 10),
         frequencia: "diaria",
-        status: "created",
+        status: "waiting",
         selected: false,
         complete: true,
         historico: []
@@ -62,17 +62,17 @@ export class RegistrosService {
           {
             data: "10-10-2022",
             horario: "9h00",
-            status: "checked",
+            status: "check",
           },
           {
             data: "11-10-2022",
             horario: "9h02",
-            status: "checked",
+            status: "check",
           },
           {
             data: "12-10-2022",
             horario: "9h01",
-            status: "checked",
+            status: "vish",
           }
         ]
       },
@@ -83,24 +83,24 @@ export class RegistrosService {
         cor: "pink",
         data: new Date(2003, 9, 10),
         frequencia: "diaria",
-        status: "created",
+        status: "waiting",
         selected: false,
         complete: false,
         historico: [
           {
-            data: "10-10-2022",
+            data: "10/10/2022",
             horario: "9h00",
-            status: "checked",
+            status: "check",
           },
           {
-            data: "11-10-2022",
+            data: "11/10/2022",
             horario: "9h02",
-            status: "checked",
+            status: "check",
           },
           {
-            data: "12-10-2022",
+            data: "12/10/2022",
             horario: "9h01",
-            status: "checked",
+            status: "check",
           }
         ]
       }
@@ -111,21 +111,21 @@ export class RegistrosService {
       
       {
         titulo: "Apagar as luzes",
-        data: "12-10-2022",
+        data: "12/10/2022",
         horario: "9h01",
-        status: "checked",
+        status: "vish",
       },
       {
         titulo: "Apagar as luzes",
-        data: "12-10-2022",
+        data: "12/10/2022",
         horario: "9h01",
-        status: "checked",
+        status: "check",
       },
       {
         titulo: "Apagar as luzes",
-        data: "12-10-2022",
+        data: "12/10/2022",
         horario: "9h01",
-        status: "checked",
+        status: "check",
       }
   ]
   
