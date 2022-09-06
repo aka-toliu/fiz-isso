@@ -1,0 +1,49 @@
+<div  class="c-registros">
+
+<header>
+    <button class="btn-novo-registro" [routerLink]="['/criar']">Criar registro</button>
+</header>
+
+<main>
+    <!-- style="animation-delay: 0.{{  registro.id }}s;" -->
+<section #idRegistro 
+         id="{{ registro.id }}"
+         class="c-registro" 
+         *ngFor="let registro of registros" 
+         [ngClass]="{
+                    checked: registro.status === 'check',
+                    vished: registro.status === 'vish'
+                   }">
+
+    <div class="c-registro__icon {{ registro.cor }}" 
+         (click)="registro.selected = !registro.selected">
+    <img src="../../assets/icones/icon__{{registro.icone }}.svg">
+    </div>
+
+    <div class="c-registro__content" (click)="registro.selected = 'selected'">
+
+        <h2 class="c-registro__title"> {{ registro.titulo }}</h2>
+
+        <div class="btn-registro__container" *ngIf="registro.selected || registro.status == 'check' || registro.status == 'vish'">
+            <button class="btn-registro__check" 
+                    (click)="registro.status = 'check'"
+                    *ngIf="registro.status != 'vish'">
+
+                    Check!
+
+            </button>
+            <button class="btn-registro__vish" 
+                    (click)="registro.status = 'vish'"
+                    *ngIf="registro.status != 'check'">
+
+                    Vish...
+
+            </button>
+            <span *ngIf="registro.status != 'created'">Próximo: {{ registro.data | date: 'dd-MM-yyyy' }}</span>
+        </div>
+    </div>
+    <button class="btn-registro__historico" [routerLink]="['registro', idRegistro.id]" routerLinkActive="router-link-active" >ver histórico</button>
+    
+</section>
+</main>
+</div>

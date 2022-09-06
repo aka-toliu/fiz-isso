@@ -1,0 +1,116 @@
+menu {
+    position: fixed;
+    width: 100%;
+    height: 9vh;
+    bottom: 0;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+
+    @media screen and (min-width: 768px) {
+        width: 20%;
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .menu__btn {
+        width: 33%;
+        max-width: 200px;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        margin: 1px;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+
+        @media screen and (min-width: 768px) {
+            width: 100%;
+            height: 15%;
+        }
+    }
+
+    @mixin btnMenu($icon) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        user-select: none;
+
+        span {
+            position: absolute;
+            left: 35%;
+            font-weight: bolder;
+            font-size: 1.3em;
+            color: white;
+            opacity: 0.5;
+            display: none;
+
+            @media screen and (min-width: 768px) {
+                display: block;
+            }
+        }
+
+        &::after {
+            content: "";
+            background-image: url(#{$icon});
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            user-select: none;
+
+            @media screen and (min-width: 768px) {
+                width: 20%;
+                position: absolute;
+                left: 7px;
+            }
+        }
+        &::before {
+            content: "";
+            width: 8vh;
+            height: 8vh;
+            border-radius: 9vh;
+            position: absolute;
+
+            @media screen and (min-width: 768px) {
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+
+    .btn-historico {
+        @include btnMenu("../../../assets/icones/icon__historico-white.svg");
+    }
+    .btn-home {
+        @include btnMenu("../../../assets/icones/icon__check-white.svg");
+    }
+    .btn-config {
+        @include btnMenu("../../../assets/icones/icon__user-white.svg");
+    }
+
+    .menu__btn--selected {
+        span {
+            opacity: 1;
+        }
+        &::after {
+            opacity: 1;
+        }
+        &::before {
+            backdrop-filter: brightness(1.2);
+            animation: scaleIn 0.2s;
+        }
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

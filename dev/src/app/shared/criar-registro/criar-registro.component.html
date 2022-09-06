@@ -1,0 +1,70 @@
+<div class="criar-registro">
+
+    <header class="{{novoRegistro.cor}}">
+        <img src="../../../assets/icones/icon__{{ novoRegistro.icone }}.svg">
+    </header>
+
+
+
+    <h1>Criar registro</h1>
+    <br>
+
+    <h4>Título</h4>
+    <input placeholder="ex: Apagar as luzes..." type="text" name="titulo" id="titulo" maxlength="72" [(ngModel)]="novoRegistro.titulo">
+    <br>
+
+    <h4>Cor</h4>
+    <!-- [ngClass]="{selected: btnCorSelected == btnCor.value}" -->
+    <div class="criar-registro__cores">
+
+        <div class="cores__row">
+            
+        <button  #btnCor value="{{ cor }}" 
+        (click)="novoRegistro.cor = btnCor.value" 
+        *ngFor="let cor of registrosSet.colors"
+        ><span class="{{ cor }}"></span>{{ cor }}</button>
+        </div>
+    </div>
+    <br>
+
+
+    <h4>Ícone</h4>
+    <div class="criar-registro__icones">
+
+        <div class="criar-registro__row">
+            <button #btnIcone
+            value="{{ icon }}"
+            (click)="novoRegistro.icone = btnIcone.value"
+            class="btn-criar-registro__icone" 
+            *ngFor="let icon of registrosSet.icons" >
+                <img src="../../../assets/icones/icon__{{ icon }}.svg" alt="">
+            </button>
+        </div>
+       
+    </div>
+    <!-- <div *ngFor="let cor of registrosSet.colors">
+        <label for="{{ cor }}">{{ cor }}</label>
+        <input type="radio" name="radio__cores" id="{{ cor }}" value="{{ cor }}">
+    </div> -->
+
+    <!-- <select name="cor" id="cor" #corSelect (change)="novoRegistro.cor = corSelect.value">
+        <option *ngFor="let cor of registrosSet.colors" value="{{ cor }}">{{ cor }}</option>
+    </select>
+    <br> -->
+
+ 
+    <!-- <select #iconSelect name="icon" id="icon" (change)="novoRegistro.icone = iconSelect.value">
+        <option *ngFor="let icon of registrosSet.icons" value="{{ icon }}">
+            {{ icon }}</option>
+    </select> -->
+    <br>
+
+    <h4>Frequência</h4>
+    <select name="frequencia" id="frequencia">
+        <option *ngFor="let frequencia of registrosSet.frequencia" value="{{ frequencia }}">{{ frequencia }}</option>
+    </select>
+
+    <br>
+    <button class="btn-criar-registro" (click)="createRegistro()" [routerLink]="['']">Criar</button>
+
+</div>
