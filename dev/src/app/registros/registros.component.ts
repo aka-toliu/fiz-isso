@@ -48,7 +48,9 @@ export class RegistrosComponent implements OnInit {
     titulo: this.registros[num].titulo,
     data: this.newDay + "/" + this.newMonth + "/" + this.newYear,
     horario: this.newHours + 'h' + this.newMinutes,
-    status:  this.registros[num].status
+    status:  this.registros[num].status,
+    cor:  this.registros[num].cor,
+    icone:  this.registros[num].icone
 }
 
   this.registros[num].historico.push(novoHistoricoRegistro);

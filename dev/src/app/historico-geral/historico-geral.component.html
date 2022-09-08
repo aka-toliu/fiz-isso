@@ -1,9 +1,27 @@
-<h2>Historico geral</h2>
+<header>
+        <img src="../../assets/icones/icon__historico-white.svg" alt="">
+        <h2>Historico geral</h2>
+</header>
 
-<div *ngFor="let historico of historicoGeral">
-        <p>{{ historico.titulo }}</p>
-        <p>{{ historico.data }}</p>
-        <p>{{ historico.horario }}</p>
-        <p>{{ historico.status }}</p>
-        <br>
-</div>
+<main>
+
+        <div class="historico-g__item" *ngFor="let historico of historicoGeral">
+                <div class="historico-g__icon">
+                        <img class="{{ historico.cor }}" src="../../assets/icones/icon__{{ historico.icone }}.svg" alt="">
+                </div>
+
+                <div class="historico-g__content">
+                       
+                        <h3 class="historico-g__titulo">{{ historico.titulo }}</h3>
+
+                        <p [ngClass]="{checked: historico.status == 'check',
+                                       vished: historico.status == 'vish'}" 
+                                       class="historico-g__status">{{ historico.status }}</p>
+                        <p class="historico-g__data">{{ historico.data }}</p>
+                        <p class="historico-g__horario">{{ historico.horario }}</p>
+                </div>
+
+                <br>
+        </div>
+
+</main>

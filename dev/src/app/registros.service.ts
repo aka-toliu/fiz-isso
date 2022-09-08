@@ -111,18 +111,24 @@ export class RegistrosService {
       
       {
         titulo: "Apagar as luzes",
+        icone: "light",
+        cor: "yellow",
         data: "12/10/2022",
         horario: "9h01",
         status: "vish",
       },
       {
         titulo: "Apagar as luzes",
+        icone: "light",
+        cor: "yellow",
         data: "12/10/2022",
         horario: "9h01",
         status: "check",
       },
       {
         titulo: "Apagar as luzes",
+        icone: "light",
+        cor: "yellow",
         data: "12/10/2022",
         horario: "9h01",
         status: "check",

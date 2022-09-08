@@ -43,7 +43,9 @@
             <span *ngIf="registro.status != 'waiting'">Próximo: {{ registro.data | date: 'dd-MM-yyyy' }}</span>
         </div>
     </div>
-    <button class="btn-registro__historico" [routerLink]="['registro', idRegistro.id]">ver histórico</button>
+    <button class="btn-registro__historico" [routerLink]="['registro', idRegistro.id]">Ver histórico</button>
+    
+    <button class="btn-registro__options"></button>
     
 </section>
 </main>
