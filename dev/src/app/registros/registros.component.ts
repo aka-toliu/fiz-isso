@@ -15,7 +15,7 @@ export class RegistrosComponent implements OnInit {
   newMonth = this.newDate.getMonth() + 1;
   newHours = this.newDate.getHours();
   newMinutes = this.newDate.getMinutes();
-  
+
 
   criarRegistro: boolean = false;
 
@@ -24,7 +24,7 @@ export class RegistrosComponent implements OnInit {
 
   btnSelected: boolean = false;
 
-  constructor(private registrosService: RegistrosService) { 
+  constructor(private registrosService: RegistrosService) {
   }
 
   ngOnInit(): void {
@@ -33,29 +33,30 @@ export class RegistrosComponent implements OnInit {
     this.historicoGeral = this.registrosService.historicoGeral;
   }
 
-  setHistorico(num: any){
+  setHistorico(num: any) {
 
+    if (this.registros[num].complete != true) {
+      let novoHistoricoRegistro = {
+        data: this.newDay + "/" + this.newMonth + "/" + this.newYear,
+        horario: this.newHours + 'h' + this.newMinutes,
+        status: this.registros[num].status
+      }
   
+      let novoHistoricoGeral = {
+        titulo: this.registros[num].titulo,
+        data: this.newDay + "/" + this.newMonth + "/" + this.newYear,
+        horario: this.newHours + 'h' + this.newMinutes,
+        status: this.registros[num].status,
+        cor: this.registros[num].cor,
+        icone: this.registros[num].icone
+      }
+  
+      this.registros[num].historico.push(novoHistoricoRegistro);
+      this.historicoGeral.push(novoHistoricoGeral);
+    }
 
-    
-    let novoHistoricoRegistro = {
-      data: this.newDay + "/" + this.newMonth + "/" + this.newYear,
-      horario: this.newHours + 'h' + this.newMinutes,
-      status:  this.registros[num].status
-  }
-
-  let novoHistoricoGeral = {
-    titulo: this.registros[num].titulo,
-    data: this.newDay + "/" + this.newMonth + "/" + this.newYear,
-    horario: this.newHours + 'h' + this.newMinutes,
-    status:  this.registros[num].status,
-    cor:  this.registros[num].cor,
-    icone:  this.registros[num].icone
-}
-
-  this.registros[num].historico.push(novoHistoricoRegistro);
-  this.historicoGeral.push(novoHistoricoGeral);
-
+    this.registros[num].complete = true
 
   }
+
 }

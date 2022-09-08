@@ -45,7 +45,7 @@ export class RegistrosService {
         frequencia: "diaria",
         status: "waiting",
         selected: false,
-        complete: true,
+        complete: false,
         historico: []
       },
       {
