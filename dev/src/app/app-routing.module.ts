@@ -1,3 +1,4 @@
+import { RegistroNaoEncontradoComponent } from './shared/registro-nao-encontrado/registro-nao-encontrado.component';
 import { HistoricoRegistroComponent } from './shared/historico-registro/historico-registro.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'historico', component: HistoricoGeralComponent},
   { path: 'config', component: UserConfigComponent},
   { path: 'criar', component: CriarRegistroComponent},
-  { path: 'registro/:id', component: HistoricoRegistroComponent}
+  { path: 'registro/:id', component: HistoricoRegistroComponent},
+  { path: 'registro-nao-encontrado', component: RegistroNaoEncontradoComponent}
 ];
 
 @NgModule({

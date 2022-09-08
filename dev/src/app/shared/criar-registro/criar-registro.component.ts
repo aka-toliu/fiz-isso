@@ -37,6 +37,7 @@ export class CriarRegistroComponent implements OnInit {
       frequencia: "diaria",
       status: "waiting",
       selected: false,
+      options: false,
       complete: false,
       historico: []
     

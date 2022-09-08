@@ -12,6 +12,7 @@ import { HistoricoRegistroComponent } from './shared/historico-registro/historic
 import { UserConfigComponent } from './user-config/user-config.component';
 import { CriarRegistroComponent } from './shared/criar-registro/criar-registro.component';
 import { FormsModule } from '@angular/forms';
+import { RegistroNaoEncontradoComponent } from './shared/registro-nao-encontrado/registro-nao-encontrado.component';
 
 
 
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     HistoricoRegistroComponent,
     UserConfigComponent,
     CriarRegistroComponent,
+    RegistroNaoEncontradoComponent,
 
     
   ],

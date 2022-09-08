@@ -8,7 +8,7 @@ header{
     flex-direction: column;
 
     @media screen and (min-width: 768px) {
-        opacity: .9;
+        opacity: .7;
     }
 
     h2{
@@ -50,8 +50,8 @@ header{
         justify-content: center;
 
         img{
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 60px;
             padding: 15px;
         }

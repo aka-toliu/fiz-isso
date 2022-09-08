@@ -7,7 +7,6 @@
 <main>
     <!-- [ngStyle]="{animationDelay: '0.' + registro.id + 's'}" -->
 <section #idRegistro 
-        
          id="{{ registro.id }}"
          class="c-registro" 
          *ngFor="let registro of registros" 
@@ -45,7 +44,19 @@
     </div>
     <button class="btn-registro__historico" [routerLink]="['registro', idRegistro.id]">Ver histórico</button>
     
-    <button class="btn-registro__options"></button>
+    <button class="btn-registro__options" (click)="registro.options = !registro.options"></button>
+
+
+    <div *ngIf="registro.options" class="registro-menu">
+        <div [ngClass]="{blocked: registro.status == 'waiting'}" class="registro-menu__option" (click)="desfazerRegistro(idRegistro.id)">
+            <img src="../../assets/icones/icon__desfazer-color.svg">
+            <p>Desfazer</p>
+        </div>
+        <div class="registro-menu__option" (click)="excluirRegistro(idRegistro.id)">
+            <img src="../../assets/icones/icon__remover-color.svg">
+            <p>Excluir</p>
+        </div>
+    </div>
     
 </section>
 </main>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegistrosService } from 'src/app/registros.service';
 
 @Component({
@@ -11,8 +11,12 @@ export class HistoricoRegistroComponent implements OnInit {
 
   id: any;
   registros: any;
+  registroAtual: any;
 
-  constructor(private route: ActivatedRoute, private registrosService: RegistrosService) { 
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router,
+    private registrosService: RegistrosService) { 
     
     // this.id = this.route.snapshot.params['id'];
 
@@ -22,6 +26,12 @@ export class HistoricoRegistroComponent implements OnInit {
     this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
+
+        // this.registroAtual = this.registrosService.getRegistro(params['id']);
+
+        // if(this.registroAtual == null){
+        //   this.router.navigate(['/registro-nao-encontrado']);
+        // }
       }
     );
 

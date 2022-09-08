@@ -16,6 +16,7 @@ export class RegistrosService {
         frequencia: "diaria",
         status: "waiting",
         selected: false,
+        options: false,
         complete: false,
         historico: [
           {
@@ -45,6 +46,7 @@ export class RegistrosService {
         frequencia: "diaria",
         status: "waiting",
         selected: false,
+        options: false,
         complete: false,
         historico: []
       },
@@ -57,6 +59,7 @@ export class RegistrosService {
         frequencia: "diaria",
         status: "check",
         selected: false,
+        options: false,
         complete: false,
         historico: [
           {
@@ -85,6 +88,7 @@ export class RegistrosService {
         frequencia: "diaria",
         status: "waiting",
         selected: false,
+        options: false,
         complete: false,
         historico: [
           {
@@ -134,6 +138,19 @@ export class RegistrosService {
         status: "check",
       }
   ]
+
+  // getRegistro(id: number){
+
+  //   for (let i = 0; i < this.registros.length; i++) {
+      
+  //     if (this.registros[i].id == id) {
+  //       return this.registros[i];
+  //     }
+
+  //     return null;
+  //   }
+
+  // }
   
 
   

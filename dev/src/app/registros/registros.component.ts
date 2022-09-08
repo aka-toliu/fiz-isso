@@ -22,7 +22,8 @@ export class RegistrosComponent implements OnInit {
   registros: any;
   historicoGeral: any;
 
-  btnSelected: boolean = false;
+  // btnSelected: boolean = false;
+  // optionSelected: boolean = false;
 
   constructor(private registrosService: RegistrosService) {
   }
@@ -57,6 +58,29 @@ export class RegistrosComponent implements OnInit {
 
     this.registros[num].complete = true
 
+  }
+
+  desfazerRegistro(num: any){
+
+    if (this.registros[num].complete == true) {
+      this.registros[num].status = "waiting";
+      this.registros[num].selected = false;
+      this.registros[num].complete = false;
+      this.registros[num].options = false;
+      this.registros[num].historico.pop();
+    }
+
+  }
+
+  excluirRegistro(num: any){
+    for (let i = 0; i < this.registros.length; i++) {
+      if (this.registros[i].id == num) {
+
+        // this.registros.splice(this.registros.indexOf(this.registros[i]), num)
+        // this.registros[i].status = 'deleted'
+        
+      }
+    }
   }
 
 }
