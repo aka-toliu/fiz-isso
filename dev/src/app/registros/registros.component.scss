@@ -158,23 +158,30 @@
        }
 
 }
-
+.registro__proxima-data{
+    font-size: .7em;
+    height: 30px;
+    padding: 8px 10px 8px 10px;
+    border-radius: 100px;
+    background-color:  rgba(212, 212, 212, 0.719);
+    color: var(--primary);
+    position: absolute;
+    right: 0px;
+    bottom: 42%;
+    width: 200px;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
 .btn-registro{
 
     &__container{
         width: 100%;
         padding-bottom: 10%;
         transition: 4s;
+        position: relative;
 
-        span{
-            font-size: .7em;
-            height: 30px;
-            padding: 8px 10px 8px 10px;
-            border-radius: 100px;
-            border: 2px solid rgb(199, 199, 199);
-            color: var(--primary);
-           
-        }
+
     }
     @mixin btnRegistro($cor) {
         height: 30px;
@@ -186,6 +193,8 @@
         background-color: $cor;
         transition: .6s;
         animation: scaleIn 0.4s both;
+        z-index: 5;
+        position: relative;
         
     }
 
@@ -287,6 +296,7 @@
     right: 0;
     top: 0;
     animation: openOptions .3s;
+    z-index: 5;
 
     &__option{
         width: 30%;

@@ -14,7 +14,7 @@
                     checked: registro.status === 'check',
                     vished: registro.status === 'vish'
                    }">
-
+                  
     <div class="c-registro__icon {{ registro.cor }}" 
          (click)="registro.selected = !registro.selected">
     <img src="../../assets/icones/icon__{{registro.icone }}.svg">
@@ -39,9 +39,10 @@
                     Vish...
 
             </button>
-            <span *ngIf="registro.status != 'waiting'">Próximo: {{ registro.data | date: 'dd-MM-yyyy' }}</span>
+            <span class="registro__proxima-data" *ngIf="registro.status != 'waiting'">Próximo: {{ registro.proximaData }} às {{ registro.horario }}</span>
         </div>
     </div>
+    
     <button class="btn-registro__historico" [routerLink]="['registro', idRegistro.id]">Ver histórico</button>
     
     <button class="btn-registro__options" (click)="registro.options = !registro.options"></button>

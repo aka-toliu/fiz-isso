@@ -50,14 +50,14 @@
 
     <div>
         <h4>Frequência:</h4>
-        <select name="frequencia" id="frequencia">
+        <select #frequenciaSelect name="frequencia" id="frequencia" (change)="selectedFrequencia = frequenciaSelect.value">
             <option *ngFor="let frequencia of registrosSet.frequencia" value="{{ frequencia }}">{{ frequencia }}</option>
         </select>
     </div>
 
     <div>
         <h4>Horário:</h4>
-        <input value="00:00" type="time">
+        <input #horarioSelect (change)="selectedHorario = horarioSelect.value" value="00:00" type="time">
     </div>
 
 </div>
