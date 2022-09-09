@@ -60,7 +60,7 @@ export class RegistrosService {
         status: "check",
         selected: false,
         options: false,
-        complete: false,
+        complete: true,
         historico: [
           {
             data: "10-10-2022",
@@ -122,17 +122,17 @@ export class RegistrosService {
         status: "vish",
       },
       {
-        titulo: "Apagar as luzes",
-        icone: "light",
-        cor: "yellow",
+        titulo: "Dar banho no xane",
+        icone: "cat",
+        cor: "red",
         data: "12/10/2022",
         horario: "9h01",
         status: "check",
       },
       {
-        titulo: "Apagar as luzes",
-        icone: "light",
-        cor: "yellow",
+        titulo: "Tomar remédio X",
+        icone: "pill",
+        cor: "blue",
         data: "12/10/2022",
         horario: "9h01",
         status: "check",

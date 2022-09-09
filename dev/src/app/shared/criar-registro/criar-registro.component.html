@@ -1,6 +1,87 @@
 <div class="criar-registro">
 
     <header class="{{novoRegistro.cor}}">
+
+        <!-- <button class="btn__alterar-cor">Alterar cor</button>
+        <button class="btn__alterar-icone">Alterar icone</button> -->
+        <img src="../../../assets/icones/icon__{{ novoRegistro.icone }}.svg">
+    </header>
+
+    <!-- <h1>Criar registro</h1> -->
+<br>
+    <h2>Título</h2>
+    <input placeholder="ex: Apagar as luzes..." type="text" name="titulo" id="titulo" maxlength="72" [(ngModel)]="novoRegistro.titulo">
+<br>
+<h4>Cor</h4>
+    
+    <div class="criar-registro__cores">
+
+        <div class="cores__row">    
+        <button  #btnCor  class="{{ cor }}"
+        value="{{ cor }}" 
+        [ngClass]="{selected: selectedColor == btnCor.value}"
+        (click)="novoRegistro.cor = btnCor.value; selectedColor =  btnCor.value" 
+        *ngFor="let cor of registrosSet.colors"
+        ></button>
+        </div>
+
+    </div>
+    <br>
+    
+    <h4>Ícone</h4>
+    <div class="criar-registro__icones">
+
+        <div class="criar-registro__row">
+            <button #btnIcone
+            [ngClass]="{selected: selectedIcon == btnIcone.value}"
+            value="{{ icon }}"
+            (click)="novoRegistro.icone = btnIcone.value; selectedIcon =  btnIcone.value"
+            class="btn-criar-registro__icone" 
+            *ngFor="let icon of registrosSet.icons" >
+                <img src="../../../assets/icones/icon__{{ icon }}.svg" alt="">
+            </button>
+        </div>
+       
+    </div>
+
+    <br>
+
+<div class="criar-registro__set-program">
+
+    <div>
+        <h4>Frequência:</h4>
+        <select name="frequencia" id="frequencia">
+            <option *ngFor="let frequencia of registrosSet.frequencia" value="{{ frequencia }}">{{ frequencia }}</option>
+        </select>
+    </div>
+
+    <div>
+        <h4>Horário:</h4>
+        <input value="00:00" type="time">
+    </div>
+
+</div>
+
+<!-- <div class="criar-registro__set-visual">
+    <div>
+        <h4>Cor:</h4>
+        
+    </div>
+    <div>
+        <h4>icone:</h4>
+    </div>
+</div> -->
+<br>
+    <button class="btn-criar-registro" (click)="createRegistro()" [routerLink]="['']">Criar</button>
+
+</div>
+
+
+
+<!-- 
+<div class="criar-registro">
+
+    <header class="{{novoRegistro.cor}}">
         <img src="../../../assets/icones/icon__{{ novoRegistro.icone }}.svg">
     </header>
 
@@ -45,21 +126,7 @@
         </div>
        
     </div>
-    <!-- <div *ngFor="let cor of registrosSet.colors">
-        <label for="{{ cor }}">{{ cor }}</label>
-        <input type="radio" name="radio__cores" id="{{ cor }}" value="{{ cor }}">
-    </div> -->
 
-    <!-- <select name="cor" id="cor" #corSelect (change)="novoRegistro.cor = corSelect.value">
-        <option *ngFor="let cor of registrosSet.colors" value="{{ cor }}">{{ cor }}</option>
-    </select>
-    <br> -->
-
- 
-    <!-- <select #iconSelect name="icon" id="icon" (change)="novoRegistro.icone = iconSelect.value">
-        <option *ngFor="let icon of registrosSet.icons" value="{{ icon }}">
-            {{ icon }}</option>
-    </select> -->
     <br>
 
     <h4>Frequência</h4>
@@ -70,4 +137,4 @@
     <br>
     <button class="btn-criar-registro" (click)="createRegistro()" [routerLink]="['']">Criar</button>
 
-</div>
+</div> -->

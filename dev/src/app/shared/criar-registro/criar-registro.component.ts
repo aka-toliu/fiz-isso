@@ -24,7 +24,7 @@ export class CriarRegistroComponent implements OnInit {
   registrosSet: any = {
     colors: ['yellow', 'pink', 'blue', 'green', 'red'],
     icons: ['check', 'light', 'cat', 'pill', 'bag', 'money', 'tshirt', 'user', 'dialog', 'plus-cicle', 'desktop', 'mobile', 'calendar', 'document', 'charge'],
-    frequencia: ['uma vez', 'diaria', 'semanal', 'mensal']
+    frequencia: ['diaria', 'semanal', 'mensal', 'uma vez']
   }
   
   novoRegistro: any = {
