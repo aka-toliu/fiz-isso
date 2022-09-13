@@ -159,6 +159,15 @@ export class RegistrosService {
   //   }
 
   // }
+
+
+  updateIds(){
+    for (let i = 0; i < this.registros.length; i++) {
+      this.registros[i].id = i;
+      console.log(this.registros[i].id);
+      
+    }
+  }
   
 
   

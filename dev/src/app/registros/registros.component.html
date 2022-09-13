@@ -6,6 +6,7 @@
 
 <main>
     <!-- [ngStyle]="{animationDelay: '0.' + registro.id + 's'}" -->
+    <p *ngIf=" registros.length == 0">Não há nennhum registro.</p>
 <section #idRegistro 
          id="{{ registro.id }}"
          class="c-registro" 

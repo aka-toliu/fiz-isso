@@ -32,6 +32,8 @@ export class RegistrosComponent implements OnInit {
 
     this.registros = this.registrosService.registros;
     this.historicoGeral = this.registrosService.historicoGeral;
+
+    this.registrosService.updateIds();
   }
 
   setHistorico(num: any) {
@@ -73,14 +75,16 @@ export class RegistrosComponent implements OnInit {
   }
 
   excluirRegistro(num: any){
-    for (let i = 0; i < this.registros.length; i++) {
-      if (this.registros[i].id == num) {
-
-        // this.registros.splice(this.registros.indexOf(this.registros[i]), num)
-        // this.registros[i].status = 'deleted'
-        
-      }
+    
+  
+    if (num > 0) {
+      this.registros.splice(this.registros.indexOf(this.registros[num]), num)
+      console.log(this.registros.indexOf(this.registros[num]) + ' - ' + num);
+    }else{
+      this.registros.shift();
     }
+
+    this.registrosService.updateIds();
   }
 
 }
