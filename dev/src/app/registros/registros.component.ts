@@ -34,6 +34,11 @@ export class RegistrosComponent implements OnInit {
     this.historicoGeral = this.registrosService.historicoGeral;
 
     this.registrosService.updateIds();
+    this.registrosService.validacaoData();
+
+    setInterval(() => {
+      this.registrosService.validacaoData();
+    }, 10000);
   }
 
   setHistorico(num: any) {
@@ -86,5 +91,8 @@ export class RegistrosComponent implements OnInit {
 
     this.registrosService.updateIds();
   }
+
+
+
 
 }
