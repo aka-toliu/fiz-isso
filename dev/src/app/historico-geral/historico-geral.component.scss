@@ -51,10 +51,21 @@ header{
         align-items: center;
         justify-content: center;
         // background-color: rgb(209, 209, 209);
+        position: relative;
+        &::before{
+            content: '';
+            width: 85%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            background-color: rgb(214, 214, 214);
+        }
 
         img{
             width: 25px;
             height: 25px;
+            opacity: .4;
+            margin-left: 15%;
         }
     }
 
