@@ -5,6 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class RegistrosService {
 
+
+
+
   registros: any = [
 
     {
@@ -117,6 +120,15 @@ export class RegistrosService {
       ]
     }
   ]
+
+  getFromStorage(){
+    let registrosStorage: any = localStorage.getItem('registros');
+    // this.registros = JSON.parse(registrosStorage);
+  }
+
+  saveToStorage(){
+    localStorage.setItem('registros', JSON.stringify(this.registros));
+  }
 
 
   historicoGeral = [

@@ -39,6 +39,13 @@ export class RegistrosComponent implements OnInit {
     setInterval(() => {
       this.registrosService.validacaoData();
     }, 10000);
+
+
+    
+
+    // this.registrosService.getFromStorage();
+    
+    
   }
 
   setHistorico(num: any) {
