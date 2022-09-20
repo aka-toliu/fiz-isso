@@ -117,6 +117,8 @@ export class CriarRegistroComponent implements OnInit {
 
     this.registros.push(this.novoRegistro);
 
+    this.registrosService.saveToStorage();
+
   }
 
 

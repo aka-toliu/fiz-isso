@@ -1,4 +1,4 @@
-import { RegistrosService } from './../registros.service';
+import { RegistrosService } from 'src/app/registros.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -25,11 +25,14 @@ export class RegistrosComponent implements OnInit {
   // btnSelected: boolean = false;
   // optionSelected: boolean = false;
 
+  
+
   constructor(private registrosService: RegistrosService) {
+    
   }
 
   ngOnInit(): void {
-
+    this.registrosService.getFromStorage();
     this.registros = this.registrosService.registros;
     this.historicoGeral = this.registrosService.historicoGeral;
 
@@ -40,13 +43,11 @@ export class RegistrosComponent implements OnInit {
       this.registrosService.validacaoData();
     }, 10000);
 
+   
 
-    
-
-    // this.registrosService.getFromStorage();
-    
-    
   }
+
+  
 
   setHistorico(num: any) {
 
@@ -82,6 +83,7 @@ export class RegistrosComponent implements OnInit {
       this.registros[num].complete = false;
       this.registros[num].options = false;
       this.registros[num].historico.pop();
+      this.registrosService.saveToStorage();
     }
 
   }
@@ -97,6 +99,7 @@ export class RegistrosComponent implements OnInit {
     }
 
     this.registrosService.updateIds();
+    this.registrosService.saveToStorage();
   }
 
 
