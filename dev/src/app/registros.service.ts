@@ -127,9 +127,11 @@ export class RegistrosService {
 
     let newRegistros = JSON.parse(registrosStorage);
 
-    this.registros = newRegistros;
-
-    console.log(newRegistros);
+    if (registrosStorage != null) {
+      this.registros = newRegistros;
+    }else{
+      this.saveToStorage();
+    }
 
   }
 
