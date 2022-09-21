@@ -71,7 +71,8 @@ export class RegistrosComponent implements OnInit {
       this.historicoGeral.push(novoHistoricoGeral);
     }
 
-    this.registros[num].complete = true
+    this.registros[num].complete = true;
+    this.registrosService.saveToStorage();
 
   }
 
@@ -99,6 +100,7 @@ export class RegistrosComponent implements OnInit {
     }
 
     this.registrosService.updateIds();
+
     this.registrosService.saveToStorage();
   }
 
