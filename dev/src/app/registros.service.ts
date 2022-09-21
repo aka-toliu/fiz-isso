@@ -95,7 +95,7 @@ export class RegistrosService {
       cor: "pink",
       data: new Date(2003, 9, 10),
       frequencia: "diaria",
-      proximaData: '13/9/2022',
+      proximaData: '14/9/2022',
       horario: '16:43',
       status: "waiting",
       selected: false,
@@ -121,14 +121,14 @@ export class RegistrosService {
     }
   ]
 
-  getFromStorage(){
-    let registrosStorage: any = localStorage.getItem('registros');
-    // this.registros = JSON.parse(registrosStorage);
-  }
+  // getFromStorage(){
+  //   let registrosStorage: any = localStorage.getItem('registros');
+  //   // this.registros = JSON.parse(registrosStorage);
+  // }
 
-  saveToStorage(){
-    localStorage.setItem('registros', JSON.stringify(this.registros));
-  }
+  // saveToStorage(){
+  //   localStorage.setItem('registros', JSON.stringify(this.registros));
+  // }
 
 
   historicoGeral = [
