@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'config', component: UserConfigComponent},
   { path: 'login', component: LoginComponent},
   { path: 'criar', component: CriarRegistroComponent},
-  { path: 'registro/:id', component: HistoricoRegistroComponent},
+  { path: 'home/registro/:id', component: HistoricoRegistroComponent},
   { path: 'registro-nao-encontrado', component: RegistroNaoEncontradoComponent}
   
 ];

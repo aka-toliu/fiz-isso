@@ -135,12 +135,7 @@ export class RegistrosService {
 
   }
 
-  
-  
-
   saveToStorage(){
-
-    // var newRegistro = JSON.stringify(this.registros[0]);
       window.localStorage.setItem('registros', JSON.stringify(this.registros));
   }
 
@@ -173,18 +168,6 @@ export class RegistrosService {
     }
   ]
 
-  // getRegistro(id: number){
-
-  //   for (let i = 0; i < this.registros.length; i++) {
-
-  //     if (this.registros[i].id == id) {
-  //       return this.registros[i];
-  //     }
-
-  //     return null;
-  //   }
-
-  // }
 
 
   updateIds() {
@@ -194,17 +177,6 @@ export class RegistrosService {
 
     }
   }
-
-  // newDate: any = new Date;
-  // newDay = this.newDate.getDate();
-  // newYear = this.newDate.getFullYear();
-  // newMonth = this.newDate.getMonth() + 1;
-  // newHours = this.newDate.getHours();
-  // newMinutes = this.newDate.getMinutes();
-
-  // actualDate: any = this.newDay + "/" + this.newMonth + "/" + this.newYear;
-  // actualHour: any = this.newHours + ':' + this.newMinutes;
-
 
   validacaoData() {
 

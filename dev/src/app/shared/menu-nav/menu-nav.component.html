@@ -1,17 +1,18 @@
 <menu>
     <button class="menu__btn btn-historico"
-            routerLink="historico"
+            routerLink="/historico"
             routerLinkActive="menu__btn--selected"
             (click)="btnSelected = 'historico'"
             [ngClass]="{'menu__btn--selected': btnSelected == 'historico' }"><span>Histórico</span>
     </button>
     <button class="menu__btn btn-home" 
-            routerLink=""
+            routerLink="/home"
+            outerLinkActive="menu__btn--selected"
             (click)="btnSelected = 'home'"
             [ngClass]="{'menu__btn--selected': btnSelected == 'home'}"><span>Registros</span>
     </button>
     <button class="menu__btn btn-config" 
-            routerLink="config"
+            routerLink="/config"
             routerLinkActive="menu__btn--selected"
             (click)="btnSelected = 'config'"
             [ngClass]="{'menu__btn--selected': btnSelected == 'config'}"><span>Configurações</span>
