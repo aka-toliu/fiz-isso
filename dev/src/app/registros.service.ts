@@ -120,23 +120,23 @@ export class RegistrosService {
     //   ]
     // }
   ]
-  
 
-  getFromStorage(){
+
+  getFromStorage() {
     let registrosStorage: any = window.localStorage.getItem('registros');
 
     let newRegistros = JSON.parse(registrosStorage);
 
     if (registrosStorage != null) {
       this.registros = newRegistros;
-    }else{
+    } else {
       this.saveToStorage();
     }
 
   }
 
-  saveToStorage(){
-      window.localStorage.setItem('registros', JSON.stringify(this.registros));
+  saveToStorage() {
+    window.localStorage.setItem('registros', JSON.stringify(this.registros));
   }
 
 
@@ -190,17 +190,45 @@ export class RegistrosService {
     let actualDate: any = newDay + "/" + newMonth + "/" + newYear;
     let actualHour: any = newHours + ':' + newMinutes;
 
+
+
     for (let i = 0; i < this.registros.length; i++) {
 
+      let dateSplit = this.registros[i].proximaData.split('/');
+      let horarioSplit = this.registros[i].horario.split(':');
 
-      if (actualDate == this.registros[i].proximaData && actualHour == this.registros[i].horario) {
-        console.log(actualDate + ' - ' + actualHour + ' | ' + this.registros[i].proximaData + ' - ' + this.registros[i].horario + '| valido');
+      let countMinutes =  newMinutes - parseFloat(horarioSplit[1]);
+      let countHours =  newHours - parseFloat(horarioSplit[0]);
+
+      let dayMatch = newDay >= parseFloat(dateSplit[0]) && newMonth >= parseFloat(dateSplit[1]);
+      let horarioMatch = newHours >= parseFloat(horarioSplit[0]) ;
+
+      
+      
+
+      
+      if (dayMatch && actualHour == this.registros[i].horario) {
         this.registros[i].status = 'waiting';
         this.registros[i].complete = false;
+        console.log(i + ': ' + horarioMatch);
+        
+        
+
+      } else {
+        console.log(i + ': ' + horarioMatch);
+
       }
-      else {
-        console.log(actualDate + ' - ' + actualHour + ' | ' + this.registros[i].proximaData + ' - ' + this.registros[i].horario + '| inválido');
-      }
+
+
+
+      // if (actualDate == this.registros[i].proximaData && actualHour == this.registros[i].horario) {
+      //   console.log(actualDate + ' - ' + actualHour + ' | ' + this.registros[i].proximaData + ' - ' + this.registros[i].horario + '| valido');
+      //   this.registros[i].status = 'waiting';
+      //   this.registros[i].complete = false;
+      // }
+      // else {
+      //   console.log(actualDate + ' - ' + actualHour + ' | ' + this.registros[i].proximaData + ' - ' + this.registros[i].horario + '| inválido');
+      // }
 
     }
   }

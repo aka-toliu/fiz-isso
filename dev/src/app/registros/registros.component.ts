@@ -76,6 +76,10 @@ export class RegistrosComponent implements OnInit {
 
   }
 
+  updateNextDate(num: any){
+    
+  }
+
   desfazerRegistro(num: any){
 
     if (this.registros[num].complete == true) {
