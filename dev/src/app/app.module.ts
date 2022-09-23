@@ -8,11 +8,11 @@ import { RegistrosComponent } from './registros/registros.component';
 import { LoginComponent } from './login/login.component';
 import { MenuNavComponent } from './shared/menu-nav/menu-nav.component';
 import { HistoricoGeralComponent } from './historico-geral/historico-geral.component';
-import { HistoricoRegistroComponent } from './shared/historico-registro/historico-registro.component';
+import { HistoricoRegistroComponent } from './registros/historico-registro/historico-registro.component';
 import { UserConfigComponent } from './user-config/user-config.component';
-import { CriarRegistroComponent } from './shared/criar-registro/criar-registro.component';
+import { CriarRegistroComponent } from './registros/criar-registro/criar-registro.component';
 import { FormsModule } from '@angular/forms';
-import { RegistroNaoEncontradoComponent } from './shared/registro-nao-encontrado/registro-nao-encontrado.component';
+import { RegistroNaoEncontradoComponent } from './registros/registro-nao-encontrado/registro-nao-encontrado.component';
 
 
 
