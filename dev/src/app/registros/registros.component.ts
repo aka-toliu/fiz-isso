@@ -90,12 +90,14 @@ export class RegistrosComponent implements OnInit {
   }
 
   excluirRegistro(num: any){
-    
-  
+
+    let indexRegistro = this.registros.indexOf(this.registros[num]);
+
     if (num > 0) {
-      this.registros.splice(this.registros.indexOf(this.registros[num]), num)
+      this.registros.splice(indexRegistro, 1)
       
-    }else{
+    }
+    else{
       this.registros.shift();
     }
 
