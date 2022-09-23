@@ -71,7 +71,8 @@ export class RegistrosComponent implements OnInit {
       this.historicoGeral.push(novoHistoricoGeral);
     }
 
-    this.registros[num].complete = true
+    this.registros[num].complete = true;
+    this.registrosService.saveToStorage();
 
   }
 
@@ -93,12 +94,13 @@ export class RegistrosComponent implements OnInit {
   
     if (num > 0) {
       this.registros.splice(this.registros.indexOf(this.registros[num]), num)
-      console.log(this.registros.indexOf(this.registros[num]) + ' - ' + num);
+      
     }else{
       this.registros.shift();
     }
 
     this.registrosService.updateIds();
+
     this.registrosService.saveToStorage();
   }
 
