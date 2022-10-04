@@ -17,14 +17,15 @@ export class CriarRegistroComponent implements OnInit {
   registros: any;
 
   newDate: any = new Date;
+  now = Date.now();
   newDay = this.newDate.getDate();
-  // newDay = 31;
   newYear = this.newDate.getFullYear();
   newMonth = this.newDate.getMonth() + 1;
-  // newMonth = 12;
   newHours = this.newDate.getHours();
   newMinutes = this.newDate.getMinutes();
   daysOfMonth = new Date(this.newYear, this.newMonth, 0).getDate();
+
+
 
   btnCorSelected: string = '';
 
@@ -40,9 +41,10 @@ export class CriarRegistroComponent implements OnInit {
       titulo: "",
       icone: "check",
       cor: "yellow",
-      data: this.newDay + "/" + this.newMonth + "/" + this.newYear,
+      dataCriacao: this.newDay + "/" + this.newMonth + "/" + this.newYear,
       proximaData: '---',
       horario: '---',
+      nextDateTime: '---',
       frequencia: "---",
       status: "waiting",
       selected: false,
@@ -61,6 +63,9 @@ export class CriarRegistroComponent implements OnInit {
 
   createRegistro(){
 
+
+    
+
     this.novoRegistro.id = this.registros.length;
     this.novoRegistro.frequencia = this.selectedFrequencia;
     this.novoRegistro.horario = this.selectedHorario;
@@ -70,22 +75,22 @@ export class CriarRegistroComponent implements OnInit {
     if (this.selectedFrequencia == 'diaria' && this.newDay < this.daysOfMonth)
     {
       if (this.newHours > horarioSplit[0]) {
-        this.novoRegistro.proximaData = (this.newDay + 1) + "/" + this.newMonth + "/" + this.newYear;
+        this.novoRegistro.proximaData = (this.newDay + 1) + "-" + this.newMonth + "-" + this.newYear;
         console.log('diaria 1');
         // aumenta apenas 1 dia
       }else{
-        this.novoRegistro.proximaData = (this.newDay) + "/" + this.newMonth + "/" + this.newYear;
+        this.novoRegistro.proximaData = (this.newDay) + "-" + this.newMonth + "-" + this.newYear;
       }
 
     } 
     else if(this.selectedFrequencia == 'diaria' && this.newDay == this.daysOfMonth && this.newMonth == 12)
     {
       if (this.newHours > horarioSplit[0]) {
-      this.novoRegistro.proximaData = 1 + "/" + 1 + "/" + (this.newYear + 1);
+      this.novoRegistro.proximaData = 1 + "-" + 1 + "-" + (this.newYear + 1);
       console.log('diaria 2');
       // aumenta  1 dia, 1 mês e 1 ano
       }else{
-        this.novoRegistro.proximaData = this.newDay + "/" + 1 + "/" + (this.newYear + 1);
+        this.novoRegistro.proximaData = this.newDay + "-" + 1 + "-" + (this.newYear + 1);
       }
     }
     else
@@ -103,31 +108,40 @@ export class CriarRegistroComponent implements OnInit {
 
     if (this.selectedFrequencia == 'semanal' && this.newDay < (this.daysOfMonth - 7)) 
     {
-      this.novoRegistro.proximaData = this.newDay + 7 + "/" + this.newMonth + "/" + this.newYear;
+      this.novoRegistro.proximaData = this.newDay + 7 + "-" + this.newMonth + "-" + this.newYear;
       console.log('semanal 1');
       
     } 
     else if(this.selectedFrequencia == 'semanal' && this.newDay > (this.daysOfMonth - 7) && this.newMonth < 12)
     {
-      this.novoRegistro.proximaData = (this.newDay + 7 - this.daysOfMonth) + "/" + (this.newMonth + 1) + "/" + this.newYear;
+      this.novoRegistro.proximaData = (this.newDay + 7 - this.daysOfMonth) + "-" + (this.newMonth + 1) + "-" + this.newYear;
       console.log('semanal 2');
     }
     else if(this.selectedFrequencia == 'semanal' && this.newDay > (this.daysOfMonth - 7) && this.newMonth == 12)
     {
-      this.novoRegistro.proximaData = (this.newDay + 7) - this.daysOfMonth + "/" + 1 + "/" + (this.newYear + 1);
+      this.novoRegistro.proximaData = (this.newDay + 7) - this.daysOfMonth + "-" + 1 + "-" + (this.newYear + 1);
       console.log('semanal 3');
     }
 
 
 
     if (this.selectedFrequencia == 'mensal') {
-      this.novoRegistro.proximaData = this.newDay + "/" + (this.newMonth + 1) + "/" + this.newYear;
+      this.novoRegistro.proximaData = this.newDay + "-" + (this.newMonth + 1) + "-" + this.newYear;
       
     }
+
+
+    let nextDateTime = this.novoRegistro.proximaData + ' ' +
+    this.newHours + ':' + this.newHours;
+
+    console.log(Date.parse(nextDateTime));
+
+    this.novoRegistro.nextDateTime = Date.parse(nextDateTime);
+
     
 
     if (this.novoRegistro.titulo == '') {
-      this.novoRegistro.titulo = 'Novo registro';
+      this.novoRegistro.titulo = 'Novo registro ' + (this.registros.length + 1);
     }
 
     this.registros.push(this.novoRegistro);

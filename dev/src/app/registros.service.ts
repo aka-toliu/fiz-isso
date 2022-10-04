@@ -190,45 +190,15 @@ export class RegistrosService {
     let actualDate: any = newDay + "/" + newMonth + "/" + newYear;
     let actualHour: any = newHours + ':' + newMinutes;
 
-
-
+    
+  
     for (let i = 0; i < this.registros.length; i++) {
 
-      let dateSplit = this.registros[i].proximaData.split('/');
-      let horarioSplit = this.registros[i].horario.split(':');
-
-      let countMinutes =  newMinutes - parseFloat(horarioSplit[1]);
-      let countHours =  newHours - parseFloat(horarioSplit[0]);
-
-      let dayMatch = newDay >= parseFloat(dateSplit[0]) && newMonth >= parseFloat(dateSplit[1]);
-      let horarioMatch = newHours >= parseFloat(horarioSplit[0]) ;
-
-      
-      
-
-      
-      if (dayMatch && actualHour == this.registros[i].horario) {
-        this.registros[i].status = 'waiting';
-        this.registros[i].complete = false;
-        console.log(i + ': ' + horarioMatch);
-        
-        
-
-      } else {
-        console.log(i + ': ' + horarioMatch);
-
+      if (this.registros[i].nextDateTime >= Date.parse(newDate)) {
+        console.log(this.registros[i].id + ' - true');
+      }else{
+        console.log(this.registros[i].id + ' - false');
       }
-
-
-
-      // if (actualDate == this.registros[i].proximaData && actualHour == this.registros[i].horario) {
-      //   console.log(actualDate + ' - ' + actualHour + ' | ' + this.registros[i].proximaData + ' - ' + this.registros[i].horario + '| valido');
-      //   this.registros[i].status = 'waiting';
-      //   this.registros[i].complete = false;
-      // }
-      // else {
-      //   console.log(actualDate + ' - ' + actualHour + ' | ' + this.registros[i].proximaData + ' - ' + this.registros[i].horario + '| inválido');
-      // }
 
     }
   }
