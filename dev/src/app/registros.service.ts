@@ -187,11 +187,7 @@ export class RegistrosService {
     let newHours = newDate.getHours() > 9 ? newDate.getHours() : "0" + newDate.getHours();
     let newMinutes = newDate.getMinutes() > 9 ? newDate.getMinutes() : "0" + newDate.getMinutes();
 
-    let actualDate: any = newDay + "/" + newMonth + "/" + newYear;
-    let actualHour: any = newHours + ':' + newMinutes;
-
     
-  
     for (let i = 0; i < this.registros.length; i++) {
 
       if (this.registros[i].nextDateTime >= Date.parse(newDate)) {
@@ -204,6 +200,29 @@ export class RegistrosService {
   }
 
 
+  calcDate(frequencia: any){
+
+    let newDate: any = new Date;
+    let newDay = newDate.getDate();
+    let newYear = newDate.getFullYear();
+    let newMonth = newDate.getMonth() + 1;
+    let newHours = newDate.getHours() > 9 ? newDate.getHours() : "0" + newDate.getHours();
+    let newMinutes = newDate.getMinutes() > 9 ? newDate.getMinutes() : "0" + newDate.getMinutes();
+
+    let resultDate: any;
+
+    if(frequencia === 'diaria'){
+      resultDate = newDay + "-" + newMonth + "-" + newYear;
+    }
+
+    
+    
+
+      return  resultDate;
+    
+    
+
+  }
 
 
 

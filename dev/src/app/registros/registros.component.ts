@@ -25,6 +25,8 @@ export class RegistrosComponent implements OnInit {
   // btnSelected: boolean = false;
   // optionSelected: boolean = false;
 
+
+
   
 
   constructor(private registrosService: RegistrosService) {
@@ -43,7 +45,8 @@ export class RegistrosComponent implements OnInit {
       this.registrosService.validacaoData();
     }, 10000);
 
-   
+  console.log(this.registrosService.calcDate('diaria'));
+
 
   }
 
