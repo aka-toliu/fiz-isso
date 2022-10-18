@@ -186,28 +186,57 @@ export class RegistrosService {
     let newMonth = newDate.getMonth() + 1;
     let newHours = newDate.getHours() > 9 ? newDate.getHours() : "0" + newDate.getHours();
     let newMinutes = newDate.getMinutes() > 9 ? newDate.getMinutes() : "0" + newDate.getMinutes();
+    let newSeconds = newDate.getSeconds() > 9 ? newDate.getMinutes() : "0" + newDate.getMinutes();
 
+    // let date1 = new Date('2022-11-18 14:00');
+
+    let dateNow = newYear + '-' + newMonth + '-' + newDay;
+    let hourNow = newHours+ ':' + newMinutes;
+
+    let now = new Date( dateNow + ' ' + hourNow);
+    console.log('------------------------');
+    
     
     for (let i = 0; i < this.registros.length; i++) {
 
-      if (this.registros[i].nextDateTime >= Date.parse(newDate)) {
-        console.log(this.registros[i].id + ' - true');
+      if (this.registros[i].nextDateTime <= now.getTime()) {
+        console.log(i + ' --A-- ' + now.getTime());
       }else{
-        console.log(this.registros[i].id + ' - false');
+        console.log(i + ' --B-- ' + now.getTime());
       }
+      
 
     }
   }
+
+  convertDateTime(date: string, hour: string){
+    let result = new Date(date + ' ' + hour);
+
+    return result.getTime();
+  }
   
 
+  calcDate(frequencia: any, horario: any){
 
-  calcDate(frequencia: any){
 
+
+    console.log(this.convertDateTime('2022-11-18', '15:00'));
+    
     let newDate: any = new Date;
     let newDay = newDate.getDate();
     let newYear = newDate.getFullYear();
     let newMonth = newDate.getMonth() + 1;
     let daysOfMonth = new Date(newYear, newMonth, 0).getDate();
+    let newHours = newDate.getHours() > 9 ? newDate.getHours() : "0" + newDate.getHours();
+    let newMinutes = newDate.getMinutes() > 9 ? newDate.getMinutes() : "0" + newDate.getMinutes();
+
+    
+
+    let nowDate = newYear + '-' + newMonth + '-' + newDay;
+    let nowHour = newHours+ ':' + newMinutes;
+
+    let date1 = this.convertDateTime(nowDate, nowHour);
+
 
     let resultDate: any;
 
@@ -215,7 +244,11 @@ export class RegistrosService {
 
     if(frequencia === 'diaria' && newDay < daysOfMonth && newMonth < 12)
     {// [1] se não for ultimo dia do mês nem ultimo mês do ano
-      resultDate = (newDay + 1) + "-" + newMonth + "-" + newYear;
+      if(date1 > this.convertDateTime(nowDate, horario) || horario == 'none'){
+        resultDate = (newDay + 1) + "-" + newMonth + "-" + newYear;
+      }else{
+        resultDate = newDay + "-" + newMonth + "-" + newYear;
+      }
     }
 
     else if(frequencia === 'diaria' && newDay == daysOfMonth && newMonth < 12)
@@ -249,7 +282,7 @@ export class RegistrosService {
     
     
 
-      return  resultDate;
+    return  resultDate;
     
     
 
