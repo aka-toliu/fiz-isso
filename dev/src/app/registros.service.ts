@@ -198,6 +198,7 @@ export class RegistrosService {
 
     }
   }
+  
 
 
   calcDate(frequencia: any){
@@ -206,15 +207,45 @@ export class RegistrosService {
     let newDay = newDate.getDate();
     let newYear = newDate.getFullYear();
     let newMonth = newDate.getMonth() + 1;
-    let newHours = newDate.getHours() > 9 ? newDate.getHours() : "0" + newDate.getHours();
-    let newMinutes = newDate.getMinutes() > 9 ? newDate.getMinutes() : "0" + newDate.getMinutes();
+    let daysOfMonth = new Date(newYear, newMonth, 0).getDate();
 
     let resultDate: any;
 
-    if(frequencia === 'diaria'){
-      resultDate = newDay + "-" + newMonth + "-" + newYear;
+    // FREQUENCIA DIÁRIA
+
+    if(frequencia === 'diaria' && newDay < daysOfMonth && newMonth < 12)
+    {// [1] se não for ultimo dia do mês nem ultimo mês do ano
+      resultDate = (newDay + 1) + "-" + newMonth + "-" + newYear;
     }
 
+    else if(frequencia === 'diaria' && newDay == daysOfMonth && newMonth < 12)
+    {// [2] se for ultimo dia do mês mas não ultimo mês do ano
+      resultDate = 1 + "-" + (newMonth + 1) + "-" + newYear;
+    }
+
+    else if(frequencia === 'diaria' && newDay == daysOfMonth && newMonth == 12)
+    {// [3] se for ultimo dia do mês e ultimo mês do ano 
+      resultDate = 1 + "-" + 1 + "-" + (newYear + 1);
+    }
+
+    // --------------------------------------------------------------------------------
+
+    // FREQUENCIA SEMANAL
+
+    if(frequencia === 'semanal' && newDay < (daysOfMonth - 7) && newMonth < 12)
+    {// [1] se não for ultima semana do mês nem ultimo mês do ano
+      resultDate = (newDay + 7) + "-" + newMonth + "-" + newYear;
+    }
+
+    else if(frequencia === 'semanal' && newDay >= (daysOfMonth - 7) && newMonth < 12)
+    {// [2] se for ultima semana do mês mas não ultimo mês do ano
+      resultDate = (newDay + 7 - daysOfMonth) + "-" + (newMonth + 1) + "-" + newYear;
+    }
+
+    else if(frequencia === 'semanal' && newDay >= (daysOfMonth - 7) && newMonth == 12)
+    {// [3] se for ultima semana do mês e ultimo mês do ano 
+      resultDate = (newDay + 7 - daysOfMonth) + "-" + 1 + "-" + (newYear + 1);
+    }
     
     
 
@@ -223,6 +254,9 @@ export class RegistrosService {
     
 
   }
+
+  
+  
 
 
 
