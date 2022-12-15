@@ -45,7 +45,7 @@ export class RegistrosComponent implements OnInit {
       this.registrosService.validacaoData();
     }, 10000);
 
-  console.log('return: ' + this.registrosService.calcDate('diaria', '19:00'));
+  // console.log('return: ' + this.registrosService.calcDate('diaria', '19:00'));
 
 
   }
@@ -74,34 +74,16 @@ export class RegistrosComponent implements OnInit {
       this.historicoGeral.push(novoHistoricoGeral);
     }
 
-    this.registros[num].nextDateTime = this.updateNextDate(num);
+    this.registros[num].proximaData = this.registrosService.addDays(1);
     this.registros[num].locked = true;
-
     this.registros[num].complete = true;
     this.registrosService.saveToStorage();
 
-    console.log('updated: ' + this.registros[num].nextDateTime);
-    
+  
+
 
   }
 
-  updateNextDate(num: any){
-
-    let date = this.registrosService.calcDate(this.registros[num].frequencia, 'none');
-
-    let dateSplit = date.split('-');
-    let invertedDate = dateSplit[2] + '-' + dateSplit[1] + '-' + dateSplit[0];
-
-    this.registros[num].proximaData = date;
-
-   
-
-
-    let result = this.registrosService.convertDateTime(invertedDate, this.registros[num].horario);
-
-    return result;
-    
-  }
 
   desfazerRegistro(num: any){
 

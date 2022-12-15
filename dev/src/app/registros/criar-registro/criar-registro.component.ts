@@ -20,7 +20,7 @@ export class CriarRegistroComponent implements OnInit {
   now = Date.now();
   newDay = this.newDate.getDate();
   newYear = this.newDate.getFullYear();
-  newMonth = this.newDate.getMonth() + 1;
+  newMonth = this.newDate.getMonth();
   newHours = this.newDate.getHours();
   newMinutes = this.newDate.getMinutes();
   daysOfMonth = new Date(this.newYear, this.newMonth, 0).getDate();
@@ -41,10 +41,9 @@ export class CriarRegistroComponent implements OnInit {
       titulo: "",
       icone: "check",
       cor: "yellow",
-      dataCriacao: this.newDay + "/" + this.newMonth + "/" + this.newYear,
-      proximaData: '---',
+      dataCriacao: this.newDay + "/" + (this.newMonth + 1) + "/" + this.newYear,
       horario: '---',
-      nextDateTime: '---',
+      proximaData: '---',
       frequencia: "---",
       status: "waiting",
       selected: false,
@@ -68,13 +67,18 @@ export class CriarRegistroComponent implements OnInit {
     this.novoRegistro.frequencia = this.selectedFrequencia;
     this.novoRegistro.horario = this.selectedHorario;
 
-    // Gera DateTime que servirá para para validação de data e horário
-    let nextDate = this.registrosService.calcDate(this.selectedFrequencia, this.selectedHorario);
-    let dateSplit = nextDate.split('-');
-    let invertedDate = dateSplit[2] + '-' + dateSplit[1] + '-' + dateSplit[0];
-  
-    this.novoRegistro.nextDateTime = new Date(invertedDate + ' ' + this.selectedHorario).getTime();
-    this.novoRegistro.proximaData = nextDate;
+
+
+
+    if(this.selectedFrequencia == 'diaria'){
+      // this.novoRegistro.proximaData = this.newYear + '-' + this.newMonth + '-' + this.newDay;
+      this.novoRegistro.proximaData = new Date().toString();
+    }
+    else if(this.selectedFrequencia == 'semanal'){
+      this.novoRegistro.proximaData = this.registrosService.addDays(7).toString();
+    }
+
+    
 
     // Tratamento para campo de título vazio
     if (this.novoRegistro.titulo == '') {
