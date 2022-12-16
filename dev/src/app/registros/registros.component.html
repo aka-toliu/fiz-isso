@@ -40,7 +40,7 @@
                     Vish...
 
             </button>
-            <span class="registro__proxima-data" *ngIf="registro.status != 'waiting'">Próximo: {{ registro.proximaData | date: 'dd-MMM-yyyy' }} às {{ registro.horario }}</span>
+            <span class="registro__proxima-data" *ngIf="registro.status != 'waiting'">Próximo: {{ registro.proximaData | date: 'shortDate' }} às {{ registro.horario }}</span>
         </div>
     </div>
     
