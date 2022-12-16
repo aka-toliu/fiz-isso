@@ -200,6 +200,7 @@ export class RegistrosService {
   
         if (newDate > Date2) {
             console.log(i + ' - Passou da hora');
+            this.registros[i].status = 'waiting';
             
         }else{
           console.log(i + ' - Ainda não está na hora');

@@ -70,15 +70,10 @@ export class CriarRegistroComponent implements OnInit {
 
 
 
-    if(this.selectedFrequencia == 'diaria'){
-      // this.novoRegistro.proximaData = this.newYear + '-' + this.newMonth + '-' + this.newDay;
-      this.novoRegistro.proximaData = new Date().toString();
-    }
-    else if(this.selectedFrequencia == 'semanal'){
-      this.novoRegistro.proximaData = this.registrosService.addDays(7).toString();
-    }
 
+    this.novoRegistro.proximaData = new Date().toString();
     
+ 
 
     // Tratamento para campo de título vazio
     if (this.novoRegistro.titulo == '') {

@@ -74,13 +74,18 @@ export class RegistrosComponent implements OnInit {
       this.historicoGeral.push(novoHistoricoGeral);
     }
 
-    this.registros[num].proximaData = this.registrosService.addDays(1);
+    if (this.registros[num].frequencia == 'diaria') {
+      this.registros[num].proximaData = this.registrosService.addDays(1).toString();
+    }
+
+    if (this.registros[num].frequencia == 'semanal') {
+      this.registros[num].proximaData = this.registrosService.addDays(7).toString();
+    }
+
     this.registros[num].locked = true;
     this.registros[num].complete = true;
+
     this.registrosService.saveToStorage();
-
-  
-
 
   }
 
