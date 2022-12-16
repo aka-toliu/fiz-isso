@@ -4,7 +4,7 @@
         <h2>{{ registros[idRegistro.id].titulo }}</h2>
         <!-- <p>{{ registroAtual?.id }}</p> -->
         <b>Próximo:</b>
-        <p>{{ registros[idRegistro.id].proximaData | date}} - {{ registros[idRegistro.id].horario }}</p>
+        <p>{{ registros[idRegistro.id].proximaData | date: 'dd-MMM-yyyy'}} - {{ registros[idRegistro.id].horario }}</p>
        
         
     </header>
