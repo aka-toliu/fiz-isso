@@ -35,7 +35,9 @@ import { RegistroNaoEncontradoComponent } from './registros/registro-nao-encontr
     AppRoutingModule,
     FormsModule
   ],
-  providers: [RegistrosService],
+  providers: [
+    RegistrosService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
