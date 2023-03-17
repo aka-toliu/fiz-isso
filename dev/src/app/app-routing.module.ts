@@ -11,7 +11,7 @@ import { UserConfigComponent } from './user-config/user-config.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   { path: 'home', component: RegistrosComponent},

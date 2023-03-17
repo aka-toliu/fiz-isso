@@ -13,7 +13,9 @@ import { UserConfigComponent } from './user-config/user-config.component';
 import { CriarRegistroComponent } from './registros/criar-registro/criar-registro.component';
 import { FormsModule } from '@angular/forms';
 import { RegistroNaoEncontradoComponent } from './registros/registro-nao-encontrado/registro-nao-encontrado.component';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { RegistroNaoEncontradoComponent } from './registros/registro-nao-encontr
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   providers: [
     RegistrosService

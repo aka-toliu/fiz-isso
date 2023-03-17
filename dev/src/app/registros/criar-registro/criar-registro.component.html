@@ -1,9 +1,6 @@
 <div class="criar-registro">
 
     <header class="{{novoRegistro.cor}}">
-
-        <!-- <button class="btn__alterar-cor">Alterar cor</button>
-        <button class="btn__alterar-icone">Alterar icone</button> -->
         <img src="../../../assets/icones/icon__{{ novoRegistro.icone }}.svg">
     </header>
 
@@ -72,7 +69,7 @@
     </div>
 </div> -->
 <br>
-    <button class="btn-criar-registro" (click)="createRegistro()" [routerLink]="['']">Criar</button>
+    <button class="btn-criar-registro" (click)="onSubmit()" [routerLink]="['/home']">Criar</button>
 
 </div>
 

@@ -1,5 +1,8 @@
+import { FirebaseService } from './../firebase.service';
 import { RegistrosService } from 'src/app/registros.service';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database'
+import { map, Observable } from 'rxjs';
 
 
 @Component({
@@ -16,11 +19,20 @@ export class RegistrosComponent implements OnInit {
   newHours = this.newDate.getHours();
   newMinutes = this.newDate.getMinutes();
 
+  registrosDB: any;
+
 
   criarRegistro: boolean = false;
 
   registros: any;
   historicoGeral: any;
+
+  teste = {
+    id: 123,
+    nome: 'Teste',
+    tipo: 'X'
+  }
+
 
   // btnSelected: boolean = false;
   // optionSelected: boolean = false;
@@ -29,11 +41,18 @@ export class RegistrosComponent implements OnInit {
 
   
 
-  constructor(private registrosService: RegistrosService) {
+  constructor(private registrosService: RegistrosService, private db: AngularFireDatabase, private firebaseService: FirebaseService) {
     
   }
 
   ngOnInit(): void {
+
+    // this.registrosDB = this.db.list('teste').valueChanges();
+
+    this.getAll();
+
+    
+
     this.registrosService.getFromStorage();
     this.registros = this.registrosService.registros;
     this.historicoGeral = this.registrosService.historicoGeral;
@@ -120,7 +139,9 @@ export class RegistrosComponent implements OnInit {
     this.registrosService.saveToStorage();
   }
 
-
+  getAll(){
+    this.registrosDB = this.firebaseService.getAll();
+  }
 
 
 }

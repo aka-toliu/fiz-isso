@@ -1,3 +1,4 @@
+import { FirebaseService } from './../../firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { RegistrosService } from 'src/app/registros.service';
 
@@ -53,11 +54,15 @@ export class CriarRegistroComponent implements OnInit {
     
   }
 
-  constructor(private registrosService: RegistrosService) { }
+  constructor(private registrosService: RegistrosService, private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
     this.registros = this.registrosService.registros;
     this.btnCorSelected = this.novoRegistro.cor;
+  }
+
+  onSubmit(){
+    this.firebaseService.insert(this.novoRegistro)
   }
 
   createRegistro(){

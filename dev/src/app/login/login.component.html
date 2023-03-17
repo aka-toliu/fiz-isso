@@ -1,1 +1,17 @@
-<p>login works!</p>
+<form>
+    <h3>Sing up</h3>
+    <input type="text" #emailSingup>
+    <input type="text" #senhaSingup>
+    <button (click)="onSingup(emailSingup.value, senhaSingup.value)">Sing up</button>
+</form>
+
+<p>
+    logged: {{ isSingedIn }}
+</p>
+
+<form>
+    <h3>Sing in</h3>
+    <input type="text" #email>
+    <input type="text" #senha>
+    <button (click)="onSingin(email.value, senha.value)">Sing in</button>
+</form>
