@@ -12,7 +12,7 @@ export class FirebaseService {
 
   isLoggedIn = false;
 
-  user: any = localStorage.getItem('user');
+  // user: any = localStorage.getItem('user');
 
   registroRef!: Registro;
 
@@ -50,8 +50,8 @@ export class FirebaseService {
 
 
   
-  insert(objeto: any){
-    this.db.list(JSON.parse(this.user).uid).push(objeto)
+  insert(userID: string, objeto: any){
+    this.db.list(userID).push(objeto)
     .then((result: any) => {
       console.log(result.key);
       
@@ -62,8 +62,8 @@ export class FirebaseService {
     })
   }
 
-  update(objeto: any, key: string) {
-    this.db.list(JSON.parse(this.user).uid).update(key, objeto)
+  update(userID: string, objeto: any, key: string) {
+    this.db.list(userID).update(key, objeto)
       .catch((error: any) => {
         console.error(error);
       });
@@ -71,14 +71,12 @@ export class FirebaseService {
 
 
 
-  getAll() {
-  
-   return this.db.list(JSON.parse(this.user).uid).valueChanges();
-
+  getAll(user: string) {
+   return this.db.list(user).valueChanges();
   }
 
-  delete(key: string) {
-    this.db.object(`${JSON.parse(this.user).uid}/${key}`).remove();
+  delete(userID: string, key: string) {
+    this.db.object(`${userID}/${key}`).remove();
   }
   
 }

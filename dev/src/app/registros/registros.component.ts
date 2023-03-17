@@ -19,6 +19,10 @@ export class RegistrosComponent implements OnInit {
   newHours = this.newDate.getHours();
   newMinutes = this.newDate.getMinutes();
 
+  user: any = localStorage.getItem('user');
+
+  userID: any = JSON.parse(this.user).uid;
+
   registrosDB: any;
 
 
@@ -50,6 +54,10 @@ export class RegistrosComponent implements OnInit {
     // this.registrosDB = this.db.list('teste').valueChanges();
 
     this.getAll();
+
+    
+
+    
 
     
 
@@ -140,7 +148,13 @@ export class RegistrosComponent implements OnInit {
   }
 
   getAll(){
-    this.registrosDB = this.firebaseService.getAll();
+    this.firebaseService.getAll(this.userID).subscribe(
+      data => {
+        this.registrosDB = data;
+        console.log(data);   
+      }
+    )
+    
   }
 
 

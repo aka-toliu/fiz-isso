@@ -10,6 +10,9 @@ import { RegistrosService } from 'src/app/registros.service';
 })
 export class CriarRegistroComponent implements OnInit {
 
+  user: any = localStorage.getItem('user');
+  userID: any = JSON.parse(this.user).uid;
+
   selectedIcon: any = 'check';
   selectedColor: any = 'yellow';
   selectedFrequencia: any = 'diaria';
@@ -62,7 +65,7 @@ export class CriarRegistroComponent implements OnInit {
   }
 
   onSubmit(){
-    this.firebaseService.insert(this.novoRegistro)
+    this.firebaseService.insert(this.userID, this.novoRegistro)
   }
 
   createRegistro(){

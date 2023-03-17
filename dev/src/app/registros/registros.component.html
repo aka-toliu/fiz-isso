@@ -7,17 +7,12 @@
 <main>
     <!-- [ngStyle]="{animationDelay: '0.' + registro.id + 's'}" -->
 
-    <div *ngFor="let registro of registrosDB | async">
-        <p>Titulo: {{ registro.titulo }}</p>
-        <p>id: {{ registro.id }}</p>
-        <p>cor: {{ registro.cor }}</p>
-        <p>icone: {{ registro.icone }}</p>
-    </div>
-<p *ngIf=" registros.length == 0">Não há nennhum registro.</p>
+<p *ngIf=" registrosDB == ''">Não há nennhum registro.</p>
+
 <section #idRegistro 
          id="{{ registro.id }}"
          class="c-registro" 
-         *ngFor="let registro of registros" 
+         *ngFor="let registro of registrosDB" 
          [ngClass]="{
                     checked: registro.status === 'check',
                     vished: registro.status === 'vish'
