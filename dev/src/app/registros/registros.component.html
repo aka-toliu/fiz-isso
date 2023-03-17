@@ -17,10 +17,11 @@
                     checked: registro.status === 'check',
                     vished: registro.status === 'vish'
                    }">
-                  
+                   
     <div class="c-registro__icon {{ registro.cor }}" 
          (click)="registro.selected = !registro.selected">
     <img src="../../assets/icones/icon__{{registro.icone }}.svg">
+    
     </div>
 
     <div class="c-registro__content" (click)="registro.selected = 'selected'">
@@ -56,7 +57,7 @@
             <img src="../../assets/icones/icon__desfazer-color.svg">
             <p>Desfazer</p>
         </div>
-        <div class="registro-menu__option" (click)="excluirRegistro(idRegistro.id)">
+        <div class="registro-menu__option" (click)="delete(registro.key)">
             <img src="../../assets/icones/icon__remover-color.svg">
             <p>Excluir</p>
         </div>

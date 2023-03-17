@@ -24,6 +24,7 @@ export class RegistrosComponent implements OnInit {
   userID: any = JSON.parse(this.user).uid;
 
   registrosDB: any;
+  keys: any;
 
 
   criarRegistro: boolean = false;
@@ -52,8 +53,10 @@ export class RegistrosComponent implements OnInit {
   ngOnInit(): void {
 
     // this.registrosDB = this.db.list('teste').valueChanges();
-
     this.getAll();
+    // this.getAllKeys();
+ 
+
 
     
 
@@ -147,15 +150,40 @@ export class RegistrosComponent implements OnInit {
     this.registrosService.saveToStorage();
   }
 
+  getAllKeys(){
+    this.firebaseService.getAllKeys(this.userID).subscribe(
+      data => {
+        this.keys = data;
+        // console.log(data);   
+        this.insertKey();
+      }
+    )
+  }
+
   getAll(){
     this.firebaseService.getAll(this.userID).subscribe(
       data => {
         this.registrosDB = data;
-        console.log(data);   
+        // console.log(data);   
+          this.getAllKeys();
+
       }
     )
     
   }
 
+
+  insertKey(){
+
+    for (let i = 0; i < this.registrosDB.length; i++) {
+        this.registrosDB[i].key = this.keys[i].key;
+    }
+    console.log(this.registrosDB);
+
+  }
+
+  delete(key: string){
+    this.firebaseService.delete(this.userID, key)
+  }
 
 }

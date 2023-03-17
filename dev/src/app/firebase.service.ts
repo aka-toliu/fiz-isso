@@ -54,7 +54,6 @@ export class FirebaseService {
     this.db.list(userID).push(objeto)
     .then((result: any) => {
       console.log(result.key);
-      
     })
     .catch((error: any) => {
       console.log(error);
@@ -73,6 +72,10 @@ export class FirebaseService {
 
   getAll(user: string) {
    return this.db.list(user).valueChanges();
+  }
+
+  getAllKeys(user: string){
+    return this.db.list(user).snapshotChanges();
   }
 
   delete(userID: string, key: string) {
