@@ -1,7 +1,7 @@
 import { Registro } from './models/registro';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 
@@ -11,6 +11,8 @@ import { map, Observable } from 'rxjs';
 export class FirebaseService {
 
   isLoggedIn = false;
+
+  isLogged = new EventEmitter<boolean>;
 
   // user: any = localStorage.getItem('user');
 
@@ -26,6 +28,7 @@ export class FirebaseService {
     await this.firebaseAuth.signInWithEmailAndPassword(email, senha)
     .then(res=>{
       this.isLoggedIn = true;
+      this.isLogged.emit(true)
       localStorage.setItem('user', JSON.stringify(res.user));
       this.router.navigate(['/home']);
       console.log(res);
@@ -37,6 +40,7 @@ export class FirebaseService {
     await this.firebaseAuth.createUserWithEmailAndPassword(email, senha)
     .then(res=>{
       this.isLoggedIn = true;
+      this.isLogged.emit(true)
       localStorage.setItem('user', JSON.stringify(res.user));
       console.log(res);
     })
@@ -46,6 +50,7 @@ export class FirebaseService {
   logout(){
     this.firebaseAuth.signOut();
     localStorage.removeItem('user');
+    this.isLogged.emit(false)
   }
 
 

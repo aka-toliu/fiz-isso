@@ -1,17 +1,25 @@
-<form>
-    <h3>Sing up</h3>
-    <input type="text" #emailSingup>
-    <input type="text" #senhaSingup>
-    <button (click)="onSingup(emailSingup.value, senhaSingup.value)">Sing up</button>
-</form>
+<div class="login">
 
+    <form>
+        <h3>Login</h3>
+        <label for="email">E-mail</label>
+        <input type="text" #email>
+        <label for="senha">Senha</label>
+        <input type="text" #senha>
+        <button (click)="onSingin(email.value, senha.value)">Sing in</button>
+    </form> 
+    
+    <!-- <form>
+        <h3>Sing up</h3>
+        <label for="email">E-mail</label>
+        <input id="email" type="text" #emailSingup>
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" #senhaSingup>
+        <button (click)="onSingup(emailSingup.value, senhaSingup.value)">Sing up</button>
+    </form> -->
+    
+</div>
 <p>
     logged: {{ isSingedIn }}
 </p>
 
-<form>
-    <h3>Sing in</h3>
-    <input type="text" #email>
-    <input type="text" #senha>
-    <button (click)="onSingin(email.value, senha.value)">Sing in</button>
-</form>

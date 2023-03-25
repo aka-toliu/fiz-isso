@@ -1,3 +1,4 @@
+import { FirebaseService } from './../../firebase.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,9 +10,17 @@ export class MenuNavComponent implements OnInit {
 
   btnSelected: string = 'home';
 
-  constructor() { }
+  logged: any;
+
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
+
+    this.logged = this.firebaseService.isLogged.subscribe(
+      data => {
+          this.logged = data;
+      }
+    )
   }
 
 }
