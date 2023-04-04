@@ -1,14 +1,14 @@
-import { HistoricoRegistroComponent } from './historico-registro/historico-registro.component';
 import { NovoRegistroComponent } from './novo-registro/novo-registro.component'
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DetalhesRegistroComponent } from './detalhes-registro/detalhes-registro.component';
 
 
 
 @NgModule({
   declarations: [
     NovoRegistroComponent,
-    HistoricoRegistroComponent
+    DetalhesRegistroComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
   ],
   exports: [
     NovoRegistroComponent,
-    HistoricoRegistroComponent
+    DetalhesRegistroComponent
 
   ]
 })

@@ -13,8 +13,7 @@ import { CardHistoricoComponent } from './shared/card-historico/card-historico.c
 import { LoaderComponent } from './shared/loader/loader.component';
 import { MenuNavComponent } from './shared/menu-nav/menu-nav.component';
 import { NaoEncontradoComponent } from './view/nao-encontrado/nao-encontrado.component';
-import { ErroComponent } from './view/erro/erro.component';
-import { DetalhesRegistroComponent } from './view/detalhes-registro/detalhes-registro.component';
+import { ErroComponent } from './shared/erro/erro.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,7 @@ import { DetalhesRegistroComponent } from './view/detalhes-registro/detalhes-reg
     MenuNavComponent,
     NaoEncontradoComponent,
     ErroComponent,
-    DetalhesRegistroComponent,
+
 
   ],
   imports: [
