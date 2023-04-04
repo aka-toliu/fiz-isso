@@ -1,4 +1,4 @@
-import { FirebaseService } from './../firebase.service';
+import { FirebaseService } from '../firebase.service';
 import { RegistrosService } from 'src/app/registros.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database'
