@@ -1,3 +1,6 @@
 <main class="home">
-
+    <app-card-registro *ngFor="let registro of registros" 
+        [titulo]="registro.titulo"
+        [icone]="registro.icone">
+    </app-card-registro>
 </main>

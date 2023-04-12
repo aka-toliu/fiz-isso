@@ -1,1 +1,22 @@
-<p>card-registro works!</p>
+<div class="card-registro" (click)="selected = !selected" [ngClass]="{'card-registro--selected': selected}">
+
+    <button class="btn-options"></button>
+
+    <i class="card-registro__icone">
+        <img src="../../../assets/icones/icon__desktop.svg">
+    </i>
+
+    <div class="card-registro__content">
+
+        <h3 class="card-registro__titulo">{{ titulo }}</h3>
+
+        <div class="container-btn" *ngIf="selected">
+            <button class="btn--fiz">Fiz!</button>
+            <button class="btn--vish">Vish</button>
+        </div>
+
+    </div>
+
+
+    
+</div>

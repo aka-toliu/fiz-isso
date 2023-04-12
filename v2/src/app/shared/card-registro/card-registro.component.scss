@@ -1,0 +1,144 @@
+.card-registro{
+    background-color: var(--white);
+    width: 350px;
+    height: 125px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 9px 25px -11px #00000040;
+    position: relative;
+
+
+
+    &__content{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 4px;
+        
+    }
+
+    &__titulo{
+        // border: 1px solid red;
+        max-height: 55px;
+        overflow: hidden;
+        
+
+
+    }
+
+    &__icone{
+
+        width: 33%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img{
+            height: 40px;
+            position: absolute;
+            z-index: 2;
+            transition: all .2s;
+        }
+
+
+        &::after{
+            content: '';
+            height: 90px;
+            width: 90px;
+            background-color: aquamarine;
+            border-radius: 120px;
+            transition: all .4s;
+            z-index: 1;
+        }
+
+        // &::before{
+        //     content: '';
+        //     height: 60px;
+        //     width: 60px;
+        //     border-radius: 100px;
+        //     transition: all .4s;
+        //     background-color: aquamarine;
+        //     opacity: .4;
+        //     position: absolute;
+        //     z-index: 0;
+        // }
+    }
+
+    .container-btn{
+        display: flex;
+        gap: 8px;
+        
+    }
+
+    .btn-options{
+        height: 30px;
+        width: 15px;
+        border: none;
+        background-image: url(../../../assets/icones/icon__options.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        opacity: .3;
+    }
+
+    .btn{
+        @mixin btn($color, $side){
+            width: 80px;
+            height: 30px;
+            // position: absolute;
+            border-radius: 30px;
+            border: none;
+            background-color: $color;
+            font-weight: 700;
+            // #{$side}: -15px;
+            animation: swipeUp .4s ease both
+        }
+
+        &--fiz{
+            @include btn(#84f597, 'top');
+            
+        }
+
+        &--vish{
+            @include btn(#e79393, 'bottom');
+            animation-delay: .1s;
+        }
+
+        @keyframes swipeUp {
+            0%{transform: translateY(30px);}
+            100%{transform: translateY(0px);}
+        }
+    }
+
+
+    &--selected{
+        .card-registro__icone{
+ 
+            &::after{
+                // content: '';
+                height: 80px;
+                width: 80px;
+                // border-radius: 16px;
+                transition: all .4s;
+                
+            }
+
+            // &::before{
+            //     height: 100px;
+            //     width: 100px;
+
+            // }
+
+            img{
+                height: 48px;
+                transition: all .4s;
+            }
+        }
+    }
+}
