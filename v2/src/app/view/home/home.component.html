@@ -1,6 +1,15 @@
 <main class="home">
-    <app-card-registro *ngFor="let registro of registros" 
+
+    <button class="btn-novo-registro">Criar registro</button>
+
+    <div class="registros-container">
+        <app-card-registro *ngFor="let registro of registros" 
         [titulo]="registro.titulo"
-        [icone]="registro.icone">
+        [icone]="registro.icone"
+        [cor]="registro.cor">
     </app-card-registro>
+    </div>
+
+
+
 </main>

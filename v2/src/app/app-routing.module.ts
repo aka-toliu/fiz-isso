@@ -1,3 +1,4 @@
+import { NovoRegistroComponent } from './view/home/novo-registro/novo-registro.component';
 import { HomeComponent } from './view/home/home.component';
 import { LoginComponent } from './view/login/login.component';
 import { NgModule } from '@angular/core';
@@ -7,7 +8,7 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent }, 
   { path: 'home', component: HomeComponent }, 
-
+  { path: 'novo-registro', component: NovoRegistroComponent }, 
   {
     path: '',
     redirectTo: 'login',

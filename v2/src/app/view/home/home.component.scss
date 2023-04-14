@@ -4,5 +4,24 @@
     background-color: var(--smooth);
     padding-top: 100px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+
+    @media screen and (max-width: 768px) {
+        padding-top: 8px;
+    }
+
+    .btn-novo-registro{
+        width: 350px;
+        height: 80px;
+        border-radius: 10px;
+        border: none;
+        background-color: var(--primary);
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
 }

@@ -49,7 +49,7 @@
             content: '';
             height: 90px;
             width: 90px;
-            background-color: aquamarine;
+            // background-color: aquamarine;
             border-radius: 120px;
             transition: all .4s;
             z-index: 1;
@@ -66,6 +66,8 @@
         //     position: absolute;
         //     z-index: 0;
         // }
+
+        
     }
 
     .container-btn{
@@ -82,9 +84,37 @@
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
-        top: 4px;
-        right: 4px;
+        top: 8px;
+        right: 8px;
         opacity: .3;
+    }
+
+    .btn-historico{
+        position: absolute;
+        bottom: 0;
+        right: 0px;
+        width: 35px;
+        height: 35px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px 0 8px 0;
+
+        &::before{
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-image: url(../../../assets/icones/icon__historico-white.svg);
+            filter: brightness(.6);
+            position: relative;
+            display: block;
+            background-position: center;
+            background-size: cover;
+            margin-right: 4px;
+            
+        }
+
     }
 
     .btn{
@@ -118,6 +148,7 @@
 
 
     &--selected{
+
         .card-registro__icone{
  
             &::after{
@@ -136,9 +167,21 @@
             // }
 
             img{
-                height: 48px;
+                height: 47px;
                 transition: all .4s;
+                transition-delay: .2s;
             }
         }
     }
 }
+@mixin colorIcone($color){
+    &::after{
+        background-color: $color;
+    }
+}
+
+.blue{ @include colorIcone(#92c8e7)}
+.yellow{ @include colorIcone(#e7df92)}
+.red{ @include colorIcone(#e79292)}
+.green{ @include colorIcone(#92e7ac)}
+.purple{ @include colorIcone(#a292e7)}

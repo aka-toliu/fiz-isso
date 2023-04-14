@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   registros = [
     {
       titulo: "Teste",
-      icone: "default",
+      icone: "desktop",
       cor: "blue",
       status: null,
       periodo: "diario",
