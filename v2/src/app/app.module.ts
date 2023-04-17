@@ -14,6 +14,7 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { MenuNavComponent } from './shared/menu-nav/menu-nav.component';
 import { NaoEncontradoComponent } from './view/nao-encontrado/nao-encontrado.component';
 import { ErroComponent } from './shared/erro/erro.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
