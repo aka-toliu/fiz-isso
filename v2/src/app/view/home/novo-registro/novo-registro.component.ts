@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-novo-registro',
@@ -30,8 +31,10 @@ export class NovoRegistroComponent implements OnInit {
   ]
 
   formRegistro!: FormGroup;
+  user: any = localStorage.getItem('user');
+  userID: any = JSON.parse(this.user).uid;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
 
@@ -47,9 +50,13 @@ export class NovoRegistroComponent implements OnInit {
     
   }
 
-  onSubmit(){
-    console.log(this.formRegistro.value);
+  // onSubmit(){
+  //   console.log(this.formRegistro.value);
     
+  // }
+
+  onSubmit(){
+    this.firebaseService.insert(this.userID, this.formRegistro.value)
   }
 
 }

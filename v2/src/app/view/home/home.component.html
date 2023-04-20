@@ -2,12 +2,18 @@
 
     <button routerLink="/novo-registro" class="btn-novo-registro">Criar registro</button>
 
+    <button (click)="logout()">Logout</button>
+
     <div class="registros-container">
-        <app-card-registro *ngFor="let registro of registros" 
+        <!-- <app-card-registro *ngFor="let registro of registros" 
         [titulo]="registro.titulo"
         [icone]="registro.icone"
         [cor]="registro.cor">
-    </app-card-registro>
+    </app-card-registro> -->
+
+    <app-card-registro *ngFor="let registro of registrosDB" [titulo]="registro.titulo" [icone]="registro.icone"
+            [cor]="registro.cor">
+        </app-card-registro>
     </div>
 
 

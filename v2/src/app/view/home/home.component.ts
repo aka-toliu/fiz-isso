@@ -1,3 +1,4 @@
+import { FirebaseService } from './../../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  registrosDB: any;
 
   registros = [
     {
@@ -26,9 +29,26 @@ export class HomeComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  user: any = localStorage.getItem('user');
+  userID: any = JSON.parse(this.user).uid;
+
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
+    this.getAll();
+  }
+
+  logout(){
+    this.firebaseService.logout();
+  }
+
+  getAll(){
+    this.firebaseService.getAll(this.userID).subscribe(
+      data => {
+        this.registrosDB = data;
+      }
+    )
+    
   }
 
 }

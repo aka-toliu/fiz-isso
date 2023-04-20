@@ -1,3 +1,4 @@
+import { CadastroComponent } from './view/cadastro/cadastro.component';
 import { NovoRegistroComponent } from './view/home/novo-registro/novo-registro.component';
 import { HomeComponent } from './view/home/home.component';
 import { LoginComponent } from './view/login/login.component';
@@ -7,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent }, 
+  { path: 'cadastro', component: CadastroComponent }, 
   { path: 'home', component: HomeComponent }, 
   { path: 'novo-registro', component: NovoRegistroComponent }, 
   {

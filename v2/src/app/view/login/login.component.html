@@ -3,19 +3,19 @@
         <table>
             <td>
                 <label for="email">E-mail:</label>
-                <input type="text" name="email">
+                <input  type="text" #email>
             </td>
             <td>
                 <label for="senha">Senha:</label>
-                <input type="password" name="senha">
-                <a href="">Esqueci a senha</a>
+                <input  type="password" #senha>
+                <a>Esqueci a senha</a>
             </td>
             <td>
-                <button>Login</button>
+                <button  (click)="onLogin(email.value, senha.value); $event.preventDefault();">Login</button>
             </td>
             <td>
                 <p class="ou">ou</p>
-                <button type="outline">Cadastre-se</button>
+                <button type="outline" routerLink="/cadastro">Cadastre-se</button>
                 <!-- <button type="outline" color="secondary">Entrar como anônimo</button> -->
             </td>
         </table>
