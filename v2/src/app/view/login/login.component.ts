@@ -16,11 +16,13 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if(localStorage.getItem('user') !== null){
-      this.isSingedIn = true
-    }else{
-      this.isSingedIn = false
-    }
+    // if(localStorage.getItem('user') !== null){
+    //   this.isSingedIn = true
+    // }else{
+    //   this.isSingedIn = false
+    // }
+
+    localStorage.removeItem('user');
   }
 
   async onLogin(email: string, senha: string){

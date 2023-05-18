@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit {
   user: any = localStorage.getItem('user');
   userID: any = JSON.parse(this.user).uid;
 
+  keys: any;
+
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
@@ -46,9 +48,27 @@ export class HomeComponent implements OnInit {
     this.firebaseService.getAll(this.userID).subscribe(
       data => {
         this.registrosDB = data;
+        this.getAllKeys();
       }
     )
-    
+  }
+
+  getAllKeys(){
+    this.firebaseService.getAllKeys(this.userID).subscribe(
+      data => {
+        this.keys = data;
+        this.insertKey();
+      }
+    )
+  }
+
+  insertKey(){
+
+    for (let i = 0; i < this.registrosDB.length; i++) {
+        this.registrosDB[i].key = this.keys[i].key;
+    }
+    console.log(this.registrosDB);
+
   }
 
 }

@@ -8,19 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuNavComponent implements OnInit {
 
-  logged: any;
+  logged: boolean = false;
 
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
 
-    if(localStorage.getItem('user')){
-      this.firebaseService.isLogged.emit(true)
-      this.logged = true;
-    }else{
-      this.firebaseService.isLogged.emit(false)
-      this.logged = false;
-    }
+    // console.log(localStorage.getItem('user'));
+    
+
+    // if(localStorage.getItem('user')){
+    //   this.firebaseService.isLogged.emit(true)
+    //   this.logged = true;
+    // }else{
+    //   this.firebaseService.isLogged.emit(false)
+    //   this.logged = false;
+    // }
     
     this.firebaseService.isLogged.subscribe(
       data => {

@@ -1,1 +1,39 @@
-<p>detalhes-registro works!</p>
+<div class="registro-detalhes">
+
+    <header class="registro-detalhes__header {{ registro?.cor }}">
+
+        <i class="{{ registro?.cor }}">
+            <img src="../../../../assets/icones/icon__{{ registro?.icone }}.svg" alt="">
+        </i>
+        <h3> {{ registro?.titulo }}</h3>
+    </header>
+    
+    <div class="registro-detalhes__infos">
+        <p>Status atual: {{ registro?.status }}</p>
+        <p>Horário: {{ registro?.horario }}</p>
+        <p>Repetição: {{ registro?.repeticao }}</p>
+        <p>ID: {{ id }}</p>
+    </div>
+
+    <table class="registro-detalhes__historico">
+            
+
+            <tr>
+                <span *ngIf="registro?.historico == null">Não há histórico para esse registro.</span>
+
+                <td>Data:</td>
+                <td>Status:</td>
+            </tr>
+
+            <tr class="historico__item" *ngFor="let historico of historicoDB">
+                <td>
+                    {{ historico.dataCriacao | date: 'short' }}
+                </td>
+                <td>
+                    {{ historico.status }}
+                </td>
+            </tr>
+
+    </table>
+
+</div>

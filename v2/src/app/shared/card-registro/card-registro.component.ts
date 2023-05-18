@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-card-registro',
@@ -13,13 +14,52 @@ export class CardRegistroComponent implements OnInit {
   @Input() public status!: string;
   @Input() public periodo!: string;
   @Input() public horario!: string;
+  @Input() public repeticao!: string;
   @Input() public historico!: any;
+  @Input() public key!: string;
 
   selected: boolean = false;
+  user: any = localStorage.getItem('user');
+  userID: any = JSON.parse(this.user).uid;
 
-  constructor() { }
+  historicoDB: any = [];
+
+
+
+
+
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
+
+
+  }
+
+  onChangeStatus(status: string){
+
+    const registro = {
+      cor: this.cor,
+      icone: this.icone,
+      status: status,
+      titulo: this.titulo,
+      repeticao: this.repeticao,
+    }
+
+    const historico = {
+
+      status: status,
+      horario: this.horario,
+      cor: this.cor,
+      icone: this.icone,
+      titulo: this.titulo,
+      repeticao: this.repeticao,
+      dataCriacao: Date.now()
+
+    }
+
+      this.firebaseService.update(this.userID, registro, this.key);
+    this.firebaseService.insertHistorico(this.userID, historico, this.key)
+      
   }
 
 }

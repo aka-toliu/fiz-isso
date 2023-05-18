@@ -149,14 +149,38 @@
 
     &--selected{
 
+        // @keyframes selected {
+        //     0%{transform: rotate(0deg);}
+        //     25%{transform: rotate(15deg);}
+        //     75%{transform: rotate(-10deg);}
+        //     100%{transform: rotate(0deg);}
+        
+        // }
+
+        // @keyframes selected {
+        //     0%{transform: rotateY(0deg);}
+
+        //     100%{transform: rotateY(180deg);}
+        
+        // }
+        
+
         .card-registro__icone{
- 
+
+            
+            
+
             &::after{
+                // animation: selected .4s ease-in-out both;
                 // content: '';
-                height: 80px;
-                width: 80px;
+                // height: 70px;
+                // width: 70px;
                 // border-radius: 16px;
                 transition: all .4s;
+                transform: rotateY(180deg);
+                background-color: #eeeeee;
+                border: 4px solid #cfcfcf;
+                
                 
             }
 
@@ -167,21 +191,71 @@
             // }
 
             img{
-                height: 47px;
+                
                 transition: all .4s;
-                transition-delay: .2s;
+                opacity: .3;
             }
         }
     }
 }
+
+
+
+.fiz{
+    background-color: #e3e3e3;
+
+
+
+    .card-registro__icone{
+
+        &::after{
+        background-color: #c1cfc5;
+        border: 4px solid #8AD19A ;
+        }
+        
+        img{
+            opacity: .3;
+        }
+    }
+
+    .card-registro__titulo{
+        color: #8AD19A;
+    }
+}
+
+
+.vish{
+    background-color: #e3e3e3;
+
+    .card-registro__icone{
+
+        &::after{
+            background-color: #dfcccc;
+            border: 4px solid #d18a8a;
+        }
+
+
+        img{
+            opacity: .3;
+        }
+    }
+
+    .card-registro__titulo{
+        color: #d18a8a;
+    }
+}
+
+
+
+
 @mixin colorIcone($color){
     &::after{
         background-color: $color;
     }
 }
 
-.blue{ @include colorIcone(#92c8e7)}
-.yellow{ @include colorIcone(#e7df92)}
-.red{ @include colorIcone(#e79292)}
-.green{ @include colorIcone(#92e7ac)}
-.purple{ @include colorIcone(#a292e7)}
+.blue{ @include colorIcone(var(--blue))}
+.yellow{ @include colorIcone(var(--yellow))}
+.red{ @include colorIcone(var(--red))}
+.green{ @include colorIcone(var(--green))}
+.purple{ @include colorIcone(var(--purple))}

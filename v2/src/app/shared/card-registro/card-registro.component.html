@@ -1,9 +1,9 @@
-<div class="card-registro" (click)="selected = !selected" [ngClass]="{'card-registro--selected': selected}">
+<div class="card-registro"  [ngClass]="{'card-registro--selected': selected, 'fiz': status === 'fiz', 'vish': status === 'vish'}">
 
     <button class="btn-options"></button>
 
 
-    <i class="card-registro__icone {{ cor }}">
+    <i class="card-registro__icone {{ cor }}" (click)="selected = !selected">
         <img src="../../../assets/icones/icon__{{ icone }}.svg">
     </i>
 
@@ -12,13 +12,13 @@
         <h3 class="card-registro__titulo">{{ titulo }}</h3>
 
         <div class="container-btn" *ngIf="selected">
-            <button class="btn--fiz">Fiz!</button>
-            <button class="btn--vish">Vish</button>
+            <button class="btn--fiz" (click)="onChangeStatus('fiz')">Fiz!</button>
+            <button class="btn--vish" (click)="onChangeStatus('vish')">Vish</button>
         </div>
 
     </div>
 
-    <button class="btn-historico"></button>
+    <button class="btn-historico" [routerLink]="['/registro', key]"></button>
 
 
     
