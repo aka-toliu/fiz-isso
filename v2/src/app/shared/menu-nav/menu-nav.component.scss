@@ -10,7 +10,7 @@
     bottom: 0;
     z-index: 5;
 
-    @media screen and (min-width: 1280px) {
+    @media screen and (min-width: 768px) {
         top: 0;
         height: 70px;
         justify-content: flex-end;

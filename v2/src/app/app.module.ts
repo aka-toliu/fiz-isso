@@ -40,6 +40,7 @@ import { CadastroComponent } from './view/cadastro/cadastro.component';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp({
         apiKey: "AIzaSyDtiL4KTx_yImv77BLSz2CEVRvny4BeEeE",
         authDomain: "fiz-isso.firebaseapp.com",

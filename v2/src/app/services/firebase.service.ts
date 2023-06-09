@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { EventEmitter, Injectable } from '@angular/core';
 import { map } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -29,10 +30,13 @@ export class FirebaseService {
       });
   }
 
-  async signup(email: string, senha: string) {
+  async signup(email: string, senha: string, userData: any) {
     await this.firebaseAuth
       .createUserWithEmailAndPassword(email, senha)
-      .then((res) => {});
+      .then((res) => {
+        const uid = res?.user?.uid;
+       this.insertUser(uid as string, userData)
+      });
   }
 
   logout() {
@@ -43,32 +47,30 @@ export class FirebaseService {
   }
 
   getAll(user: string) {
-    return this.db.list(user).valueChanges();
+    return this.db.list(`registros/${user}`).valueChanges();
   }
 
-
-
   getAllKeys(user: string) {
-    return this.db.list(user).snapshotChanges();
+    return this.db.list(`registros/${user}`).snapshotChanges();
   }
 
   getSingle(user: string, key: string) {
     return this.db
-      .object(`${user}/${key}`)
+      .object(`registros/${user}/${key}`)
       .snapshotChanges()
       .pipe(map((res) => res.payload.val()));
   }
 
   getHistorico(user: string, key: string) {
     return this.db
-      .object(`${user}/${key}/historico`)
+      .object(`registros/${user}/${key}/historico`)
       .snapshotChanges()
       .pipe(map((res) => res.payload.val()));
   }
 
   insert(userID: string, objeto: any) {
     this.db
-      .list(userID)
+      .list(`registros/${userID}`)
       .push(objeto)
       .then((result: any) => {
         this.router.navigate(['/home']);
@@ -81,7 +83,7 @@ export class FirebaseService {
 
   insertHistorico(userID: string, objeto: any, key: string) {
     this.db
-      .list(`${userID}/${key}/historico`)
+      .list(`registros/${userID}/${key}/historico`)
       .push(objeto)
       .catch((error: any) => {
         console.log(error);
@@ -89,7 +91,7 @@ export class FirebaseService {
   }
 
   update(userID: string, objeto: any, key: string) {
-    this.db.list(userID).update(key, objeto)
+    this.db.list(`registros/${userID}`).update(key, objeto)
       .catch((error: any) => {
         console.error(error);
       });
@@ -97,6 +99,18 @@ export class FirebaseService {
 
 
   delete(userID: string, key: string) {
-    this.db.object(`${userID}/${key}`).remove();
+    this.db.object(`registros/${userID}/${key}`).remove();
+  }
+
+  insertUser(userID: string, objeto: any) {
+    this.db
+      .list(`usuarios/${userID}`)
+      .push(objeto)
+      // .then((result: any) => {
+      //   this.router.navigate(['/home']);
+      // })
+      .catch((error: any) => {
+        console.log(error);
+      });
   }
 }
