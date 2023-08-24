@@ -1,1 +1,24 @@
-<p>login works!</p>
+<main class="login">
+    <form>
+        <table>
+            <td>
+                <label for="email">E-mail:</label>
+                <input  type="text" #email value="teste01@email.com">
+            </td>
+            <td>
+                <label for="senha">Senha:</label>
+                <input  type="password" #senha value="asdqwe">
+                <a>Esqueci a senha</a>
+            </td>
+            <td>
+                <button  (click)="onLogin(email.value, senha.value); $event.preventDefault();">Login</button>
+            </td>
+            <td>
+                <p class="ou">ou</p>
+                <button type="outline" routerLink="/cadastro">Cadastre-se</button>
+                <!-- <button type="outline" color="secondary">Entrar como anônimo</button> -->
+            </td>
+        </table>
+
+    </form>
+</main>

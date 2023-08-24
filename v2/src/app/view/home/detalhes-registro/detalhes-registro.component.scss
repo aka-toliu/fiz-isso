@@ -1,0 +1,62 @@
+.registro-detalhes{
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+        padding-top: 70px;
+    }
+
+    &__header{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: brightness(1);
+        padding: 16px 0;
+        flex-direction: column;
+        gap: 4px;
+
+        i{
+            width: 80px;
+            height: 80px;
+            border-radius: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: contrast(1.5);
+
+
+            
+        }
+        h3{
+            font-size: larger;
+        }
+    }
+
+    &__infos{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 8px;
+        border-bottom: 1px solid #d4d4d4;
+        color: #9c9c9c;
+
+
+    }
+
+    &__historico{
+        width: 100%;
+        padding: 8px;
+
+        .historico__item{
+           border-bottom: 1px solid #5c5a5a;
+        }
+    }
+}
+
+
+.blue{ background-color: var(--blue);}
+.yellow{ background-color: var(--yellow);}
+.red{ background-color: var(--red);}
+.green{ background-color: var(--green);}
+.purple{ background-color: var(--purple);}

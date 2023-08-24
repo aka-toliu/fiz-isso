@@ -1,0 +1,30 @@
+@import '../../theme.scss';
+
+
+.cadastro{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--primary);
+    display: flex;
+    align-items: flex-end;
+
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--accent);
+        width: 40%;
+        height: 100%;
+        padding: 24px;
+
+        
+        @media screen and (max-width: 1280px) {
+            width: 50%;
+        }
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+    }
+}

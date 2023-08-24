@@ -1,0 +1,26 @@
+<div class="cadastro">
+    <form [formGroup]="formCadastro">
+        <table>
+            <td>
+                <h1>Cadastre-se</h1>
+                <label for="nome">Nome</label>
+                <input type="text" formControlName="nome">
+            </td>
+            <td>
+                <label for="data">Data de nascimento</label>
+                <input type="date" formControlName="dataNascimento">
+            </td>
+            <td>
+                <label for="email">E-mail</label>
+                <input type="email" formControlName="email">
+            </td>
+            <td>
+                <label for="senha">Senha</label>
+                <input type="password" formControlName="senha">
+            </td>
+            <td>
+                <button (click)="onSubmit()">Criar conta</button>
+            </td>
+        </table>
+    </form>
+</div>

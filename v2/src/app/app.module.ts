@@ -1,6 +1,8 @@
+import { AngularFireModule } from '@angular/fire/compat';
 import { HomeModule } from './view/home/home.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,8 +15,9 @@ import { CardHistoricoComponent } from './shared/card-historico/card-historico.c
 import { LoaderComponent } from './shared/loader/loader.component';
 import { MenuNavComponent } from './shared/menu-nav/menu-nav.component';
 import { NaoEncontradoComponent } from './view/nao-encontrado/nao-encontrado.component';
-import { ErroComponent } from './view/erro/erro.component';
-import { DetalhesRegistroComponent } from './view/detalhes-registro/detalhes-registro.component';
+import { ErroComponent } from './shared/erro/erro.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CadastroComponent } from './view/cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +32,26 @@ import { DetalhesRegistroComponent } from './view/detalhes-registro/detalhes-reg
     MenuNavComponent,
     NaoEncontradoComponent,
     ErroComponent,
-    DetalhesRegistroComponent,
+    CadastroComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp({
+        apiKey: "AIzaSyDtiL4KTx_yImv77BLSz2CEVRvny4BeEeE",
+        authDomain: "fiz-isso.firebaseapp.com",
+        databaseURL: "https://fiz-isso-default-rtdb.firebaseio.com",
+        projectId: "fiz-isso",
+        storageBucket: "fiz-isso.appspot.com",
+        messagingSenderId: "525291205680",
+        appId: "1:525291205680:web:7f95433896c3676a6aa9f5",
+        measurementId: "G-9ZL657CFZP"
+    }),
+    AngularFireModule
   ],
   providers: [],
   bootstrap: [AppComponent]

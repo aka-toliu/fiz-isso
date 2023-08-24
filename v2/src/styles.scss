@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root{
+    --primary: #391741;
+    --secondary: #8B5997;
+    --accent: #ffffff;
+    --smooth: #e7e7e7;
+    --white: #ffffff;
+
+    --fiz: #8FDC89;
+    --vish: #FCB4B4;
+
+
+    --blue: #92c8e7;
+    --yellow: #fff6a1;
+    --red: #ffa4a4;
+    --green: #92e7ac;
+    --purple: #a292e7;
+}
