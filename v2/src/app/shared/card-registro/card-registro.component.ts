@@ -38,7 +38,9 @@ export class CardRegistroComponent implements OnInit {
 
   onChangeStatus(status: string, event: any){
 
-    if(this.selected){
+
+ 
+    // if(this.selected){
       const registro = {
         cor: this.cor,
         icone: this.icone,
@@ -79,7 +81,7 @@ export class CardRegistroComponent implements OnInit {
         this.firebaseService.insertHistorico(this.userID, historico, this.key);
       }, 600);
       
-    }
+    // }
       
   }
 

@@ -2,15 +2,17 @@
 
     <button class="btn-options"></button>
 
+    
+    <div class="container-btn">
+        <button class="btn--fiz" (click)="onChangeStatus('fiz', $event.target)" ></button>
+        <button class="btn--vish" (click)="onChangeStatus('vish', $event.target)" ></button>
+    </div>
+    
     <button class="card-registro__icone {{ cor }}" (click)="selected = !selected" (blur)="selected = false">
+        
+        
         <img src="../../../assets/icones/icon__{{ icone }}.svg">
-
-        <!-- <div class="container-btn"> -->
-
-            <button class="btn--fiz" (click)="onChangeStatus('fiz', $event.target)"></button>
-            <button class="btn--vish" (click)="onChangeStatus('vish', $event.target)"></button>
-
-        <!-- </div> -->
+        
         
     </button>
 
