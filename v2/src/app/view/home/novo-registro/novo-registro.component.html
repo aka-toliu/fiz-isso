@@ -7,7 +7,8 @@
             </i>
             
         </header>
-        <input type="text" placeholder="Insira o nome do seu registro" formControlName="titulo">
+       
+            <input type="text" placeholder="Insira o nome do seu registro" formControlName="titulo">
         <div class="time-container">
             <div class="repeat-config">
                 <h3> Repetição </h3>
@@ -24,22 +25,22 @@
             </div>
         </div>
         <hr>
-        <h3>Icone</h3>
         <div class="icons-container">
+            <h3>Icone</h3>
             <div class="icons-row">
                 <input *ngFor="let icone of icones" style="background-image: url(./assets/icones/icon__{{icone}}.svg);" type="radio" name="icone" [value]="icone"
                 formControlName="icone">
             </div>
         </div>
 
-        <h3>Cor</h3>
         <div class="colors-container">
+            <h3>Cor</h3>
                 <div class="colors-row">
                     <input *ngFor="let cor of cores" [class]="cor" type="radio" name="cor" [value]="cor"
                     formControlName="cor">
                 </div>
         </div>
-
+        
         
 
        

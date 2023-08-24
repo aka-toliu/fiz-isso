@@ -1,82 +1,63 @@
-.card-registro{
+.card-registro {
     background-color: var(--white);
-    width: 350px;
+    width: 300px;
     height: 125px;
     border-radius: 12px;
     display: flex;
     align-items: center;
     box-shadow: 0px 9px 25px -11px #00000040;
     position: relative;
+    margin-left: 50px;
+    justify-content: end;
 
-
-
-    &__content{
-        width: 60%;
+    &__content {
+        width: 70%;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         gap: 4px;
-        
     }
 
-    &__titulo{
-        // border: 1px solid red;
+    &__titulo {
         max-height: 55px;
         overflow: hidden;
-        
-
-
     }
 
-    &__icone{
-
-        width: 33%;
-        height: 100%;
-        position: relative;
+    &__icone {
+        width: 125px;
+        height: 125px;
+        position: absolute;
+        left: -50px;
+        border-radius: 125px;
+        overflow: hidden;
+        border: none;
+        outline: none;
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: #c1cfc5;
+        transition: transform .4s ease;
 
-        img{
-            height: 40px;
+        img {
+            height: 38px;
             position: absolute;
             z-index: 2;
-            transition: all .2s;
+            transition: 0.4s;
+            user-select: none;
         }
 
-
-        &::after{
-            content: '';
-            height: 90px;
-            width: 90px;
-            // background-color: aquamarine;
-            border-radius: 120px;
-            transition: all .4s;
-            z-index: 1;
+        &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
         }
-
-        // &::before{
-        //     content: '';
-        //     height: 60px;
-        //     width: 60px;
-        //     border-radius: 100px;
-        //     transition: all .4s;
-        //     background-color: aquamarine;
-        //     opacity: .4;
-        //     position: absolute;
-        //     z-index: 0;
-        // }
-
-        
     }
 
-    .container-btn{
-        display: flex;
-        gap: 8px;
-        
-    }
 
-    .btn-options{
+    .btn-options {
         height: 30px;
         width: 15px;
         border: none;
@@ -86,10 +67,10 @@
         position: absolute;
         top: 8px;
         right: 8px;
-        opacity: .3;
+        opacity: 0.3;
     }
 
-    .btn-historico{
+    .btn-historico {
         position: absolute;
         bottom: 0;
         right: 0px;
@@ -101,161 +82,260 @@
         justify-content: center;
         border-radius: 10px 0 8px 0;
 
-        &::before{
-            content: '';
+        &::before {
+            content: "";
             width: 20px;
             height: 20px;
             background-image: url(../../../assets/icones/icon__historico-white.svg);
-            filter: brightness(.6);
+            filter: brightness(0.6);
             position: relative;
             display: block;
             background-position: center;
             background-size: cover;
             margin-right: 4px;
-            
+            user-select: none;
         }
-
     }
 
-    .btn{
-        @mixin btn($color, $side){
-            width: 80px;
-            height: 30px;
-            // position: absolute;
-            border-radius: 30px;
+    .btn {
+        @mixin btn($color, $side) {
+            width: 120px;
+            height: 120px;
+            border-radius: 120px;
             border: none;
             background-color: $color;
             font-weight: 700;
-            // #{$side}: -15px;
-            animation: swipeUp .4s ease both
-        }
-
-        &--fiz{
-            @include btn(#84f597, 'top');
-            
-        }
-
-        &--vish{
-            @include btn(#e79393, 'bottom');
-            animation-delay: .1s;
-        }
-
-        @keyframes swipeUp {
-            0%{transform: translateY(30px);}
-            100%{transform: translateY(0px);}
-        }
-    }
-
-
-    &--selected{
-
-        // @keyframes selected {
-        //     0%{transform: rotate(0deg);}
-        //     25%{transform: rotate(15deg);}
-        //     75%{transform: rotate(-10deg);}
-        //     100%{transform: rotate(0deg);}
-        
-        // }
-
-        // @keyframes selected {
-        //     0%{transform: rotateY(0deg);}
-
-        //     100%{transform: rotateY(180deg);}
-        
-        // }
-        
-
-        .card-registro__icone{
-
-            
-            
+            transition: all .6s ease;
+            position: absolute;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             &::after{
-                // animation: selected .4s ease-in-out both;
-                // content: '';
-                // height: 70px;
-                // width: 70px;
-                // border-radius: 16px;
-                transition: all .4s;
-                transform: rotateY(180deg);
-                background-color: #eeeeee;
-                border: 4px solid #cfcfcf;
-                
+                content: '';
+                height: 15px;
+                width: 15px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                opacity: .3;
+                transition: all .6s ease;
                 
             }
 
-            // &::before{
-            //     height: 100px;
-            //     width: 100px;
+        }
 
-            // }
+        &--fiz {
+            @include btn(var(--fiz), "left");
+            transform: translate(-155px, 155px);
 
-            img{
-                
-                transition: all .4s;
-                opacity: .3;
+            &::after{
+                background-image: url(../../../assets/icones/icon__fiz.svg);
+            }
+        }
+
+        &--vish {
+            @include btn(var(--vish), "right");
+            transform: translate(155px, -155px);
+
+            &::after{
+                background-image: url(../../../assets/icones/icon__vish.svg);
             }
         }
     }
-}
 
+    &--selected {
 
+        .btn{
+            &--fiz{
+                transform: translate(-58px, 58px);
 
-.fiz{
-    background-color: #e3e3e3;
+                &::after{
+                    transform: translate(28px, -28px);
+                }
+            }
+            &--vish{
+                transform: translate(58px, -58px);
 
-
-
-    .card-registro__icone{
-
-        &::after{
-        background-color: #c1cfc5;
-        border: 4px solid #8AD19A ;
+                &::after{
+                    transform: translate(-28px, 28px);
+                }
+            }
         }
         
-        img{
-            opacity: .3;
+        .card-registro__icone {
+
+            transform: scale(1.1);
+            img {
+                height: 28px;
+                // opacity: .3;
+                filter: contrast(0.5) brightness(9.5);
+                transition: all .4s;
+            }
+
+            &::after {
+
+                background-color: var(--secondary);
+
+            }
         }
-    }
-
-    .card-registro__titulo{
-        color: #8AD19A;
-    }
-}
-
-
-.vish{
-    background-color: #e3e3e3;
-
-    .card-registro__icone{
-
-        &::after{
-            background-color: #dfcccc;
-            border: 4px solid #d18a8a;
-        }
-
-
-        img{
-            opacity: .3;
-        }
-    }
-
-    .card-registro__titulo{
-        color: #d18a8a;
     }
 }
 
 
 
+.fiz {
+    background-color: #e9e9e9;
 
-@mixin colorIcone($color){
-    &::after{
+    .card-registro__icone {
+        &::after {
+            background-color: transparent;
+        }
+
+
+
+        background-color: #d4d4d4;
+        // border: 4px solid var(--fiz);
+
+        img {
+            opacity: 0.3;
+        }
+    }
+
+    .card-registro__titulo {
+        color: #8d8d8d;
+        text-decoration: line-through;
+    }
+
+    .btn{
+        &--fiz{
+            transform: translate(-85px, 0px);
+
+            &::after{
+                transform: translate(40px, 0px);
+            }
+        }
+        &--vish{
+            transform: translate(158px, -58px);
+        }
+    }
+}
+
+.vish {
+    background-color: #e9e9e9;
+
+    .card-registro__icone {
+        background-color: #d4d4d4;
+        // border: 4px solid var(--vish);
+
+        &::after {
+            background-color: transparent;
+        }
+
+        img {
+            opacity: 0.3;
+        }
+    }
+
+    .card-registro__titulo {
+        color: #8d8d8d;
+        text-decoration: line-through;
+    }
+
+    .btn{
+        &--vish{
+            transform: translate(-85px, 0px);
+
+            &::after{
+                transform: translate(40px, 0px);
+            }
+        }
+        &--fiz{
+            transform: translate(-150px, 0px);
+        }
+    }
+}
+
+@mixin colorIcone($color) {
+    &::after {
         background-color: $color;
     }
 }
 
-.blue{ @include colorIcone(var(--blue))}
-.yellow{ @include colorIcone(var(--yellow))}
-.red{ @include colorIcone(var(--red))}
-.green{ @include colorIcone(var(--green))}
-.purple{ @include colorIcone(var(--purple))}
+.blue {
+    @include colorIcone(var(--blue));
+}
+.yellow {
+    @include colorIcone(var(--yellow));
+}
+.red {
+    @include colorIcone(var(--red));
+}
+.green {
+    @include colorIcone(var(--green));
+}
+.purple {
+    @include colorIcone(var(--purple));
+}
+
+.btn-anim {
+    &--fiz {
+
+        background-color: #d4d4d4;
+        // border: 4px solid var(--fiz)!important;
+        // transition: all .4s ease;
+
+        img {
+            opacity: 0.3;
+        }
+
+        &::after {
+            background-color: transparent;
+        }
+
+        .btn{
+            &--fiz{
+                transform: translate(-85px, 0px);
+
+                &::after{
+                    transform: translate(40px, 0px);
+                }
+            }
+            &--vish{
+                transform: translate(158px, -58px);
+            }
+        }
+        
+    }
+
+    &--vish {
+        background-color: #d4d4d4;
+        // border: 4px solid var(--vish)!important;
+        // transition: all .4s ease;
+
+        img {
+            opacity: 0.3;
+        }
+
+        &::after {
+            background-color: transparent;
+        }
+
+        .btn{
+            &--vish{
+                transform: translate(-85px, 0px);
+
+                &::after{
+                    transform: translate(40px, 0px);
+                }
+            }
+            &--fiz{
+                transform: translate(-150px, 0px);
+            }
+        }
+       
+        
+    }
+
+}

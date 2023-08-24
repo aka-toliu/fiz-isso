@@ -40,9 +40,7 @@ export class HomeComponent implements OnInit {
     this.getAll();
   }
 
-  logout(){
-    this.firebaseService.logout();
-  }
+
 
   getAll(){
     this.firebaseService.getAll(this.userID).subscribe(

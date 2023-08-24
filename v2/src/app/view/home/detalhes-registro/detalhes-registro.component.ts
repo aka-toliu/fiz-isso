@@ -44,7 +44,7 @@ export class DetalhesRegistroComponent implements OnInit {
       }
     )
     }
-  
+
 
 
   getDeatalhes(){

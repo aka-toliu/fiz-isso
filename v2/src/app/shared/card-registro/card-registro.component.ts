@@ -21,6 +21,7 @@ export class CardRegistroComponent implements OnInit {
   selected: boolean = false;
   user: any = localStorage.getItem('user');
   userID: any = JSON.parse(this.user).uid;
+  last: boolean = false;
 
   historicoDB: any = [];
 
@@ -35,30 +36,50 @@ export class CardRegistroComponent implements OnInit {
 
   }
 
-  onChangeStatus(status: string){
+  onChangeStatus(status: string, event: any){
 
-    const registro = {
-      cor: this.cor,
-      icone: this.icone,
-      status: status,
-      titulo: this.titulo,
-      repeticao: this.repeticao,
+    if(this.selected){
+      const registro = {
+        cor: this.cor,
+        icone: this.icone,
+        status: status,
+        titulo: this.titulo,
+        repeticao: this.repeticao,
+
+        
+        
+      }
+  
+      const historico = {
+  
+        status: status,
+        horario: this.horario,
+        cor: this.cor,
+        icone: this.icone,
+        titulo: this.titulo,
+        repeticao: this.repeticao,
+        dataCriacao: Date.now()
+  
+      }
+
+      
+      
+
+      
+      if(status === 'fiz'){
+        event.parentNode.classList.add('btn-anim--fiz')
+      }
+
+      if(status === 'vish'){
+        event.parentNode.classList.add('btn-anim--vish')
+      }
+
+      setTimeout(() => {
+        this.firebaseService.update(this.userID, registro, this.key);
+        this.firebaseService.insertHistorico(this.userID, historico, this.key);
+      }, 600);
+      
     }
-
-    const historico = {
-
-      status: status,
-      horario: this.horario,
-      cor: this.cor,
-      icone: this.icone,
-      titulo: this.titulo,
-      repeticao: this.repeticao,
-      dataCriacao: Date.now()
-
-    }
-
-      this.firebaseService.update(this.userID, registro, this.key);
-    this.firebaseService.insertHistorico(this.userID, historico, this.key)
       
   }
 

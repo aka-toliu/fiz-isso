@@ -17,13 +17,13 @@ export class MenuNavComponent implements OnInit {
     // console.log(localStorage.getItem('user'));
     
 
-    // if(localStorage.getItem('user')){
-    //   this.firebaseService.isLogged.emit(true)
-    //   this.logged = true;
-    // }else{
-    //   this.firebaseService.isLogged.emit(false)
-    //   this.logged = false;
-    // }
+    if(localStorage.getItem('user')){
+      this.firebaseService.isLogged.emit(true)
+      this.logged = true;
+    }else{
+      this.firebaseService.isLogged.emit(false)
+      this.logged = false;
+    }
     
     this.firebaseService.isLogged.subscribe(
       data => {

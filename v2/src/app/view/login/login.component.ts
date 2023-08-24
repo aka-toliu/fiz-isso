@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FirebaseService } from './../../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,18 +12,20 @@ export class LoginComponent implements OnInit {
   isSingedIn = false;
   
 
-  constructor(private firebaseService: FirebaseService) { }
+  constructor(private firebaseService: FirebaseService, private router: Router) { }
 
 
 
   ngOnInit(): void {
-    // if(localStorage.getItem('user') !== null){
-    //   this.isSingedIn = true
-    // }else{
-    //   this.isSingedIn = false
-    // }
 
-    localStorage.removeItem('user');
+    if (localStorage.getItem('user')) {
+
+      this.router.navigate(['/home'])
+      
+    }else{
+      localStorage.removeItem('user');
+    }
+    
   }
 
   async onLogin(email: string, senha: string){

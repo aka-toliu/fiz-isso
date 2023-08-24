@@ -39,6 +39,10 @@ export class FirebaseService {
       });
   }
 
+  usuarioAutenticado(){
+    return this.isLoggedIn;
+  }
+
   logout() {
     this.firebaseAuth.signOut();
     localStorage.removeItem('user');

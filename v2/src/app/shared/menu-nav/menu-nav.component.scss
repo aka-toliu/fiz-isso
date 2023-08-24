@@ -27,6 +27,7 @@
         justify-content: center;
         background-color: transparent;
         opacity: .4;
+        cursor: pointer;
 
         @media screen and (min-width: 1280px) {
             width: fit-content;
@@ -55,7 +56,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: 32px;
-            backdrop-filter: brightness(1.2);
+            backdrop-filter: brightness(1.6);
             border-radius: 40px;
             padding: 8px;
 
@@ -86,6 +87,14 @@
 
             &::before{
                 background-image: url(../../../assets/icones/icon__user-white.svg);
+            }
+            
+        }
+
+        &[icon = 'add']{
+
+            &::before{
+                background-image: url(../../../assets/icones/icon__plus-white.svg);
             }
             
         }
