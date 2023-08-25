@@ -16,6 +16,28 @@
         flex-direction: column;
         justify-content: flex-end;
         gap: 4px;
+
+        .content__info{
+
+            display: flex;
+            justify-content: flex-start;
+            gap: 8px;
+
+            span{
+                border: 1px solid #c9c9c9;
+                color: var(--secondary);
+                padding: 4px 12px;
+                border-radius: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 4px;
+
+                img{
+                    height: 16px;
+                }
+            }
+        }
     }
 
     &__titulo {
@@ -207,6 +229,15 @@
 .fiz {
     background-color: #e9e9e9;
 
+    .content__info{
+        span{
+            color: #949494;
+        }
+        img{
+            opacity: .5;
+        }
+    }
+
     .card-registro__icone {
         &::after {
             background-color: transparent;
@@ -243,6 +274,15 @@
 
 .vish {
     background-color: #e9e9e9;
+
+    .content__info{
+        span{
+            color: #949494;
+        }
+        img{
+            opacity: .5;
+        }
+    }
 
     .card-registro__icone {
         background-color: #d4d4d4;

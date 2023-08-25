@@ -7,7 +7,7 @@
         <button class="btn--fiz" (click)="onChangeStatus('fiz', $event.target)" ></button>
         <button class="btn--vish" (click)="onChangeStatus('vish', $event.target)" ></button>
     </div>
-    
+
     <button class="card-registro__icone {{ cor }}" (click)="selected = !selected" (blur)="selected = false">
         
         
@@ -20,7 +20,21 @@
 
         <h3 class="card-registro__titulo">{{ titulo }}</h3>
 
+        <div class="content__info">
+            <span *ngIf="status == 'waiting' || selected" class="info__repeticao">
+                <img src="../../../assets/icones/icon__repeat.svg">
+                {{ repeticao }}
+            </span>
+            <span *ngIf="status == 'waiting' || selected"  class="info__horario">
+                <img src="../../../assets/icones/icon__horario.svg">
+                {{ horario }}
+            </span>
 
+            <span *ngIf="status !== 'waiting' && !selected" class="info__proxima">
+                <img src="../../../assets/icones/icon__arrow-right.svg">
+                00/00/00 - {{ horario }}
+            </span>
+        </div>
 
     </div>
 
