@@ -1,5 +1,5 @@
-<div class="card-registro"   [ngClass]="{'card-registro--selected': selected, 'fiz': status === 'fiz' && !selected, 'vish': status === 'vish' && !selected}">
-
+<div #teste class="card-registro"   [ngClass]="{'card-registro--selected': selected, 'fiz': status === 'fiz' && !selected , 'vish': status === 'vish' && !selected}">
+        
     <button class="btn-options"></button>
 
     
@@ -32,7 +32,7 @@
 
             <span *ngIf="status !== 'waiting' && !selected" class="info__proxima">
                 <img src="../../../assets/icones/icon__arrow-right.svg">
-                00/00/00 - {{ horario }}
+                {{ proximoRegistro | date: 'dd/MM/yy, HH:mm'}}
             </span>
         </div>
 

@@ -45,6 +45,7 @@ export class NovoRegistroComponent implements OnInit {
       repeticao: ['diaria'],
       horario: ['00:00'],
       status: ['waiting'],
+      proximoRegistro: [''],
       historico: [[]],
     })
     

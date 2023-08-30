@@ -12,7 +12,7 @@
     </app-card-registro> -->
 
     <app-card-registro *ngFor="let registro of registrosDB" [titulo]="registro.titulo" [icone]="registro.icone" 
-            [cor]="registro.cor" [status]="registro.status" [key]="registro.key" [repeticao]="registro.repeticao" [horario]="registro.horario" [historico]="registro.historico">
+            [cor]="registro.cor" [status]="registro.status" [key]="registro.key" [repeticao]="registro.repeticao" [horario]="registro.horario" [historico]="registro.historico" [proximoRegistro]="registro.proximoRegistro">
         </app-card-registro>
     </div>
 

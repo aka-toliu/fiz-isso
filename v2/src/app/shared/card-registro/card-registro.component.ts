@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -6,7 +6,9 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './card-registro.component.html',
   styleUrls: ['./card-registro.component.scss']
 })
-export class CardRegistroComponent implements OnInit {
+export class CardRegistroComponent implements OnInit, OnDestroy,  AfterViewInit {
+
+ 
 
   @Input() public titulo!: string;
   @Input() public icone!: string;
@@ -17,11 +19,18 @@ export class CardRegistroComponent implements OnInit {
   @Input() public repeticao!: string;
   @Input() public historico!: any;
   @Input() public key!: string;
+  @Input() public proximoRegistro!: any;
+
+
+  
 
   selected: boolean = false;
   user: any = localStorage.getItem('user');
   userID: any = JSON.parse(this.user).uid;
-  last: boolean = false;
+  reseted: boolean = false;
+
+  card: any;
+
 
   historicoDB: any = [];
 
@@ -29,12 +38,59 @@ export class CardRegistroComponent implements OnInit {
 
 
 
-  constructor(private firebaseService: FirebaseService) { }
+  constructor(private firebaseService: FirebaseService, private _elementRef : ElementRef) { }
 
   ngOnInit(): void {
+    const prox = new Date(this.proximoRegistro).getTime();
 
+    let elem = this._elementRef.nativeElement.querySelector('.card-registro');
+
+    // console.log(elem);
+    
+
+    this.compararDataEHora(prox, elem)
+    
+    setInterval(this.compararDataEHora, 10000, prox, elem)
 
   }
+
+  ngAfterViewInit(){
+    // this.card = this._elementRef.nativeElement.querySelector('.card-registro');
+  }
+
+  ngOnDestroy(): void {
+    // clear(this.compararDataEHora, 10000, prox)
+  }
+
+  adicionarDias(frequencia: string) {
+
+    // console.log(this.proximoRegistro);
+
+    let hoje = new Date();
+
+    let calcMonth = hoje.getMonth() < 10 ? ('0' + (hoje.getMonth() + 1)) : (hoje.getMonth() + 1)
+
+    // const data = this.proximoRegistro.split('T');
+
+    // const fragmentData = data.split('-')
+
+    console.log(`${hoje.getFullYear()}-${calcMonth}-${hoje.getDate()}T${this.horario}:00 UTC`);
+    
+    
+    const novaData = new Date(`${hoje.getFullYear()}-${calcMonth}-${hoje.getDate()}T${this.horario}:00`);
+
+    if(frequencia === 'diaria'){
+      novaData.setDate(novaData.getDate() + 1);
+    }
+    else if(frequencia === 'semanal'){
+      novaData.setDate(novaData.getDate() + 7);
+    }
+    else if(frequencia === 'quinzenal'){
+      novaData.setDate(novaData.getDate() + 15);
+    }
+
+    return novaData;
+}
 
   onChangeStatus(status: string, event: any){
 
@@ -47,6 +103,7 @@ export class CardRegistroComponent implements OnInit {
         status: status,
         titulo: this.titulo,
         repeticao: this.repeticao,
+        proximoRegistro: this.adicionarDias(this.repeticao)
 
         
         
@@ -79,10 +136,50 @@ export class CardRegistroComponent implements OnInit {
       setTimeout(() => {
         this.firebaseService.update(this.userID, registro, this.key);
         this.firebaseService.insertHistorico(this.userID, historico, this.key);
+        // event.parentNode.classList.remove('btn-anim--fiz', 'btn-anim--vish')
       }, 600);
       
     // }
       
   }
+
+
+
+  compararDataEHora(params: any, elem: any) {
+
+    
+    
+    const proximaData = params;
+    const dataAtual = new Date().getTime();
+
+    // console.log('>>>>>',elem);
+    
+    
+    // let elem = this._elementRef.nativeElement.querySelector('.card-registro');
+
+    if (proximaData === dataAtual) {
+      this.status = 'waiting'
+        console.log(0);
+
+        // this.selected = true;
+        // return 0; 
+        // Datas e horas são iguais
+    } else if (proximaData < dataAtual) {
+      this.status = 'waiting'
+        // this.selected = true;
+        console.log(-1, this.status);
+        elem.classList.remove('fiz', 'vish')
+        // console.log(elem);
+        
+        // return -1; 
+        // proximaData é anterior a dataAtual
+    } else {
+      console.log(1);
+      
+        // return 1; 
+        // proximaData é posterior a dataAtual
+    }
+  }
+
 
 }
