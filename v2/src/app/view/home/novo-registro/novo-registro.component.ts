@@ -27,7 +27,8 @@ export class NovoRegistroComponent implements OnInit {
     'blue',
     'red',
     'green',
-    'purple'
+    'purple',
+    'orange'
   ]
 
   formRegistro!: FormGroup;

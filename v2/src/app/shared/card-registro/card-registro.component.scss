@@ -103,19 +103,22 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 10px 0 8px 0;
+        border-radius: 20px 0 8px 0;
+        backdrop-filter: brightness(.93);
+        background: transparent;
 
         &::before {
             content: "";
-            width: 20px;
-            height: 20px;
-            background-image: url(../../../assets/icones/icon__historico-white.svg);
-            filter: brightness(0.6);
+            width: 25px;
+            height: 15px;
+
+            background-image: url(../../../assets/icones/icon__options-2.svg);
             position: relative;
             display: block;
             background-position: center;
-            background-size: cover;
-            margin-right: 4px;
+            background-repeat: no-repeat;
+            background-size: 20px;
+            // margin-right: 4px;
             user-select: none;
         }
     }
@@ -336,6 +339,9 @@
 }
 .purple {
     @include colorIcone(var(--purple));
+}
+.orange {
+    @include colorIcone(var(--orange));
 }
 
 .btn-anim {
