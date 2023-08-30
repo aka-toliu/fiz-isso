@@ -6,29 +6,78 @@
     }
 
     &__header{
+        height: 140px;
         width: 100%;
+        // background-color: var(--smooth);
         display: flex;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: brightness(1);
-        padding: 16px 0;
         flex-direction: column;
-        gap: 4px;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(5px);
+        margin-bottom: 90px;
 
-        i{
-            width: 80px;
-            height: 80px;
-            border-radius: 80px;
+        &::before{
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgb(255, 255, 255);
+            opacity: .5;
+            z-index: 0;
+        }
+
+        i {
+            width: 120px;
+            height: 120px;
+            border-radius: 120px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            filter: contrast(1.5);
+            z-index: 5;
+            position: absolute;
+            bottom: -60px;
 
-
-            
+            img{
+                width: 50px;
+            }
         }
+
         h3{
             font-size: larger;
+            position: absolute;
+            bottom: -90px;
+        }
+
+        .btn-action__container{
+
+            height: 50px;
+            // border: 1px solid black;
+            width: 35%;
+            position: absolute;
+            bottom: -25px;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+
+            @mixin btn {
+                width: 40px;
+                height: 40px;
+                border-radius: 40px;
+                margin: 0;
+                border: none
+            }
+
+            .btn-edit{
+                @include btn;
+                background-color: var(--secondary)
+            }
+            .btn-delete{
+                @include btn;
+                background-color: var(--warning)
+            }
         }
     }
 
