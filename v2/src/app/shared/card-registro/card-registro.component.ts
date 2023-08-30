@@ -35,7 +35,7 @@ export class CardRegistroComponent implements OnInit, OnDestroy,  AfterViewInit 
   historicoDB: any = [];
 
 
-
+  verify: any;
 
 
   constructor(private firebaseService: FirebaseService, private _elementRef : ElementRef) { }
@@ -45,12 +45,9 @@ export class CardRegistroComponent implements OnInit, OnDestroy,  AfterViewInit 
 
     let elem = this._elementRef.nativeElement.querySelector('.card-registro');
 
-    // console.log(elem);
-    
-
     this.compararDataEHora(prox, elem)
     
-    setInterval(this.compararDataEHora, 10000, prox, elem)
+    this.verify = setInterval(this.compararDataEHora, 10000, prox, elem)
 
   }
 
@@ -59,7 +56,7 @@ export class CardRegistroComponent implements OnInit, OnDestroy,  AfterViewInit 
   }
 
   ngOnDestroy(): void {
-    // clear(this.compararDataEHora, 10000, prox)
+    clearInterval(this.verify)
   }
 
   adicionarDias(frequencia: string) {
