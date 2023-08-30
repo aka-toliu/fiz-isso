@@ -127,8 +127,6 @@
         left: -50px;
         border-radius: 125px;
         overflow: hidden;
-        // transition: transform .4s ease;
-        // z-index: 10;
         
     }
 
@@ -211,7 +209,6 @@
 
             img {
                 height: 28px;
-                // opacity: .3;
                 filter: contrast(0.5) brightness(9.5);
                 transition: all .4s;
             }
@@ -345,8 +342,6 @@
     &--fiz {
 
         background-color: #d4d4d4;
-       
-        // transition: all .4s ease;
 
         img {
             opacity: 0.3;
@@ -373,7 +368,6 @@
 
     &--vish {
         background-color: #d4d4d4;
-
 
         img {
             opacity: 0.3;
