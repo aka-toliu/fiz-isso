@@ -2,6 +2,11 @@
 
     <header class="registro-detalhes__header {{ registro?.cor }}">
 
+        <div class="header__title"> 
+            <button class="btn-back" routerLink="/home"></button>
+            <h2>Detalhes</h2>
+        </div>
+
         <i class="{{ registro?.cor }}">
             <img src="../../../../assets/icones/icon__{{ registro?.icone }}.svg" alt="">
         </i>
@@ -14,28 +19,45 @@
     </header>
     
     <div class="registro-detalhes__infos">
-        <p>Status atual: {{ registro?.status }}</p>
-        <p>Horário: {{ registro?.horario }}</p>
-        <p>Repetição: {{ registro?.repeticao }}</p>
-        <p>ID: {{ id }}</p>
+
+        <div class="infos__tags">
+            <span class="">
+                <img src="../../../assets/icones/icon__repeat.svg">
+                {{ registro?.horario }}
+
+            </span>
+            <span>
+                <img src="../../../assets/icones/icon__horario.svg">
+                {{ registro?.repeticao }}
+            </span>
+        </div>
+        <!-- <p>Status atual: {{ registro?.status }}</p> -->
+        <!-- <p>ID: {{ id }}</p> -->
+    </div>
+
+    <div class="registro-detalhes__tabs">
+        <div class="tab__registros registro-detalhes__tabs--active">
+            Registros
+        </div>
+        <div class="tab__estatisticas">
+            Estatísticas
+        </div>
     </div>
 
     <table class="registro-detalhes__historico">
-            
+        <span *ngIf="registro?.historico == null">Não há histórico para esse registro.</span>
 
             <tr>
-                <span *ngIf="registro?.historico == null">Não há histórico para esse registro.</span>
-
-                <td>Data:</td>
                 <td>Status:</td>
+                <td>Data:</td>
             </tr>
 
             <tr class="historico__item" *ngFor="let historico of historicoDB">
                 <td>
-                    {{ historico.dataCriacao | date: 'short' }}
+                    {{ historico.status }}
                 </td>
                 <td>
-                    {{ historico.status }}
+                    {{ historico.dataCriacao | date: 'short' }}
                 </td>
             </tr>
 
