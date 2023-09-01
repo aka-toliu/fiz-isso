@@ -180,8 +180,8 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
-        padding: 8px;
-        border-bottom: 1px solid #d4d4d4;
+        padding: 16px;
+        // border-bottom: 1px solid #d4d4d4;
         color: #9c9c9c;
 
         .infos__tags{
@@ -210,14 +210,85 @@
 
     &__historico{
         width: 100%;
-        padding: 16px;
+        // padding: 16px;
+
+        display: flex;
+        flex-direction: column;
 
 
         .historico__item{
-           border-bottom: 1px solid #383838;
-           padding: 16px;
+           border-bottom: 1px solid #b1b1b1;
+           padding: 32px;
+           align-items: center;
            height: 40px;
            margin-bottom: 4px;
+           display: flex;
+           gap: 24px;
+
+           .status{
+            @mixin statusBadge {
+                height: 40px;
+                width: 40px;
+                padding: 8px;
+                border-radius: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img{
+                    height: 12px;
+                    opacity: .4;
+                }
+            }
+            &--vish{
+                @include statusBadge();
+                background-color: var(--vish);
+            }
+            &--fiz{
+                @include statusBadge();
+                background-color: var(--fiz);
+            }
+           }
+        }
+    }
+
+    .modal-delete{
+        position: fixed;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        background-color: #3838385b;
+
+        &__container{
+            width: 350px;
+            height: fit-content;
+            border-radius: 8px;
+            gap: 16px;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            background-color: white;
+
+            .btn-delete{
+
+                @mixin btn {
+                    height: 50px;
+                    border-radius: 8px;
+                    border: none;
+                    font-weight: bold
+                }
+
+                &__confirm{
+                    @include btn;
+                    background-color: var(--warning);
+                    color: white
+                }
+                &__cancel{@include btn;}
+
+            }
         }
     }
 }

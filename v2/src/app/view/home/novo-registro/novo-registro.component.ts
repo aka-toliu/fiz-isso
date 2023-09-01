@@ -58,6 +58,10 @@ export class NovoRegistroComponent implements OnInit {
   // }
 
   onSubmit(){
+
+    if (this.formRegistro.get(['titulo'])?.value === null ) {
+      this.formRegistro.get(['titulo'])?.setValue('Sem título')
+    }
     this.firebaseService.insert(this.userID, this.formRegistro.value)
   }
 

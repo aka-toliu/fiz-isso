@@ -18,6 +18,10 @@ export class DetalhesRegistroComponent implements OnInit {
   user: any = localStorage.getItem('user');
   userID: any = JSON.parse(this.user).uid;
 
+  tab: string = 'registros';
+
+  modalDelete: boolean = false;
+
   registro: any;
   historicoDB!: any;
 
@@ -54,6 +58,10 @@ export class DetalhesRegistroComponent implements OnInit {
         this.registro = data;
       }
     )
+  }
+
+  onDelete(){
+      this.firebaseService.delete(this.userID, this.id)
   }
 
 }

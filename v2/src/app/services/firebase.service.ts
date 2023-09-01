@@ -103,7 +103,9 @@ export class FirebaseService {
 
 
   delete(userID: string, key: string) {
-    this.db.object(`registros/${userID}/${key}`).remove();
+    this.db.object(`registros/${userID}/${key}`).remove().then((result: any) => {
+      this.router.navigate(['/home']);
+    })
   }
 
   insertUser(userID: string, objeto: any) {

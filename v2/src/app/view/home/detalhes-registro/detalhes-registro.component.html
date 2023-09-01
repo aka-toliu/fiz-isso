@@ -1,5 +1,14 @@
 <div class="registro-detalhes">
 
+    <div class="modal-delete" *ngIf="modalDelete">
+        <div class="modal-delete__container">
+            <h3>Tem certeza que deseja deletar o registro {{registro.titulo}}?</h3>
+            <p>Esta ação não poderá ser desfeita.</p>
+            <button  class="btn-delete__confirm" (click)="onDelete()">Deletar registro</button>
+            <button  class="btn-delete__cancel" (click)="modalDelete = false">Cancelar</button>
+        </div>
+    </div>
+
     <header class="registro-detalhes__header {{ registro?.cor }}">
 
         <div class="header__title"> 
@@ -14,7 +23,7 @@
 
         <div class="btn-action__container">
             <button class="btn-edit"></button>
-            <button  class="btn-delete"></button>
+            <button  class="btn-delete" (click)="modalDelete = true"></button>
         </div>
     </header>
     
@@ -36,25 +45,25 @@
     </div>
 
     <div class="registro-detalhes__tabs">
-        <div class="tab__registros registro-detalhes__tabs--active">
+        <div class="tab__registros" (click)="tab = 'registros'" [ngClass]="{'registro-detalhes__tabs--active': tab === 'registros'}">
             Registros
         </div>
-        <div class="tab__estatisticas">
+        <div class="tab__estatisticas" (click)="tab = 'estatisticas'" [ngClass]="{'registro-detalhes__tabs--active': tab === 'estatisticas'}">
             Estatísticas
         </div>
     </div>
 
-    <table class="registro-detalhes__historico">
+    <table class="registro-detalhes__historico" *ngIf="tab === 'registros'">
         <span *ngIf="registro?.historico == null">Não há histórico para esse registro.</span>
-
-            <tr>
-                <td>Status:</td>
-                <td>Data:</td>
-            </tr>
 
             <tr class="historico__item" *ngFor="let historico of historicoDB">
                 <td>
-                    {{ historico.status }}
+                    <div class="status--vish" *ngIf="historico.status === 'vish'">
+                        <img src="../../../../assets/icones/icon__vish.svg">
+                    </div>
+                    <div class="status--fiz" *ngIf="historico.status === 'fiz'">
+                        <img src="../../../../assets/icones/icon__fiz.svg">
+                    </div>
                 </td>
                 <td>
                     {{ historico.dataCriacao | date: 'short' }}
