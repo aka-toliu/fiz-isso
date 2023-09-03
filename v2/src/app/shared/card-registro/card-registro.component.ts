@@ -65,16 +65,21 @@ export class CardRegistroComponent implements OnInit, OnDestroy,  AfterViewInit 
 
     let hoje = new Date();
 
-    let calcMonth = hoje.getMonth() < 10 ? ('0' + (hoje.getMonth() + 1)) : (hoje.getMonth() + 1)
+    let calcMonth = hoje.getMonth() < 10 ? ('0' + (hoje.getMonth() + 1)) : (hoje.getMonth() + 1);
+
+    let calcDay = hoje.getDate() < 10 ? ('0' + hoje.getDate()) : hoje.getDate();
+
 
     // const data = this.proximoRegistro.split('T');
 
     // const fragmentData = data.split('-')
 
-    console.log(`${hoje.getFullYear()}-${calcMonth}-${hoje.getDate()}T${this.horario}:00 UTC`);
+    // console.log(`${hoje.getFullYear()}-${calcMonth}-${hoje.getDate()}T${this.horario}:00 UTC`);
     
     
-    const novaData = new Date(`${hoje.getFullYear()}-${calcMonth}-${hoje.getDate()}T${this.horario}:00`);
+    const novaData = new Date(`${hoje.getFullYear()}-${calcMonth}-${calcDay}T${this.horario}:00`);
+
+    console.log('next', novaData)
 
     if(frequencia === 'diaria'){
       novaData.setDate(novaData.getDate() + 1);
@@ -91,7 +96,8 @@ export class CardRegistroComponent implements OnInit, OnDestroy,  AfterViewInit 
 
   onChangeStatus(status: string, event: any){
 
-
+    console.log('add:', this.adicionarDias(this.repeticao));
+    
  
     // if(this.selected){
       const registro = {
