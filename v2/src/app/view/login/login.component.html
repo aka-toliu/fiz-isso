@@ -1,21 +1,39 @@
 <main class="login">
+
+    <h3 class="titles-draw">
+        <span [ngClass]="{'appear': title === 0}">tirei a panela do fogo?</span>
+        <span [ngClass]="{'appear': title === 1}">desliguei o ferro?</span>
+        <span [ngClass]="{'appear': title === 2}">puts, e aquele negócio?</span>
+        <span [ngClass]="{'appear': title === 3}">será que eu fiz?</span>
+        <span [ngClass]="{'appear': title === 4}">e se eu não fiz?</span>
+        <span [ngClass]="{'appear': title === 5}">e agora?</span>                
+    </h3>
+    <div class="draw">
+        <img src="../../../assets/draws/title-screen_animated.svg" >
+    </div>
+
     <form>
         <table>
+            <h3>Login:</h3>
             <td>
-                <label for="email">E-mail:</label>
-                <input  type="text" #email value="teste01@email.com">
+                <!-- <label for="email">E-mail:</label> -->
+                <input  type="text" #email placeholder="E-mail" value="teste01@email.com">
             </td>
             <td>
-                <label for="senha">Senha:</label>
-                <input  type="password" #senha value="asdqwe">
+                <!-- <label for="senha">Senha:</label> -->
+                <input  type="password" placeholder="Password" #senha value="asdqwe">
                 <a>Esqueci a senha</a>
             </td>
             <td>
-                <button  (click)="onLogin(email.value, senha.value); $event.preventDefault();">Login</button>
+                <button class="btn-login"  (click)="onLogin(email.value, senha.value); $event.preventDefault();">Login</button>
+                <p>Ainda nao tem conta? <span routerLink="/cadastro">Cadastre-se</span></p>
             </td>
             <td>
                 <p class="ou">ou</p>
-                <button type="outline" routerLink="/cadastro">Cadastre-se</button>
+                <button class="btn-google">
+                    <img src="../../../assets/icones/icon__google.svg" >
+                    Login com a conta google
+                </button>
                 <!-- <button type="outline" color="secondary">Entrar como anônimo</button> -->
             </td>
         </table>

@@ -10,6 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   isSingedIn = false;
+
+  title: number = 500;
+
+  random: any;
   
 
   constructor(private firebaseService: FirebaseService, private router: Router) { }
@@ -25,6 +29,15 @@ export class LoginComponent implements OnInit {
     }else{
       localStorage.removeItem('user');
     }
+
+    
+      setTimeout(() => {
+        this.randomizer();
+        this.random = setInterval(()=>this.randomizer(), 8000);
+      }, 2000);
+   
+
+   
     
   }
 
@@ -34,6 +47,11 @@ export class LoginComponent implements OnInit {
     if(this.firebaseService.isLogged){
       this.isSingedIn = true     
     }
+  }
+
+  randomizer(){
+    
+    this.title = Math.floor(Math.random() * 6);
   }
 
 
