@@ -20,7 +20,7 @@
         <div class="time-container">
             <div class="repeat-config">
                 <h3> Repetição </h3>
-                <select formControlName="repeticao">
+                <select formControlName="repeticao" (change)="updateHorario()">
                     <option value="diaria">Diária</option>
                     <option value="semanal">Semanal</option>
                     <option value="mensal">Mensal</option>
@@ -29,7 +29,7 @@
             </div>
             <div class="time-config">
                 <h3> Horário </h3>
-                <input type="time" formControlName="horario">
+                <input type="time" formControlName="horario" (change)="updateHorario()">
             </div>
         </div>
 

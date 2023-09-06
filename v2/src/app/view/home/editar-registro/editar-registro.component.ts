@@ -77,6 +77,7 @@ export class EditarRegistroComponent implements OnInit {
   }
 
   popularRegistro(){
+
     this.formRegistro.get(['titulo'])?.setValue(this.registro.titulo);
     this.formRegistro.get(['cor'])?.setValue(this.registro.cor);    
     this.formRegistro.get(['icone'])?.setValue(this.registro.icone);    
@@ -84,10 +85,35 @@ export class EditarRegistroComponent implements OnInit {
     this.formRegistro.get(['repeticao'])?.setValue(this.registro.repeticao);
     this.formRegistro.get(['historico'])?.setValue(this.registro.historico);    
     this.formRegistro.get(['status'])?.setValue(this.registro.status);    
-    this.formRegistro?.get(['proximoRegistro'])?.setValue(this.registro.proximoRegistro);    
-
+    this.formRegistro?.get(['proximoRegistro'])?.setValue(this.registro.repeticao);    
 
   }
+
+  updateHorario(){
+    this.formRegistro?.get(['proximoRegistro'])?.setValue(this.adicionarDias(this.formRegistro.get(['repeticao'])?.value));   
+  }
+
+  adicionarDias(frequencia: string) {
+
+    let hoje = new Date();
+    let calcMonth = hoje.getMonth() < 10 ? ('0' + (hoje.getMonth() + 1)) : (hoje.getMonth() + 1);
+    let calcDay = hoje.getDate() < 10 ? ('0' + hoje.getDate()) : hoje.getDate();
+
+    const novaData = new Date(`${hoje.getFullYear()}-${calcMonth}-${calcDay}T${this.formRegistro.get(['horario'])?.value}:00`);
+
+    if(frequencia === 'diaria'){
+      novaData.setDate(novaData.getDate() + 1);
+    }
+    else if(frequencia === 'semanal'){
+      novaData.setDate(novaData.getDate() + 7);
+    }
+    else if(frequencia === 'quinzenal'){
+      novaData.setDate(novaData.getDate() + 15);
+    }
+
+    return novaData;
+    
+}
 
   onSubmit(){
 
