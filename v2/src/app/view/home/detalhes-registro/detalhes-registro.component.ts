@@ -36,6 +36,8 @@ export class DetalhesRegistroComponent implements OnInit {
       }
     );
 
+    
+
 
   }
 

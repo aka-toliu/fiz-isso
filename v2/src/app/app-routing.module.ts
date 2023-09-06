@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DetalhesRegistroComponent } from './view/home/detalhes-registro/detalhes-registro.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ConfiguracaoComponent } from './view/configuracao/configuracao.component';
+import { EditarRegistroComponent } from './view/home/editar-registro/editar-registro.component';
 
 const routes: Routes = [
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'configuracao', component: ConfiguracaoComponent, canActivate: [AuthGuard] }, 
   { path: 'registro/:id', component: DetalhesRegistroComponent, canActivate: [AuthGuard] },
   { path: 'novo-registro', component: NovoRegistroComponent, canActivate: [AuthGuard]  }, 
+  { path: 'editar-registro/:id', component: EditarRegistroComponent, canActivate: [AuthGuard]  }, 
   {
     path: '',
     redirectTo: 'login',

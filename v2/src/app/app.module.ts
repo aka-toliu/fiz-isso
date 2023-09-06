@@ -18,6 +18,7 @@ import { NaoEncontradoComponent } from './view/nao-encontrado/nao-encontrado.com
 import { ErroComponent } from './shared/erro/erro.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CadastroComponent } from './view/cadastro/cadastro.component';
+import { EditarRegistroComponent } from './view/home/editar-registro/editar-registro.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CadastroComponent } from './view/cadastro/cadastro.component';
     NaoEncontradoComponent,
     ErroComponent,
     CadastroComponent,
+    EditarRegistroComponent,
 
 
   ],

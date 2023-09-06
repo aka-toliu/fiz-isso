@@ -1,0 +1,63 @@
+<div class="editar-registro">
+
+    <form [formGroup]="formRegistro">
+        <header class="{{formRegistro.controls['cor'].value}}">
+
+            <div class="header__title"> 
+                <button class="btn-back" [routerLink]="['/registro', id]"></button>
+                <h2>Editar registro</h2>
+            </div>
+            <i class="{{formRegistro.controls['cor'].value}}">
+                <img src="./assets/icones/icon__{{formRegistro.controls['icone'].value}}.svg" alt="">
+            </i>
+
+
+
+            
+        </header>
+       
+            <input type="text" placeholder="Insira o título" formControlName="titulo">
+        <div class="time-container">
+            <div class="repeat-config">
+                <h3> Repetição </h3>
+                <select formControlName="repeticao">
+                    <option value="diaria">Diária</option>
+                    <option value="semanal">Semanal</option>
+                    <option value="mensal">Mensal</option>
+                    <option value="não repetir">Não repetir</option>
+                </select>
+            </div>
+            <div class="time-config">
+                <h3> Horário </h3>
+                <input type="time" formControlName="horario">
+            </div>
+        </div>
+
+        <div class="icons-container">
+            <h3>Icone</h3>
+            <div class="icons-row">
+                <input *ngFor="let icone of icones" style="background-image: url(./assets/icones/icon__{{icone}}.svg);" type="radio" name="icone" [value]="icone"
+                formControlName="icone">
+            </div>
+        </div>
+
+        <div class="colors-container">
+            <h3>Cor</h3>
+                <div class="colors-row">
+                    <input *ngFor="let cor of cores" [class]="cor" type="radio" name="cor" [value]="cor"
+                    formControlName="cor">
+                </div>
+        </div>
+        
+        
+
+       
+
+        <button (click)="onSubmit()">Salvar alterações</button>
+        <button class="btn-cancel" [routerLink]="['/registro', id]">Cancelar</button>
+
+
+
+
+    </form>
+</div>

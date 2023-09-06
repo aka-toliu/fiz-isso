@@ -50,8 +50,13 @@ export class LoginComponent implements OnInit {
   }
 
   randomizer(){
+    let num = Math.floor(Math.random() * 6)
     
-    this.title = Math.floor(Math.random() * 6);
+    if(num === this.title){
+        this.randomizer();
+    }else{
+      this.title = num;
+    }
   }
 
 

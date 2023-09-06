@@ -2,6 +2,8 @@
 
     <div class="modal-delete" *ngIf="modalDelete">
         <div class="modal-delete__container">
+
+            <img src="../../../../assets/draws/delete-animated.svg">
             <h3>Tem certeza que deseja deletar o registro {{registro.titulo}}?</h3>
             <p>Esta ação não poderá ser desfeita.</p>
             <button  class="btn-delete__confirm" (click)="onDelete()">Deletar registro</button>
@@ -22,7 +24,7 @@
         <h3> {{ registro?.titulo }}</h3>
 
         <div class="btn-action__container">
-            <button class="btn-edit"></button>
+            <button class="btn-edit" [routerLink]="['/editar-registro', id]"></button>
             <button  class="btn-delete" (click)="modalDelete = true"></button>
         </div>
     </header>
@@ -46,7 +48,7 @@
 
     <div class="registro-detalhes__tabs">
         <div class="tab__registros" (click)="tab = 'registros'" [ngClass]="{'registro-detalhes__tabs--active': tab === 'registros'}">
-            Registros
+            Histórico
         </div>
         <div class="tab__estatisticas" (click)="tab = 'estatisticas'" [ngClass]="{'registro-detalhes__tabs--active': tab === 'estatisticas'}">
             Estatísticas
@@ -71,5 +73,12 @@
             </tr>
 
     </table>
+
+    <div class="registro-detalhes__estatisticas" *ngIf="tab === 'estatisticas'">
+        <h3>Frequência:</h3>
+        <div class="detalhes-frequencia">
+            <span *ngFor="let pill of historicoDB" class="frequencia-pill" [ngClass]="{'fiz': pill.status == 'fiz', 'vish': pill.status == 'vish'}"></span>
+        </div>
+    </div>
 
 </div>

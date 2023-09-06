@@ -11,6 +11,7 @@ import { FormGroup } from '@angular/forms';
 export class FirebaseService {
   isLoggedIn = false;
   isLogged = new EventEmitter<boolean>();
+  isUpdated = new EventEmitter<boolean>();
 
   constructor(
     private firebaseAuth: AngularFireAuth,
@@ -96,10 +97,15 @@ export class FirebaseService {
 
   update(userID: string, objeto: any, key: string) {
     this.db.list(`registros/${userID}`).update(key, objeto)
-      .catch((error: any) => {
+    .then((res) => {
+      this.isUpdated.emit(true);
+    })
+    .catch((error: any) => {
         console.error(error);
+        this.isUpdated.emit(false);
       });
   }
+  
 
 
   delete(userID: string, key: string) {

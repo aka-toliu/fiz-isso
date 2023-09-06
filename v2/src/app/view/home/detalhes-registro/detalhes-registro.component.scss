@@ -253,6 +253,45 @@
         }
     }
 
+    &__estatisticas{
+        width: 100%;
+        height: 64px;
+        padding: 32px;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        gap: 16px;
+
+
+        .detalhes-frequencia{
+            width: 100%;
+            display: flex;
+            position: relative;
+            // flex-wrap: wrap;
+            // gap: 4px;
+
+            background-color: rgb(223, 223, 223);
+
+            span{
+                height: 32px;
+                width: 100%;
+                // display: flex;
+                // width: 8px;
+                // background-color: rgb(201, 201, 201);
+                // border-radius: 8px;
+            }
+
+            .vish{
+                background-color: var(--vish);
+            }
+
+            .fiz{
+                background-color: var(--fiz);
+            }
+        }
+
+    }
+
     .modal-delete{
         position: fixed;
         z-index: 10;
@@ -261,10 +300,10 @@
         align-items: center;
         height: 100%;
         width: 100%;
-        background-color: #3838385b;
+        background-color: #38383873;
 
         &__container{
-            width: 350px;
+            width: 340px;
             height: fit-content;
             border-radius: 8px;
             gap: 16px;
@@ -273,13 +312,18 @@
             padding: 16px;
             background-color: white;
 
+            img{
+                width: 100%;
+            }
+
             .btn-delete{
 
                 @mixin btn {
                     height: 50px;
                     border-radius: 8px;
                     border: none;
-                    font-weight: bold
+                    font-weight: bold;
+                    font-size: 1em
                 }
 
                 &__confirm{
