@@ -84,6 +84,7 @@ export class EditarRegistroComponent implements OnInit {
     this.formRegistro.get(['repeticao'])?.setValue(this.registro.repeticao);
     this.formRegistro.get(['historico'])?.setValue(this.registro.historico);    
     this.formRegistro.get(['status'])?.setValue(this.registro.status);    
+    this.formRegistro?.get(['proximoRegistro'])?.setValue(this.registro.proximoRegistro);    
 
 
   }
