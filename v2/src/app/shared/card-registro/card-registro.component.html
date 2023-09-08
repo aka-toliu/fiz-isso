@@ -4,11 +4,11 @@
 
     
     <div class="container-btn">
-        <button class="btn--fiz" (click)="onChangeStatus('fiz', $event.target)" ></button>
-        <button class="btn--vish" (click)="onChangeStatus('vish', $event.target)" ></button>
+        <button class="btn--fiz" (click)="onChangeStatus('fiz', $event.target)" [disabled]="!selected"></button>
+        <button class="btn--vish" (click)="onChangeStatus('vish', $event.target)" [disabled]="!selected"></button>
     </div>
 
-    <button class="card-registro__icone {{ cor }}" (click)="selected = !selected" (blur)="selected = false">
+    <button class="card-registro__icone {{ cor }}"  (click)="selected = !selected" (blur)="deselect()">
         
         
         <img src="../../../assets/icones/icon__{{ icone }}.svg">

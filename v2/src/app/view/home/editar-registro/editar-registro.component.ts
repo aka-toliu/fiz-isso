@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
@@ -8,7 +8,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './editar-registro.component.html',
   styleUrls: ['./editar-registro.component.scss']
 })
-export class EditarRegistroComponent implements OnInit {
+export class EditarRegistroComponent implements OnInit, OnDestroy {
 
   id: any;
   user: any = localStorage.getItem('user');
@@ -45,15 +45,25 @@ export class EditarRegistroComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router) { }
 
-  ngOnInit(): void {
+    ngOnDestroy(): void {
+     setTimeout(() => {
+      //  this.firebaseService.isUpdated.unsubscribe();
+     }, 1000);
+    }
+    
+    ngOnInit(): void {
 
-    this.route.params.subscribe(
-      (params: any) => {
-        this.id = params['id'];
-        this.getDeatalhes();
-      }
-    );
-
+     
+      
+      this.route.params.subscribe(
+        (params: any) => {
+          this.id = params['id'];
+          this.getDeatalhes();
+        }
+        );
+        
+        
+        
     this.formRegistro = this.formBuilder.group({
       titulo: [null],
       icone: [''],
@@ -62,7 +72,7 @@ export class EditarRegistroComponent implements OnInit {
       horario: [''],
       status: [''],
       proximoRegistro: [''],
-      historico: [[]],
+      historico: [''],
     })
   }
 
@@ -78,16 +88,22 @@ export class EditarRegistroComponent implements OnInit {
 
   popularRegistro(){
 
+    
+
     this.formRegistro.get(['titulo'])?.setValue(this.registro.titulo);
     this.formRegistro.get(['cor'])?.setValue(this.registro.cor);    
     this.formRegistro.get(['icone'])?.setValue(this.registro.icone);    
-    this.formRegistro.get(['horario'])?.setValue(this.registro.horario);    
+    this.formRegistro.get(['horario'])?.setValue(this.registro.horario);      
     this.formRegistro.get(['repeticao'])?.setValue(this.registro.repeticao);
-    this.formRegistro.get(['historico'])?.setValue(this.registro.historico);    
     this.formRegistro.get(['status'])?.setValue(this.registro.status);    
-    this.formRegistro?.get(['proximoRegistro'])?.setValue(this.registro.repeticao);    
-
+    this.formRegistro?.get(['proximoRegistro'])?.setValue(this.registro.proximoRegistro);    
+    
+        if(this.registro.historico){
+          this.formRegistro.get(['historico'])?.setValue(this.registro.historico);  
+        }
+    
   }
+  
 
   updateHorario(){
     this.formRegistro?.get(['proximoRegistro'])?.setValue(this.adicionarDias(this.formRegistro.get(['repeticao'])?.value));   
@@ -120,7 +136,10 @@ export class EditarRegistroComponent implements OnInit {
     if (this.formRegistro.get(['titulo'])?.value === null ) {
       this.formRegistro.get(['titulo'])?.setValue('Sem título')
     }
-    this.firebaseService.update(this.userID, this.formRegistro.value, this.id)
+
+    console.log(this.formRegistro.value);
+    
+    this.firebaseService.update(this.userID, this.formRegistro.value, this.id);
 
     this.firebaseService.isUpdated.subscribe(
       data => {

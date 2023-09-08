@@ -56,7 +56,7 @@
     </div>
 
     <table class="registro-detalhes__historico" *ngIf="tab === 'registros'">
-        <span *ngIf="registro?.historico == null">Não há histórico para esse registro.</span>
+        <span *ngIf="registro?.historico == '' || registro?.historico == null">Não há histórico para esse registro.</span>
 
             <tr class="historico__item" *ngFor="let historico of historicoDB">
                 <td>
@@ -68,7 +68,7 @@
                     </div>
                 </td>
                 <td>
-                    {{ historico.dataCriacao | date: 'short' }}
+                    {{ historico.fullDate | date: 'dd/MM/yy, HH:mm' }}
                 </td>
             </tr>
 

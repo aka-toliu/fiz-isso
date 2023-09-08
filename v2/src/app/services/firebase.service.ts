@@ -114,6 +114,15 @@ export class FirebaseService {
     })
   }
 
+  deleteHistorico(userID: string, key: string, keyHistorico: string) {
+    this.db.object(`registros/${userID}/${key}/historico/${keyHistorico}`).remove().then((result: any) => {
+      
+    })
+  }
+
+
+
+
   insertUser(userID: string, objeto: any) {
     this.db
       .list(`usuarios/${userID}`)
