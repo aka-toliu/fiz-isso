@@ -5,7 +5,7 @@
     width: 100%;
     background-color: var(--primary);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     position: fixed;
     bottom: 0;
     z-index: 5;
@@ -28,6 +28,13 @@
         background-color: transparent;
         opacity: .4;
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 
         @media screen and (min-width: 1280px) {
             width: fit-content;
@@ -36,6 +43,8 @@
 
         &--active{
             opacity: 1;
+           
+            
             
         }
 
@@ -51,14 +60,15 @@
 
         &::before{
             content: '';
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             background-repeat: no-repeat;
             background-position: center;
             background-size: 32px;
             backdrop-filter: brightness(1.6);
             border-radius: 40px;
             padding: 8px;
+            
 
             @media screen and (min-width: 1280px) {
                 width: 25px;
@@ -92,12 +102,21 @@
         }
 
         &[icon = 'add']{
+            width: 25%;
+            opacity: 1;
 
             &::before{
                 background-image: url(../../../assets/icones/icon__plus-white.svg);
+                transform: translateY(-35px);
+                opacity: 1;
+                background-color: var(--secondary);
+                width: 50px;
+                height: 50px;
             }
             
         }
+
+
 
     }
 }

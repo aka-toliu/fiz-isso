@@ -163,15 +163,15 @@ export class CardRegistroComponent implements OnInit, OnDestroy, AfterViewInit {
         if (lastHistorico[1].dataCriacao === data) {
 
           this.firebaseService.deleteHistorico(this.userID, this.key, lastHistorico[0])
-          this.firebaseService.update(this.userID, registro, this.key);
+          this.firebaseService.update(this.userID, registro, this.key, 'update');
           this.firebaseService.insertHistorico(this.userID, historico, this.key);
 
         } else {
-          this.firebaseService.update(this.userID, registro, this.key);
+          this.firebaseService.update(this.userID, registro, this.key, 'update');
           this.firebaseService.insertHistorico(this.userID, historico, this.key);
         }
       } else {
-        this.firebaseService.update(this.userID, registro, this.key);
+        this.firebaseService.update(this.userID, registro, this.key, 'update');
         this.firebaseService.insertHistorico(this.userID, historico, this.key);
       }
 

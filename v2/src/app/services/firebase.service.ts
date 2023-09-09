@@ -95,10 +95,12 @@ export class FirebaseService {
       });
   }
 
-  update(userID: string, objeto: any, key: string) {
+  update(userID: string, objeto: any, key: string, type: string) {
     this.db.list(`registros/${userID}`).update(key, objeto)
     .then((res) => {
+     if(type === 'edit'){
       this.isUpdated.emit(true);
+     }
     })
     .catch((error: any) => {
         console.error(error);

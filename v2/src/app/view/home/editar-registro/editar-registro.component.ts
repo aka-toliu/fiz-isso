@@ -139,7 +139,7 @@ export class EditarRegistroComponent implements OnInit, OnDestroy {
 
     console.log(this.formRegistro.value);
     
-    this.firebaseService.update(this.userID, this.formRegistro.value, this.id);
+    this.firebaseService.update(this.userID, this.formRegistro.value, this.id, 'edit');
 
     this.firebaseService.isUpdated.subscribe(
       data => {
