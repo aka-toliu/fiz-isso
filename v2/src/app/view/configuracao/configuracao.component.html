@@ -1,4 +1,24 @@
-<div class="configuracao">
-    <p>configuracao works!</p>
-    <button (click)="logout()">Logout</button>
+<div class="config">
+    <!-- <p>configuracao works!</p> -->
+
+    <div class="config-section">
+        <h3>Tema</h3>
+        
+        <select #tema [ngClass]="{'light': theme === 'light', 'dark': theme === 'dark'}" (change)="theme = tema.value">
+            <option value="light" selected>Light</option>
+            <option value="dark">Dark</option>
+        </select>
+    </div>
+
+    <div class="config-section">
+        <h3>Informações da conta</h3>
+        <input type="text" disabled placeholder="Nome completo" value="{{ userInfo.nome }}">
+        <input type="date" disabled value="{{ userInfo.dataNascimento}}">
+        <input type="email" disabled  placeholder="E-mail" value="{{ userData.email }}">
+        <!-- <input type="password" disabled  placeholder="123456789"> -->
+        <button class="btn-edit">Editar</button>
+        <!-- <button class="btn-apagar-conta">Apagar conta</button> -->
+    </div>
+
+    <button class="btn-logout" (click)="logout()">Logout</button>
 </div>

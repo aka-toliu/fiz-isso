@@ -66,6 +66,11 @@ export class FirebaseService {
       .pipe(map((res) => res.payload.val()));
   }
 
+  getUserInfo(user: string) {
+    return this.db.list(`usuarios/${user}`).valueChanges();
+  }
+
+
   getHistorico(user: string, key: string) {
     return this.db
       .object(`registros/${user}/${key}/historico`)

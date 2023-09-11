@@ -18,7 +18,9 @@ export class CadastroComponent implements OnInit {
       nome: [null],
       email: [null],
       dataNascimento: [null],
-      senha: [null]
+      senha: [null],
+      tema: ['light'],
+      
     })
   }
 

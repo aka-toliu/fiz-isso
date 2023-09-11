@@ -1,7 +1,7 @@
-<div #teste class="card-registro"   [ngClass]="{'card-registro--selected': selected, 'fiz': status === 'fiz' && !selected , 'vish': status === 'vish' && !selected}">
+<div class="card-registro"   [ngClass]="{'card-registro--selected': selected, 'fiz': status === 'fiz' && !selected , 'vish': status === 'vish' && !selected}">
         
-    <!-- <button class="btn-options"></button> -->
-
+    
+    <button class="btn-reset" *ngIf="selected && status !== 'waiting'"></button>
     
     <div class="container-btn">
         <button class="btn--fiz" (click)="onChangeStatus('fiz', $event.target)" [disabled]="!selected"></button>

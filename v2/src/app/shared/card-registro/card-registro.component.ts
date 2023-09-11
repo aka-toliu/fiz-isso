@@ -97,6 +97,26 @@ export class CardRegistroComponent implements OnInit, OnDestroy, AfterViewInit {
     return novaData;
   }
 
+  onResetStatus() {
+
+    const registro = {
+      cor: this.cor,
+      icone: this.icone,
+      status: status,
+      titulo: this.titulo,
+      repeticao: this.repeticao,
+      proximoRegistro: this.proximoRegistro,
+      historico: []
+    }
+    
+
+    console.log(registro);
+    
+
+
+    // this.firebaseService.update(this.userID, registro, this.key, 'update');
+  }
+
   onChangeStatus(status: string, event: any) {
 
     console.log('add:', this.adicionarDias(this.repeticao));

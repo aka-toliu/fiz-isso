@@ -8,13 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfiguracaoComponent implements OnInit {
 
+  theme: string = 'light';
+
+  user: any = localStorage.getItem('user');
+  userID: any = JSON.parse(this.user).uid;
+
+  userData: any = JSON.parse(this.user)
+
+  userInfo: any;
+
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
+    this.getUserInfo();
   }
 
   logout(){
     this.firebaseService.logout();
+  }
+
+  getUserInfo(){
+    this.firebaseService.getUserInfo(this.userID).subscribe(data=>{
+      this.userInfo = data[0];
+      
+    })
   }
 
 }
