@@ -12,6 +12,7 @@ export class MenuNavComponent implements OnInit {
 
   close: boolean = false;
 
+
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
