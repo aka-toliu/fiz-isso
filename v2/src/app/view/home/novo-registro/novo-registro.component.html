@@ -35,9 +35,11 @@
 
         <div class="icons-container">
             <h3>Icone</h3>
-            <div class="icons-row">
-                <input *ngFor="let icone of icones" style="background-image: url(./assets/icones/icon__{{icone}}.svg);" type="radio" name="icone" [value]="icone"
-                formControlName="icone">
+            <div class="icons-box">
+                <div class="icons-row">
+                    <input *ngFor="let icone of icones" style="background-image: url(./assets/icones/icon__{{icone}}.svg);" type="radio" name="icone" [value]="icone"
+                    formControlName="icone">
+                </div>
             </div>
         </div>
 
@@ -54,6 +56,7 @@
        
 
         <button (click)="onSubmit()">Criar</button>
+        <button class="btn-cancel" routerLink="/home">Cancelar</button>
 
 
 

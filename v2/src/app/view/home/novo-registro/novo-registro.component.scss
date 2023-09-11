@@ -155,6 +155,15 @@
         }
         }
 
+        .btn-cancel{
+            background-color: #bdbdbd!important;
+            color: var(--secondary);
+        }
+
+
+
+
+
         input[type="text"] {
             width: 90%;
             height: 72px;
@@ -292,12 +301,13 @@
     .icons-container {
         display: flex;
         width: 90%;
-        height: 152px;
-        padding-left: 16px;
+        height: 140px;
+        padding: 8px 0px 0px 16px;
         flex-direction: column;
         background-color: #ECECEC;
-        padding: 16px;
+        // padding: 16px;
         margin-bottom: 8px;
+        gap: 8px;
 
         h3{
             margin-bottom: 8px;
@@ -316,13 +326,19 @@
 
         }
 
+        .icons-box{
+            overflow-x: auto;
+            height: 100%;
+            width: 100%;
+        }
+
 
         .icons-row{
             display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            overflow-y: auto;
+            width: fit-content;
+            gap: 12px;
             height: 100%;
+            padding-right: 16px;
 
 
                    
@@ -401,6 +417,8 @@
             }
         }
     }
+
+
 }
 
 
