@@ -22,6 +22,11 @@ button{
         border: 2px solid var(--secondary);
         color: var(--secondary);
     }
+
+    &[type = 'cancel']{
+        background-color: rgba(199, 199, 199, 0.767)!important;
+        color: var(--secondary);
+    }
 }
 
 label{

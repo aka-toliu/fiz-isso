@@ -3,7 +3,8 @@
     <div class="modal-delete" *ngIf="modalDelete">
         <div class="modal-delete__container">
 
-            <img src="../../../../assets/draws/delete-animated.svg">
+            <div class="draw-animated"></div>
+            <!-- <img src="../../../../assets/draws/delete-animated.svg"> -->
             <h3>Tem certeza que deseja deletar o registro {{registro.titulo}}?</h3>
             <p>Esta ação não poderá ser desfeita.</p>
             <button  class="btn-delete__confirm" (click)="onDelete()">Deletar registro</button>

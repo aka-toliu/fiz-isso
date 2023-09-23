@@ -12,9 +12,9 @@
 
     <div class="config-section">
         <h3>Informações da conta</h3>
-        <input type="text" disabled placeholder="Nome completo" value="{{ userInfo.nome }}">
-        <input type="date" disabled value="{{ userInfo.dataNascimento}}">
-        <input type="email" disabled  placeholder="E-mail" value="{{ userData.email }}">
+        <input type="text" disabled placeholder="Nome completo" value="{{ userInfo?.nome }}">
+        <input type="date" disabled value="{{ userInfo?.dataNascimento}}">
+        <input type="email" disabled  placeholder="E-mail" value="{{ userData?.email }}">
         <!-- <input type="password" disabled  placeholder="123456789"> -->
         <button class="btn-edit">Editar</button>
         <!-- <button class="btn-apagar-conta">Apagar conta</button> -->

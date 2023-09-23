@@ -3,20 +3,80 @@
 
 .cadastro{
     width: 100vw;
-    height: 100vh;
+    height: fit-content;
     background-color: var(--primary);
     display: flex;
     align-items: flex-end;
+    flex-direction: column;
+
+    header{
+        width: 100%;
+        height: 45vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img{
+            height: 100%;
+        }
+    }
 
     form{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: var(--accent);
         width: 40%;
         height: 100%;
         padding: 24px;
+        color: var(--smooth);
+        margin-top: -48px;
+
+        h2{
+            color: #ff86e1;
+        }
+
+        hr{
+           opacity: .1;
+           margin-bottom: 8px;
+        }
+
+        label{}
+        
+
+        input{
+            background-color: transparent;
+            border: none;
+            border: 2px solid var(--secondary);
+            border-radius: 4px;
+            color: #d4abdf;
+            font-size: 1.2em;
+            margin-bottom: 4px;
+            outline: none;
+            height: 50px;
+
+            &::placeholder{
+                color: #917897;
+            }
+
+            &:focus{
+                border: 2px solid #ff86e1;
+                border-radius: 4px;
+                transition: all .1s;
+                
+            }
+        }
+
+        input[type='date']{
+            width: 60%;
+            &::-webkit-calendar-picker-indicator {
+                background: none;
+            }
+        }
+
+        button{
+            background-color: var(--secondary);
+        }
 
         
         @media screen and (max-width: 1280px) {
@@ -25,6 +85,7 @@
 
         @media screen and (max-width: 768px) {
             width: 100%;
+            gap: 8px;
         }
     }
 }

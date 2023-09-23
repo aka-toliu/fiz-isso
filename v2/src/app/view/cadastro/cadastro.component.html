@@ -1,10 +1,14 @@
 <div class="cadastro">
+    <header>
+        <img src="../../../assets/draws/title-screen_animated.svg">
+    </header>
     <form [formGroup]="formCadastro">
         <table>
             <td>
-                <h1>Cadastre-se</h1>
+                <h2>Cadastre-se</h2>
+                <hr>
                 <label for="nome">Nome</label>
-                <input type="text" formControlName="nome">
+                <input type="text" formControlName="nome" placeholder="ex. Maria da Silva">
             </td>
             <td>
                 <label for="data">Data de nascimento</label>
@@ -12,14 +16,20 @@
             </td>
             <td>
                 <label for="email">E-mail</label>
-                <input type="email" formControlName="email">
+                <input type="email" formControlName="email" placeholder="exemplo@email.com">
             </td>
             <td>
                 <label for="senha">Senha</label>
-                <input type="password" formControlName="senha">
+                <input type="password" formControlName="senha" placeholder="Mínimo de 8 caracteres.">
             </td>
             <td>
+                <label for="senha">Confirmar senha</label>
+                <input type="password" formControlName="senha" placeholder="Mínimo de 8 caracteres.">
+            </td>
+            <td>
+                <hr>
                 <button (click)="onSubmit()">Criar conta</button>
+                <button type="cancel">Cancelar</button>
             </td>
         </table>
     </form>
