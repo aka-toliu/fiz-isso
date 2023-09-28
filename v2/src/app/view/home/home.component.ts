@@ -1,3 +1,4 @@
+import { updateProfile } from 'firebase/auth';
 import { FirebaseService } from './../../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -39,6 +40,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
   }
+
 
 
 

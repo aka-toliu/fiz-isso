@@ -49,6 +49,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  loginGoogle(){
+    this.firebaseService.googleSignIn();
+    
+   
+  }
+
   randomizer(){
     let num = Math.floor(Math.random() * 6)
     

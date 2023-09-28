@@ -48,6 +48,10 @@
                 transition: all .1s;
                 
             }
+
+            &[disabled]{
+                opacity: .4;
+            }
         }
 
         
@@ -103,6 +107,30 @@
             background-position-y: 50%;
             background-size: 20px;
             border: 1px solid #dfdfdf;
+        }
+
+        button{
+            height: 40px;
+            font-weight: 600;
+            background-color: transparent;
+
+        }
+        .btn-save{
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-cancel{
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            opacity: .6;
+        }
+
+        .btn-delete-acc{
+
+            border: 2px solid var(--warning);
+            color: var(--warning);
+
         }
     }
 

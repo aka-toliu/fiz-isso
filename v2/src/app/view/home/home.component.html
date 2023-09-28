@@ -3,15 +3,19 @@
     <!-- <button routerLink="/novo-registro" class="btn-novo-registro">
         <img src="../../../assets/icones/icon__plus-white.svg" alt="">
     </button> -->
+    <!-- <button (click)="updateProfile()">Update user</button> -->
 
 
 
     <div class="registros-container">
+        
         <!-- <app-card-registro *ngFor="let registro of registros" 
         [titulo]="registro.titulo"
         [icone]="registro.icone"
         [cor]="registro.cor">
     </app-card-registro> -->
+
+    <p *ngIf="!registrosDB || registrosDB.length === 0">Nenhum registro encontrado.</p>
 
     <app-card-registro *ngFor="let registro of registrosDB" [titulo]="registro.titulo" [icone]="registro.icone" 
             [cor]="registro.cor" [status]="registro.status" [key]="registro.key" [repeticao]="registro.repeticao" [horario]="registro.horario" [historico]="registro.historico" [proximoRegistro]="registro.proximoRegistro">

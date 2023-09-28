@@ -24,13 +24,14 @@
                 <input  type="password" placeholder="Password" #senha value="asdqwe">
                 <a>Esqueci a senha</a>
             </td>
+            
             <td>
                 <button class="btn-login"  (click)="onLogin(email.value, senha.value); $event.preventDefault();">Login</button>
                 <p>Ainda nao tem conta? <span routerLink="/cadastro">Cadastre-se</span></p>
             </td>
             <td>
                 <p class="ou">ou</p>
-                <button class="btn-google">
+                <button type="button"  class="btn-google" (click)="loginGoogle()">
                     <img src="../../../assets/icones/icon__google.svg" >
                     Login com a conta google
                 </button>

@@ -10,15 +10,25 @@
         </select>
     </div>
 
-    <div class="config-section">
+    <form class="config-section" [formGroup]="formProfile">
         <h3>Informações da conta</h3>
-        <input type="text" disabled placeholder="Nome completo" value="{{ userInfo?.nome }}">
-        <input type="date" disabled value="{{ userInfo?.dataNascimento}}">
-        <input type="email" disabled  placeholder="E-mail" value="{{ userData?.email }}">
+        <input formControlName="displayName" type="text" placeholder="Nome completo">
+        <!-- <input type="date" disabled value="{{ userInfo?.dataNascimento}}"> -->
+        <input type="email" disabled  placeholder="E-mail" value="{{ userAuthProfile?.email }}">
+        
+        <p *ngIf="userData.providerData[0].providerId === 'google.com'">Login com conta Google.</p>
+        <p *ngIf="userData.providerData[0].providerId === 'password'">Login padrão.</p>
+        <!-- <p>LogIn com conta Google.</p>
+        <p>Login com {{userData.providerData[0].providerId}}</p> -->
+
         <!-- <input type="password" disabled  placeholder="123456789"> -->
-        <button class="btn-edit">Editar</button>
+        <button type="button" class="btn-edit" (click)="enableEdit()" *ngIf="!editMode">Editar</button>
         <!-- <button class="btn-apagar-conta">Apagar conta</button> -->
-    </div>
+        <button class="btn-delete-acc" type="button" *ngIf="editMode">Deletar conta</button>
+        <hr *ngIf="editMode">
+        <button class="btn-save" type="button" (click)="updateProfile()" *ngIf="editMode">Salvar alterações</button>
+        <button class="btn-cancel" type="button" (click)="editMode = false; disableFields()" *ngIf="editMode">Cancelar</button>
+    </form>
 
     <button class="btn-logout" (click)="logout()">Logout</button>
 </div>

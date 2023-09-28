@@ -10,10 +10,10 @@
                 <label for="nome">Nome</label>
                 <input type="text" formControlName="nome" placeholder="ex. Maria da Silva">
             </td>
-            <td>
+            <!-- <td>
                 <label for="data">Data de nascimento</label>
                 <input type="date" formControlName="dataNascimento">
-            </td>
+            </td> -->
             <td>
                 <label for="email">E-mail</label>
                 <input type="email" formControlName="email" placeholder="exemplo@email.com">
@@ -29,7 +29,7 @@
             <td>
                 <hr>
                 <button (click)="onSubmit()">Criar conta</button>
-                <button type="cancel">Cancelar</button>
+                <button routerLink="/login" type="cancel">Cancelar</button>
             </td>
         </table>
     </form>

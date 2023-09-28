@@ -1,6 +1,9 @@
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { GoogleAuthProvider, User, signInWithPopup } from "@angular/fire/auth";
+import { getAuth, updateProfile } from "firebase/auth";
+
 import { EventEmitter, Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { FormGroup } from '@angular/forms';
@@ -13,11 +16,35 @@ export class FirebaseService {
   isLogged = new EventEmitter<boolean>();
   isUpdated = new EventEmitter<boolean>();
 
+
+
   constructor(
     private firebaseAuth: AngularFireAuth,
     private db: AngularFireDatabase,
     private router: Router
-  ) {}
+  ) { }
+
+
+  changeProfile(data: any) {
+    const auth = getAuth();
+
+
+    updateProfile((auth.currentUser as User), data)
+    .then(() => {
+      // Profile updated!
+      // ...
+      console.log("profile updated", auth.currentUser);
+      this.router.navigate(['/configuracao']);
+
+      
+
+    }).catch((error) => {
+      // An error occurred
+      // ...
+    });
+
+  }
+
 
   async signin(email: string, senha: string) {
     await this.firebaseAuth
@@ -36,11 +63,65 @@ export class FirebaseService {
       .createUserWithEmailAndPassword(email, senha)
       .then((res) => {
         const uid = res?.user?.uid;
-       this.insertUser(uid as string, userData)
+        const displayName = {
+          displayName: userData.nome
+        }
+        this.insertUser(uid as string, userData)
+        this.changeProfile(displayName)
+
+        this.isLoggedIn = true;
+        this.isLogged.emit(true);
+        localStorage.setItem('user', JSON.stringify(res.user));
+        this.router.navigate(['/home']);
       });
   }
 
-  usuarioAutenticado(){
+  getProfileAuthData(){
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    return user
+  }
+
+  // changeData(){
+  //   this.firebaseAuth.currentUser
+  //   .then((res)=>{
+  //    res!.displayName = "Joaquin"
+
+  //     this.firebaseAuth.(res).then((res)=>{
+  //       console.log(res);
+
+  //     })
+  //   })
+
+  // }
+
+
+
+  googleSignIn() {
+
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        console.log(res);
+        this.isLoggedIn = true;
+        this.isLogged.emit(true);
+        localStorage.setItem('user', JSON.stringify(res.user));
+        this.router.navigate(['/home']);
+
+        
+
+      }, error => {
+        console.log(error);
+
+      });
+  }
+
+
+
+  usuarioAutenticado() {
     return this.isLoggedIn;
   }
 
@@ -49,6 +130,17 @@ export class FirebaseService {
     localStorage.removeItem('user');
     this.isLogged.emit(false);
     this.router.navigate(['/login']);
+  }
+
+
+  forgotPassword(email: string) {
+    this.firebaseAuth.sendPasswordResetEmail(email)
+      .then(() => {
+
+      }, error => {
+
+      }
+      )
   }
 
   getAll(user: string) {
@@ -102,17 +194,17 @@ export class FirebaseService {
 
   update(userID: string, objeto: any, key: string, type: string) {
     this.db.list(`registros/${userID}`).update(key, objeto)
-    .then((res) => {
-     if(type === 'edit'){
-      this.isUpdated.emit(true);
-     }
-    })
-    .catch((error: any) => {
+      .then((res) => {
+        if (type === 'edit') {
+          this.isUpdated.emit(true);
+        }
+      })
+      .catch((error: any) => {
         console.error(error);
         this.isUpdated.emit(false);
       });
   }
-  
+
 
 
   delete(userID: string, key: string) {
@@ -123,7 +215,7 @@ export class FirebaseService {
 
   deleteHistorico(userID: string, key: string, keyHistorico: string) {
     this.db.object(`registros/${userID}/${key}/historico/${keyHistorico}`).remove().then((result: any) => {
-      
+
     })
   }
 

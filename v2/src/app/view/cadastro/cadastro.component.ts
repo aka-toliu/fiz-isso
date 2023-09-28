@@ -24,11 +24,13 @@ export class CadastroComponent implements OnInit {
     })
   }
 
+
   onSubmit(){
     console.log(this.formCadastro.value);
 
     const userData = {
       nome: this.formCadastro.get('nome')?.value,
+      tema: this.formCadastro.get('tema')?.value,
       dataNascimento: this.formCadastro.get('dataNascimento')?.value,
 
     }
