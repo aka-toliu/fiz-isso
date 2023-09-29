@@ -1,0 +1,48 @@
+@import '../../theme.scss';
+
+
+.esqueci-senha{
+    width: 100%;
+    height:  100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    gap: 16px;
+    background-color: var(--secondary);
+    color: white;
+
+    input{
+        font-size: 1em;
+    }
+
+    input[disabled]{
+        font-size: 1.5em;
+        color: var(--fiz);
+        background-color: transparent;
+        // border: none;
+        // border-bottom: 1px solid white;
+    }
+}
+
+
+
+.input-error{
+    color: #ff8888;
+
+}
+
+.input-success{
+    color: var(--fiz);
+    
+
+    span{
+        font-size: 1.5em;
+        font-weight: 700;
+    }
+}
+
+.btn-back{
+    background-color: var(--smooth);
+    color: var(--primary);
+}

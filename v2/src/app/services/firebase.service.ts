@@ -17,6 +17,9 @@ export class FirebaseService {
   isUpdated = new EventEmitter<boolean>();
 
 
+  forgotPasswordResponse = new EventEmitter<string>();
+
+
 
   constructor(
     private firebaseAuth: AngularFireAuth,
@@ -133,12 +136,12 @@ export class FirebaseService {
   }
 
 
-  forgotPassword(email: string) {
-    this.firebaseAuth.sendPasswordResetEmail(email)
-      .then(() => {
-
+   forgotPassword(email: string) {
+   this.firebaseAuth.sendPasswordResetEmail(email)
+      .then((res) => {       
+        this.forgotPasswordResponse.emit('email-sendded');
       }, error => {
-
+         this.forgotPasswordResponse.emit(error.code);
       }
       )
   }

@@ -19,6 +19,7 @@ import { ErroComponent } from './shared/erro/erro.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CadastroComponent } from './view/cadastro/cadastro.component';
 import { EditarRegistroComponent } from './view/home/editar-registro/editar-registro.component';
+import { EsqueciSenhaComponent } from './view/esqueci-senha/esqueci-senha.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { EditarRegistroComponent } from './view/home/editar-registro/editar-regi
     ErroComponent,
     CadastroComponent,
     EditarRegistroComponent,
+    EsqueciSenhaComponent,
 
 
   ],

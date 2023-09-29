@@ -28,7 +28,7 @@
                 <span class="input-error" *ngIf="formLogin.controls['senha'].hasError('wrong-password')">Senha incorreta.</span>
                 <span class="input-error" *ngIf="formLogin.controls['senha'].hasError('too-many-requests')">Muitas tentativas de login. Tente novamente mais tarde.</span>
 
-                <a>Esqueci a senha</a>
+                <a routerLink="/esqueci-senha">Esqueci a senha</a>
             </td>
             
             <td>

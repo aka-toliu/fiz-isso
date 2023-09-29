@@ -1,0 +1,20 @@
+<div class="esqueci-senha">
+    <h2>Esqueci a senha senha</h2>
+    <p *ngIf="!sendded">Digite abaixo o e-mail cadastrado para enviarmos o link de recuperação de senha.</p>
+    
+    <p *ngIf="sendded" class="input-success">O link de recuperação de senha foi enviado com sucesso para o e-mail:</p>
+    <input [disabled]="sendded" type="email" #email placeholder="ex.: joao@email.com" >
+    
+        <p *ngIf="errorMessenge === 'auth/invalid-email'" class="input-error">O e-mail digitado é inválido.</p>
+        <p *ngIf="errorMessenge === 'auth/missing-email'" class="input-error">O e-mail é obrigatório.</p>
+        <p *ngIf="errorMessenge === 'auth/too-many-requests'" class="input-error">Houve muitas tentativas para o mesmo e-mail. tente novamente mais tarde.</p>
+        <p *ngIf="errorMessenge === 'auth/user-not-found'" class="input-error">Nenhum usuário foi encontrado com este e-mail.</p>
+
+    <button *ngIf="!sendded" [disabled]="sendded" (click)="onSubmit(email.value)">Enviar</button>
+
+    <button class="btn-back" type="cancel" routerLink="/login">Voltar ao login</button>
+
+
+
+
+</div>

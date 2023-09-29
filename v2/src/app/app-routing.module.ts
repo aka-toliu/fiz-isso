@@ -9,11 +9,13 @@ import { DetalhesRegistroComponent } from './view/home/detalhes-registro/detalhe
 import { AuthGuard } from './guards/auth.guard';
 import { ConfiguracaoComponent } from './view/configuracao/configuracao.component';
 import { EditarRegistroComponent } from './view/home/editar-registro/editar-registro.component';
+import { EsqueciSenhaComponent } from './view/esqueci-senha/esqueci-senha.component';
 
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent }, 
   { path: 'cadastro', component: CadastroComponent }, 
+  { path: 'esqueci-senha', component: EsqueciSenhaComponent }, 
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }, 
   { path: 'historico-geral', component: HistoricoGeralComponent, canActivate: [AuthGuard] }, 
   { path: 'configuracao', component: ConfiguracaoComponent, canActivate: [AuthGuard] }, 
