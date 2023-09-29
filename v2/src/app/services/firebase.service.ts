@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { GoogleAuthProvider, User, signInWithPopup } from "@angular/fire/auth";
+import { GoogleAuthProvider, User, deleteUser, signInWithPopup } from "@angular/fire/auth";
 import { getAuth, updateProfile } from "firebase/auth";
 
 import { EventEmitter, Injectable } from '@angular/core';
@@ -33,19 +33,31 @@ export class FirebaseService {
 
 
     updateProfile((auth.currentUser as User), data)
-    .then(() => {
-      // Profile updated!
-      // ...
-      console.log("profile updated", auth.currentUser);
-      this.router.navigate(['/configuracao']);
+      .then(() => {
+        // Profile updated!
+        // ...
+        console.log("profile updated", auth.currentUser);
+        this.router.navigate(['/configuracao']);
 
-      
 
+
+      }).catch((error) => {
+        // An error occurred
+        // ...
+      });
+
+  }
+
+  deleteUser() {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    deleteUser(user as User).then(() => {
+      this.logout();
     }).catch((error) => {
-      // An error occurred
+      // An error ocurred
       // ...
     });
-
   }
 
 
@@ -79,7 +91,7 @@ export class FirebaseService {
       });
   }
 
-  getProfileAuthData(){
+  getProfileAuthData() {
     const auth = getAuth();
     const user = auth.currentUser;
 
@@ -114,7 +126,7 @@ export class FirebaseService {
         localStorage.setItem('user', JSON.stringify(res.user));
         this.router.navigate(['/home']);
 
-        
+
 
       }, error => {
         console.log(error);
@@ -136,12 +148,12 @@ export class FirebaseService {
   }
 
 
-   forgotPassword(email: string) {
-   this.firebaseAuth.sendPasswordResetEmail(email)
-      .then((res) => {       
+  forgotPassword(email: string) {
+    this.firebaseAuth.sendPasswordResetEmail(email)
+      .then((res) => {
         this.forgotPasswordResponse.emit('email-sendded');
       }, error => {
-         this.forgotPasswordResponse.emit(error.code);
+        this.forgotPasswordResponse.emit(error.code);
       }
       )
   }

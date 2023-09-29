@@ -12,6 +12,8 @@ export class ConfiguracaoComponent implements OnInit {
   theme: string = 'light';
   editMode: boolean = false;
 
+  deleteModal: boolean = false;
+
   user: any = localStorage.getItem('user');
   userID: any = JSON.parse(this.user).uid;
 
@@ -76,6 +78,10 @@ export class ConfiguracaoComponent implements OnInit {
       
       
     })
+  }
+
+  deleteUser(){
+    this.firebaseService.deleteUser();
   }
 
 }
