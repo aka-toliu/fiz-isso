@@ -8,6 +8,8 @@
     flex-direction: column;
 
 
+
+
     .appear{
         // opacity: 1!important;
         // transition: opacity 1s;
@@ -181,4 +183,8 @@
         }
 
     }
+}
+
+.input-error{
+    color: var(--warning);
 }

@@ -4,32 +4,45 @@
     </header>
     <form [formGroup]="formCadastro">
         <table>
-            <td>
+            <td class="form-header">
                 <h2>Cadastre-se</h2>
+                <p routerLink="/login" class="btn-back">Voltar</p>
                 <hr>
-                <label for="nome">Nome</label>
+            </td>
+            <td>
+
+                
+                <label for="nome" >Nome*</label>
                 <input type="text" formControlName="nome" placeholder="ex. Maria da Silva">
+                <span class="input-error" *ngIf="formCadastro.controls['nome'].hasError('minlength')">Mínimo de 3 caracteres.</span>
             </td>
             <!-- <td>
                 <label for="data">Data de nascimento</label>
                 <input type="date" formControlName="dataNascimento">
             </td> -->
             <td>
-                <label for="email">E-mail</label>
+                <label for="email">E-mail*</label>
                 <input type="email" formControlName="email" placeholder="exemplo@email.com">
+                <span class="input-error" *ngIf="formCadastro.controls['email'].hasError('email')">O e-mail inserido não é válido.</span>
+                <span class="input-error" *ngIf="formCadastro.controls['email'].hasError('invalid-email')">O e-mail inserido não é válido.</span>
+                <span class="input-error" *ngIf="formCadastro.controls['email'].hasError('email-already-in-use')">O e-mail inserido já está em uso.</span>
             </td>
             <td>
-                <label for="senha">Senha</label>
-                <input type="password" formControlName="senha" placeholder="Mínimo de 8 caracteres.">
+                <label for="senha">Senha*</label>
+                <input type="password" formControlName="senha" placeholder="Mínimo de 6 caracteres.">
+                <span class="input-error" *ngIf="formCadastro.controls['senha'].hasError('pattern')">A senha deve conter ao menos um caractere em caixa alta ('A' - 'Z'), um caractere não alfanumérico ($,#,@,!,etc) e um digito ('0' - '9').</span>
+                <span class="input-error" *ngIf="formCadastro.controls['senha'].hasError('missing-passaword')">A senha é obrigatória.</span>
+                <span class="input-error" *ngIf="formCadastro.controls['senha'].hasError('weak-password')">A senha deve conter ao menos 6 caracteres.</span>
             </td>
             <td>
-                <label for="senha">Confirmar senha</label>
-                <input type="password" formControlName="senha" placeholder="Mínimo de 8 caracteres.">
+                <label for="senha">Confirmar senha*</label>
+                <input type="password" formControlName="confirmarSenha" placeholder="Mínimo de 6 caracteres.">
+                <span class="input-error" *ngIf="formCadastro.controls['confirmarSenha'].hasError('confirmedValidator')">As senhas são diferentes.</span>
             </td>
             <td>
                 <hr>
-                <button (click)="onSubmit()">Criar conta</button>
-                <button routerLink="/login" type="cancel">Cancelar</button>
+                <button [disabled]="!formCadastro.valid" (click)="onSubmit()">Criar conta</button>
+                
             </td>
         </table>
     </form>

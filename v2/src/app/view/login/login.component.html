@@ -13,15 +13,21 @@
     </div>
 
     <form>
-        <table>
+        <table [formGroup]="formLogin">
             <h3>Login:</h3>
             <td>
                 <!-- <label for="email">E-mail:</label> -->
-                <input  type="text" #email placeholder="E-mail" value="reginaldo@email.com">
+                <input  type="text" #email placeholder="E-mail" formControlName="email">
+                <span class="input-error" *ngIf="formLogin.controls['email'].hasError('email')">O e-mail inserido não é válido.</span>
+                <span class="input-error" *ngIf="formLogin.controls['email'].hasError('not-found')">Usuário não encontrado.</span>
+
             </td>
             <td>
                 <!-- <label for="senha">Senha:</label> -->
-                <input  type="password" placeholder="Password" #senha value="asdqwe">
+                <input  type="password" placeholder="Password" #senha value="asdqwe" formControlName="senha">
+                <span class="input-error" *ngIf="formLogin.controls['senha'].hasError('wrong-password')">Senha incorreta.</span>
+                <span class="input-error" *ngIf="formLogin.controls['senha'].hasError('too-many-requests')">Muitas tentativas de login. Tente novamente mais tarde.</span>
+
                 <a>Esqueci a senha</a>
             </td>
             

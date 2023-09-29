@@ -32,6 +32,12 @@
         color: var(--smooth);
         margin-top: -48px;
 
+        .form-header{
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
         h2{
             color: #ff86e1;
         }
@@ -42,6 +48,12 @@
         }
 
         // label{}
+
+        .btn-back{
+            position: absolute;
+            right: 0;
+            top: 4px;
+        }
         
 
         input{
@@ -76,6 +88,10 @@
 
         button{
             background-color: var(--secondary);
+
+            &[disabled]{
+                opacity: .3;
+            }
         }
 
         
@@ -88,4 +104,8 @@
             gap: 8px;
         }
     }
+}
+
+.input-error{
+    color: var(--warning);
 }
