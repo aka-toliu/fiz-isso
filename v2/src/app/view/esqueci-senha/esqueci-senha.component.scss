@@ -12,8 +12,23 @@
     background-color: var(--secondary);
     color: white;
 
+    @media screen and (min-width: 764px) {
+        align-items: center;
+    }
+
+
+    button{
+        @media screen and (min-width: 764px) {
+            width: 200px;
+        }
+    }
+
     input{
         font-size: 1em;
+
+        @media screen and (min-width: 764px) {
+            width: 43vw;
+        }
     }
 
     input[disabled]{
