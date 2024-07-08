@@ -5,18 +5,15 @@
 
             <div class="header__title"> 
                 <button class="btn-back" routerLink="/home"></button>
-                <h2>Novo registro</h2>
+                <!-- <h2>Novo registro</h2> -->
             </div>
             <i class="{{formRegistro.controls['cor'].value}}">
                 <img src="./assets/icones/icon__{{formRegistro.controls['icone'].value}}.svg" alt="">
             </i>
-
-
-
-            
         </header>
        
-            <input type="text" placeholder="Insira o título" formControlName="titulo">
+        <div class="c-items">
+        <input type="text" placeholder="Insira o título" formControlName="titulo">
         <div class="time-container">
             <div class="repeat-config">
                 <h3> Repetição </h3>
@@ -59,6 +56,6 @@
         <button class="btn-cancel" routerLink="/home">Cancelar</button>
 
 
-
+    </div>
     </form>
 </div>
